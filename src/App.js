@@ -8,6 +8,7 @@ import {
 import Landing from "./landing/Landing";
 import MarketNear from "./market/pages/MarketNear";
 import Markets from "./market/pages/Markets";
+import NewMarket from "./market/pages/NewMarket";
 
 /* import Users from "./user/pages/User";
 import NewPlace from "./places/pages/NewPlaces";
@@ -19,6 +20,7 @@ import MainNavigation from "./shared/components/Navigation/MainNavigation";
 import LoadingSpinner from "./shared/components/UIElements/LoadingSpinner";
 import { AuthContext } from "./shared/context/auth-context";
 import { useAuth } from "./shared/hooks/auth-hook";
+import Dashboard from "./user/pages/Dashboard";
 
 const Users = React.lazy(() => import("./user/pages/User"));
 /* const NewPlace = React.lazy(() => import("./places/pages/NewPlaces"));
@@ -46,7 +48,14 @@ const App = () => {
         <Route path="/markets" exact>
           <Markets />
         </Route>
-       
+        <Route path="/markets/new" exact>
+          <NewMarket />
+        </Route>
+        <Route path="/user/dashboard" exact>
+          <Dashboard />
+        </Route>
+        
+        
         {/*  <Route path="/:userId/places" exact>
           <UserPlaces />
         </Route>

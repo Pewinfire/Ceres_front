@@ -1,23 +1,17 @@
-
-
 .market-list {
-    list-style: none;
-    margin: 0 auto;
-    padding: 0;
-    width: 90%;
-    max-width: 60rem;
-
-    display: flex ;
-    justify-content: center;
-    flex-wrap: wrap;
-    
-  }
+  list-style: none;
+  margin: 1rem auto;
+  padding: 0;
+  width: 90%;
+  max-width: 40rem;
+}
 
 
-  @media (min-width: 768px) {
+
+/*   @media (min-width: 768px) {
     .market-list {
       align-items: center;
       flex-wrap: row wrap;
     }
-  }
+  } */
   

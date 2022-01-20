@@ -40,12 +40,14 @@ const Landing = () => {
 
   return (
     <div className="videoWrapper">
+      <div className="pattern">
       <video
         autoPlay
         loop
         muted
-        src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/Background.web`}
+        src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/Background.mp4`}
       ></video>
+      </div>
       <div className="contenido-del-video">
         <form className="place-form" onSubmit={searchSubmitHandler}>
           <Input

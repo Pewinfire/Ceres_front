@@ -1,0 +1,66 @@
+.ds-item {
+  margin: 1rem 0;
+}
+
+.ds-item__content {
+    display: inline-block;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    padding: 1rem;
+    color: white;
+    background: #f3bd60;   display: flex;
+}
+
+.ds-item__a {
+    display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  padding: 1rem;
+  color: white;
+  background: #f3bd60;
+}
+
+.ds-item__icon {
+  text-align: center;
+}
+
+.ds-item__modal-content {
+  padding: 0;
+}
+
+.ds-item__modal-actions {
+  text-align: right;
+}
+
+.ds-item__actions button,
+.ds-item__actions a {
+  margin: 0.1rem;
+}
+
+.map-container {
+  height: 15rem;
+  width: 100%;
+}
+
+
+.ds-list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  width: 90%;
+  max-width: 60rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+  .ds-list {
+    align-items: center;
+    flex-wrap: row wrap;
+  }
+}
