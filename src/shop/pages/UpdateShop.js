@@ -12,7 +12,7 @@ import {
 import { useForm } from "../../shared/hooks/form-hook";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import ImageUpload from "../../shared/components/FormElements/ImageUpload";
-import Select from "react-select";
+
 // import { AuthContext } from '../../shared/context/auth-context';
 import "./Form.css";
 
@@ -20,13 +20,6 @@ const UpdateShop = () => {
   // const auth = useContext(AuthContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedShop, setLoadedShop] = useState();
-  const [options1, setOptions1] = useState();
-  const [options2, setOptions2] = useState();
-  const [select1, setSelect1] = useState();
-  const [select2, setSelect2] = useState();
-  const [isValid, setIsValid] = useState(false);
-  const [defaultS, setDefaultS] = useState();
-
   const shopId = useParams().shopId;
   const history = useHistory();
 
@@ -45,49 +38,10 @@ const UpdateShop = () => {
         isValid: false,
       },
       image: { value: null, isValid: false },
+      imageup: { value: false },
     },
     false
   );
-  useEffect(() => {
-    const fetchMarkets = async () => {
-      try {
-        const responseData = await sendRequest(
-          `${process.env.REACT_APP_BACKEND_URL}/market`
-        );
-
-        let lista = responseData.markets.map((market) => {
-          let item = {};
-          item.value = market.id;
-          item.label = market.name;
-          item.id = "marketo";
-          return item;
-        });
-        setOptions1(lista);
-      } catch (err) {}
-    };
-    fetchMarkets();
-  }, [sendRequest]);
-
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const responseData = await sendRequest(
-          `${process.env.REACT_APP_BACKEND_URL}/users`
-        );
-
-        let lista = responseData.users.map((user) => {
-          let item = {};
-          item.value = user.id;
-          item.label = user.name;
-          item.id = "owner";
-
-          return item;
-        });
-        setOptions2(lista);
-      } catch (err) {}
-    };
-    fetchUsers();
-  }, [sendRequest]);
 
   useEffect(() => {
     const fetchShop = async () => {
@@ -96,7 +50,6 @@ const UpdateShop = () => {
           `${process.env.REACT_APP_BACKEND_URL}/shop/${shopId}`
         );
         setLoadedShop(responseData.shop);
-        setDefaultS(responseData.shop.owner)
         setFormData(
           {
             name: {
@@ -111,7 +64,7 @@ const UpdateShop = () => {
               value: responseData.shop.location,
               isValid: false,
             },
-            image: { value: responseData.shop.image, isValid: false },
+            image: { value: responseData.shop.image, isValid: true },
             imageup: {
               value: false,
               isValid: true,
@@ -128,6 +81,8 @@ const UpdateShop = () => {
 
   const shopUpdateSubmitHandler = async (event) => {
     event.preventDefault();
+    console.log(formState.inputs.image.value)
+    console.log(loadedShop.image)
     try {
       const formData = new FormData();
       formData.append("name", formState.inputs.name.value);
@@ -137,7 +92,9 @@ const UpdateShop = () => {
         formState.inputs.imageup.value = true;
         formData.append("image", formState.inputs.image.value);
         setLoadedShop(null);
+        
       }
+     
       formData.append("imageup", formState.inputs.imageup.value);
 
       await sendRequest(
@@ -154,13 +111,7 @@ const UpdateShop = () => {
     }
   };
 
-  if (isLoading) {
-    return (
-      <div className="center">
-        <LoadingSpinner />
-      </div>
-    );
-  }
+ 
 
   if (!loadedShop && !error) {
     return (
@@ -171,25 +122,15 @@ const UpdateShop = () => {
       </div>
     );
   }
-  const selectHandler = async (e) => {
-    switch (e.id) {
-      case "marketo":
-        setSelect1(e.value);
-        break;
-      case "owner":
-        setSelect2(e.value);
-        break;
-      default:
-        break;
-    }
-    if (select1 && select2) {
-      setIsValid(true);
-    }
-  };
 
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
+      {isLoading && (
+        <div className="center">
+          <LoadingSpinner />
+        </div>
+      )}
       {!isLoading && loadedShop && (
         <form className="style-form" onSubmit={shopUpdateSubmitHandler}>
           <Input
@@ -224,13 +165,6 @@ const UpdateShop = () => {
             initialValue={loadedShop.location}
             initialValid={true}
           />
-          <Select onChange={selectHandler} defaultValue= {options1.filter(option => 
-          option.id === loadedShop.owner)} options={options1} />
-          <Select
-            onChange={selectHandler}
-            label="Propietario"
-            options={options2}
-          />
 
           <ImageUpload
             center
@@ -239,7 +173,7 @@ const UpdateShop = () => {
             preview={`${process.env.REACT_APP_BACKEND_IMG}/${loadedShop.image}`}
           />
 
-          <Button type="submit" disabled={!formState.isValid && isValid}>
+          <Button type="submit" disabled={!formState.isValid}>
             UPDATE Shop
           </Button>
         </form>
