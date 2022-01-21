@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import Modal from "../../shared/components/UIElements/Modal";
 import Map from "../../shared/components/UIElements/Map";
 import Button from "../../shared/components/FormElements/Button";
@@ -36,7 +36,7 @@ const MarketsItem = (props) => {
         show={showMap}
         onCancel={closeMapHandler}
         header={props.address}
-        contentClass="place-item__modal-content"
+        contentClass="market-item__modal-content"
         footerClass="market-item__modal-actions"
         footer={<Button onClick={closeMapHandler}>Close</Button>}
       >
@@ -60,7 +60,7 @@ const MarketsItem = (props) => {
             <Button inverse onClick={openMapHandler}>
               View on map
             </Button>
-            <Button to={`/markets/${props.id}`}>Ir</Button>
+            <Button to={`/${props.id}/shops`}>Ir</Button>
           </div>
         </Card>
       </li>

@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-import './MainHeader.css';
+import "./MainHeader.css";
 
-const MainHeader = props => {
-    return <header className='main-header'>{props.children}</header>;
+const MainHeader = (props) => {
+  const [navBar, setNavbar] = useState(false);
+  const scrolling = (e) => {
+    if (window.scrollY >= 30) {
+      setNavbar(true);
+    } else {
+      setNavbar(false);
+    }
+  };
 
+  useEffect(() => {
+    scrolling();
+    window.addEventListener("scroll", scrolling);
+  });
 
-}
+  return (
+    <header className={`main-header${(navBar && "n") || ""}`}>
+      {props.children}
+    </header>
+  );
+};
 
 export default MainHeader;

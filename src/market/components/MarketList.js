@@ -16,7 +16,7 @@ const MarketList = (props) => {
   }
 
   return (
-      <div className="market-cont">
+      <div >
     <ul className="market-list">
       {props.items.map((market) => {
         return (

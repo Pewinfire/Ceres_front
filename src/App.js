@@ -1,9 +1,10 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
   Redirect,
   Switch,
+  useLocation,
 } from "react-router-dom";
 import Landing from "./landing/Landing";
 import MarketNear from "./market/pages/MarketNear";
@@ -20,7 +21,10 @@ import MainNavigation from "./shared/components/Navigation/MainNavigation";
 import LoadingSpinner from "./shared/components/UIElements/LoadingSpinner";
 import { AuthContext } from "./shared/context/auth-context";
 import { useAuth } from "./shared/hooks/auth-hook";
+import NewShop from "./shop/pages/NewShop";
+import Shops from "./shop/pages/Shops";
 import Dashboard from "./user/pages/Dashboard";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const Users = React.lazy(() => import("./user/pages/User"));
 /* const NewPlace = React.lazy(() => import("./places/pages/NewPlaces"));
@@ -32,10 +36,12 @@ const App = () => {
   const { token, login, logout, userId } = useAuth();
 
   let routes;
+  
+
 
   if (token) {
     routes = (
-      <Switch>
+      <Switch >
         <Route path="/" exact>
           <Landing />
         </Route>
@@ -45,17 +51,22 @@ const App = () => {
         <Route path="/markets/near/:addr" exact>
           <MarketNear />
         </Route>
+        <Route path="/markets/new" exact>
+          <NewMarket />
+        </Route>
         <Route path="/markets" exact>
           <Markets />
         </Route>
-        <Route path="/markets/new" exact>
-          <NewMarket />
+        <Route path="/:marketId/shops" exact>
+          <Shops />
+        </Route>
+        <Route path="/shops/new" exact>
+          <NewShop />
         </Route>
         <Route path="/user/dashboard" exact>
           <Dashboard />
         </Route>
-        
-        
+
         {/*  <Route path="/:userId/places" exact>
           <UserPlaces />
         </Route>
@@ -70,12 +81,15 @@ const App = () => {
     );
   } else {
     routes = (
-      <Switch>
+      <Switch >
         <Route path="/" exact>
           <Landing />
         </Route>
         <Route path="/users" exact>
           <Users />
+        </Route>
+        <Route path="/:marketId/shops/" exact>
+          <Shops />
         </Route>
         <Route path="/markets/near/:addr" exact>
           <MarketNear />
@@ -83,7 +97,10 @@ const App = () => {
         <Route path="/markets" exact>
           <Markets />
         </Route>
-      
+        <Route path="/shops/new" exact>
+          <NewShop />
+        </Route>
+
         {/* <Route path="/:userId/places" exact>
           <UserPlaces />
         </Route> */}

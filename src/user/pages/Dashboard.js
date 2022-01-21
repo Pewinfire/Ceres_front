@@ -40,6 +40,21 @@ const Dashboard = () => {
         </div>
       </Card>
       </li>
+      <li className="ds-item">
+      <Card className="ds-item__content">
+        <div className="ds-item__icon">
+          <i className="fas fa-store fa-7x"></i>
+        </div>
+        <div className="ds-item__actions">
+          <Button to={`/shops/list`} inverse>
+            Consultar y modificar
+          </Button>
+          <Button to={`/shops/new`} inverse>
+            Crear Nuevo Puesto
+          </Button>
+        </div>
+      </Card>
+      </li>
       </ul>
     </div>
   );
