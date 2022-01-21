@@ -1,11 +1,12 @@
 .market-list {
   list-style: none;
   margin: 9rem auto;
-  padding: 5% 9%  0;
+  padding: 0 9%  0;
   width: 100%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap ;
+  
   max-height: 20rem;
 }
 
