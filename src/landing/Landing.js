@@ -24,12 +24,9 @@ const Landing = () => {
     event.preventDefault();
     try {
       await history.push(`/markets/near/${formState.inputs.address.value}`);
-      
     } catch (error) {}
-
-    
   };
-/*   event.preventDefault();
+  /*   event.preventDefault();
   try {
     await sendRequest(
       `http://localhost:5000/api/market/near/${formState.inputs.address.value}`
@@ -41,26 +38,33 @@ const Landing = () => {
   return (
     <div className="videoWrapper">
       <div className="pattern">
-      <video
-        autoPlay
-        loop
-        muted
-        src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/Background.mp4`}
-      ></video>
+        <video
+          autoPlay
+          loop
+          muted
+          src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/Background.mp4`}
+        ></video>
       </div>
       <div className="contenido-del-video">
         <form className="place-form" onSubmit={searchSubmitHandler}>
           <Input
             id="address"
             element="input"
-            label="Address"
             validators={[VALIDATOR_REQUIRE()]}
-            errorText="Please enter a valid address."
+            placeholder="introduce una dirección"
             onInput={inputHandler}
+            className={"inputo"}
+            dClassName={"envoltorio"}
+         
+           
           />
-          <Button type="submit" disabled={!formState.isValid}>
-            Buscar
-          </Button>
+              <Button
+                dClassName="botton"
+                type="submit"
+                disabled={!formState.isValid}
+              >
+                Buscar
+              </Button>
         </form>
       </div>
     </div>

@@ -27,9 +27,9 @@ const Button = props => {
       </Link>
     );
   }
-  return (
+  return ( 
     <button
-      className={`button button--${props.size || 'default'} ${props.inverse &&
+      className={`${props.dClassName ||`button button--${props.size || 'default'}`} ${props.inverse &&
         'button--inverse'} ${props.danger && 'button--danger'}`}
       type={props.type}
       onClick={props.onClick}
