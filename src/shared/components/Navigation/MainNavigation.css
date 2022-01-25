@@ -20,6 +20,7 @@
 .main-navigation__title {
   color: white;
   font-size: 3rem;
+  text-shadow: #0b4230 0.1em 0.1em 0.2em
 }
 
 .main-navigation__title a {

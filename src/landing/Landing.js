@@ -26,6 +26,8 @@ const Landing = () => {
       await history.push(`/markets/near/${formState.inputs.address.value}`);
     } catch (error) {}
   };
+
+  
   /*   event.preventDefault();
   try {
     await sendRequest(
@@ -37,21 +39,21 @@ const Landing = () => {
 
   return (
     <div className="videoWrapper">
-      <div className="pattern">
+      <div className="pattern"> </div>
         <video
           autoPlay
           loop
           muted
-          src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/Background.mp4`}
+          src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/Background${Math.floor(Math.random() * (3 - 1 + 1)) + 1}.mp4`}
         ></video>
-      </div>
+     
       <div className="contenido-del-video">
         <form className="place-form" onSubmit={searchSubmitHandler}>
           <Input
             id="address"
             element="input"
             validators={[VALIDATOR_REQUIRE()]}
-            placeholder="introduce una dirección"
+            placeholder="Introduce una dirección"
             onInput={inputHandler}
             className={"inputo"}
             dClassName={"envoltorio"}

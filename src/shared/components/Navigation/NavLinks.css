@@ -39,6 +39,7 @@
   background: transparent;
   padding: 0.5rem;
   font: inherit;
+  text-shadow: #0b4230 0.1em 0.1em 0.2em
 }
 
 .nav-links button:focus {
@@ -64,13 +65,15 @@
   .nav-links a {
     color: white;
     text-decoration: none;
+    text-shadow: #0b4230 0.1em 0.1em 0.2em
   }
 
   .nav-links button {
     border: 5px double #7cd1b8;
     border-radius: 20px;
     color: white;
-    background: #FABB51;
+    background: #f8bb52;
+    
   }
 
   .nav-links button:hover,
