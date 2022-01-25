@@ -11,17 +11,18 @@ import {
 } from "../../shared/util/validators";
 import { useForm } from "../../shared/hooks/form-hook";
 import { useHttpClient } from "../../shared/hooks/http-hook";
-import Select from "react-select";
+
 //import { AuthContext } from "../../shared/context/auth-context";
 
 import "./Form.css";
+import { Autocomplete, TextField } from "@mui/material";
 
 const NewShop = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
-  const [options1, setOptions1] = useState();
-  const [options2, setOptions2] = useState();
-  const [select1, setSelect1] = useState();
-  const [select2, setSelect2] = useState();
+  const [markets, setMarkets] = useState();
+  const [market, setMarket] = useState();
+  const [owners, setOwners] = useState();
+  const [owner, setOwner] = useState();
   const [isValid, setIsValid] = useState(false);
 
   const [formState, inputHandler] = useForm(
@@ -54,12 +55,12 @@ const NewShop = () => {
 
         let lista = responseData.markets.map((market) => {
           let item = {};
-          item.value = market.id;
+          item.id = market.id;
           item.label = market.name;
-          item.id = "marketo";
+          item.field = "marketo";
           return item;
         });
-        setOptions1(lista);
+        setMarkets(lista);
       } catch (err) {}
     };
     fetchMarkets();
@@ -74,13 +75,13 @@ const NewShop = () => {
 
         let lista = responseData.users.map((user) => {
           let item = {};
-          item.value = user.id;
+          item.id = user.id;
           item.label = user.name;
-          item.id = "owner";
+          item.field = "owner";
 
           return item;
         });
-        setOptions2(lista);
+        setOwners(lista);
       } catch (err) {}
     };
     fetchUsers();
@@ -93,32 +94,31 @@ const NewShop = () => {
     formData.append("description", formState.inputs.description.value);
     formData.append("location", formState.inputs.location.value);
     formData.append("image", formState.inputs.image.value);
-    formData.append("marketo", select1);
-    formData.append("owner", select2);
+    formData.append("marketo", market);
+    formData.append("owner", owner);
     try {
       await sendRequest(
         process.env.REACT_APP_BACKEND_URL + "/shop",
         "POST",
         formData
       );
-      await history.push(`/${select1}/shops`);
+      /*   await history.push(`/${market}/shops`); */
     } catch (err) {}
   };
 
-  const selectHandler = async (e) => {
-    switch (e.id) {
+  const autoComplet = async (event, value) => {
+    event.defaultMuiPrevented = true;
+    switch (value.field) {
       case "marketo":
-        setSelect1(e.value);
+        setMarket(value.id);
         break;
       case "owner":
-        setSelect2(e.value);
+        setOwner(value.id);
         break;
       default:
         break;
-
-       
     }
-    if (select1 && select2) {
+    if (market && owner) {
       setIsValid(true);
     }
   };
@@ -155,12 +155,28 @@ const NewShop = () => {
           onInput={inputHandler}
         />
 
-        <Select onChange={selectHandler} label="Mercado" options={options1} />
-        <Select
-          onChange={selectHandler}
-          label="Propietario"
-          options={options2}
-        />
+        <div style={{ flex: "row" }}>
+          <Autocomplete
+            id="marketo"
+            options={markets}
+            getOptionLabel={(option) => option.label} // si en la segunda metes mas props'{ 1, 2} filtra por campos
+            sx={{ width: 300 }}
+            onChange={autoComplet}
+            renderInput={(params) => <TextField {...params} label="Mercado" />}
+            isOptionEqualToValue={(option) => option.id}
+          />
+          <Autocomplete
+            id="owner"
+            options={owners}
+            getOptionLabel={(option) => option.label} // si en la segunda metes mas props'{ 1, 2} filtra por campos
+            sx={{ width: 300 }}
+            onChange={autoComplet}
+            renderInput={(params) => (
+              <TextField {...params} label="Propietario" />
+            )}
+            isOptionEqualToValue={(option) => option.id}
+          />
+        </div>
         <ImageUpload center id="image" onInput={inputHandler} />
         <Button type="submit" disabled={!formState.isValid && isValid}>
           Añadir Tienda
