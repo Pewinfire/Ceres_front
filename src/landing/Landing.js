@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { useHistory } from "react-router-dom";
 
 import Input from "../shared/components/FormElements/Input";
@@ -9,7 +9,7 @@ import "./Landing.css";
 
 const Landing = () => {
   const history = useHistory();
-
+  const [img, setImg]= useState(Math.floor(Math.random() * (3 - 1 + 1)) + 1)
   const [formState, inputHandler] = useForm(
     {
       address: {
@@ -27,15 +27,6 @@ const Landing = () => {
     } catch (error) {}
   };
 
-  
-  /*   event.preventDefault();
-  try {
-    await sendRequest(
-      `http://localhost:5000/api/market/near/${formState.inputs.address.value}`
-    );
-    
-  } catch (err) {}
-}; */
 
   return (
     <div className="videoWrapper">
@@ -44,11 +35,13 @@ const Landing = () => {
           autoPlay
           loop
           muted
-          src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/Background${Math.floor(Math.random() * (3 - 1 + 1)) + 1}.mp4`}
+          src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/Background${img}.mp4`}
         ></video>
      
       <div className="contenido-del-video">
         <form className="place-form" onSubmit={searchSubmitHandler}>
+          
+          
           <Input
             id="address"
             element="input"
@@ -57,8 +50,6 @@ const Landing = () => {
             onInput={inputHandler}
             className={"inputo"}
             dClassName={"envoltorio"}
-         
-           
           />
               <Button
                 dClassName="botton"
