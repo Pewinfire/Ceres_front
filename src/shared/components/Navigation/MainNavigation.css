@@ -19,8 +19,18 @@
 
 .main-navigation__title {
   color: white;
-  font-size: 3rem;
-  text-shadow: #0b4230 0.1em 0.1em 0.2em
+  font-size: 3vw;
+  text-shadow: #0b4230 0.1em 0.1em 0.2em;
+}
+.main-navigation_img {
+  height: 3vw;
+  position: absolute;
+  left : 9vw;
+  border-radius: 50%;
+  -webkit-box-shadow: -10px 0px 13px -7px #0b4230, 10px 0px 13px -7px #0b4230,
+    5px 5px 15px 5px rgba(0, 0, 0, 0);
+  box-shadow: -10px 0px 13px -7px #0b4230, 10px 0px 13px -7px #0b4230,
+    5px 5px 15px 5px rgba(0, 0, 0, 0);
 }
 
 .main-navigation__title a {

@@ -2,13 +2,15 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  padding-right: 1.5vw;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
- 
+
+  font-size: 1.8vw;
 }
 
 .nav-links li {
@@ -25,7 +27,7 @@
 .nav-links a:hover,
 .nav-links a:active,
 .nav-links a.active {
-  background: #FABB51;
+  background: #7cd1b8;
   border: 0.1px hidden #7cd1b8;
   border-radius: 40px;
   color: white;
@@ -33,13 +35,13 @@
 
 .nav-links button {
   cursor: pointer;
-  border: 1px double #7CD1B8;
+  border: 1px double #7cd1b8;
   border-radius: 20px;
   color: white;
   background: transparent;
   padding: 0.5rem;
   font: inherit;
-  text-shadow: #0b4230 0.1em 0.1em 0.2em
+  text-shadow: #0b4230 0.1em 0.1em 0.2em;
 }
 
 .nav-links button:focus {
@@ -55,7 +57,6 @@
 @media (min-width: 768px) {
   .nav-links {
     flex-direction: row;
-   
   }
 
   .nav-links li {
@@ -65,7 +66,7 @@
   .nav-links a {
     color: white;
     text-decoration: none;
-    text-shadow: #0b4230 0.1em 0.1em 0.2em
+    text-shadow: #0b4230 0.1em 0.1em 0.2em;
   }
 
   .nav-links button {
@@ -73,12 +74,143 @@
     border-radius: 20px;
     color: white;
     background: #f8bb52;
-    
   }
 
   .nav-links button:hover,
   .nav-links button:active {
-    background: #FABB51;
+    background: #fabb51;
     color: white;
   }
 }
+
+.nav-links .batton {
+  --border-radius: 0.9vw;
+  --border-width: 0.3vw;
+  appearance: none;
+  position: relative;
+  padding:  0.4vw 1vw 0.4vw 1vw;
+  border: 0;
+  background-color: transparent;
+  font-family: "Staatliches";
+  font-size: 1.8vw;
+  color: #fff;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.nav-links .batton::after {
+  --m-i: linear-gradient(#000, #000);
+  --m-o: content-box, padding-box;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding: var(--border-width);
+  border-radius: var(--border-radius);
+  background-image: conic-gradient(
+    #488cfb,
+    #29dbbc,
+    #ddf505,
+    #ff9f0e,
+    #e440bb,
+    #655adc,
+    #488cfb
+  );
+  -webkit-mask-image: var(--m-i), var(--m-i);
+  mask-image: var(--m-i), var(--m-i);
+  -webkit-mask-origin: var(--m-o);
+  mask-origin: var(--m-o);
+  -webkit-mask-clip: var(--m-o);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+  filter: hue-rotate(0);
+  animation: rotate-hue linear 1500ms infinite;
+  animation-play-state: running;
+}
+
+.nav-links .batton::before {
+  content: "";
+  width: 0;
+  height: 300%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: #7cd1b8;
+  transition: 0.8s ease;
+  display: block;
+  z-index: -1;
+  
+}
+
+.nav-links .batton:hover::before {
+  width: 105%;
+  
+}
+
+.nav-links .batton:hover {
+  color: #fff;
+  
+}
+@keyframes rotate-hue {
+  to {
+    filter: hue-rotate(1turn);
+  }
+}
+
+.nav-links .batton:hover,
+.nav-links .batton:active {
+  background: transparent;
+  
+}
+.nav-links .batton,
+.nav-links .batton::after {
+  box-sizing: border-box;
+  
+  
+}
+
+.nav-links .batton:active {
+    --border-width: 0.3vw;
+}
+
+ /* From cssbuttons.io by @nikk7007 
+.nav-links .hidden {
+  padding: 0.8em 1.8em;
+  border: 2px solid #17C3B2;
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 16px;
+  transition: .3s;
+  z-index: 1;
+  font-family: inherit;
+  color: #17C3B2;
+ }
+ 
+ .nav-links .hidden::before {
+  content: '';
+  width: 0;
+  height: 300%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: #17C3B2;
+  transition: .5s ease;
+  display: block;
+  z-index: -1;
+ }
+ 
+ .nav-links .hidden:hover::before {
+  width: 105%;
+ }
+ 
+ .nav-links .hidden:hover {
+  color: #111;
+ }
+  */
