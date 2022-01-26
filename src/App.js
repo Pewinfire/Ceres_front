@@ -12,19 +12,21 @@ import NewMarket from "./market/pages/NewMarket";
 import UpdateMarket from "./market/pages/UpdateMarket";
 import MainNavigation from "./shared/components/Navigation/MainNavigation";
 import LoadingSpinner from "./shared/components/UIElements/LoadingSpinner";
-import { AuthContext } from "./shared/context/auth-context";
-import { useAuth } from "./shared/hooks/auth-hook";
 import NewShop from "./shop/pages/NewShop";
 import Shops from "./shop/pages/Shops";
 import UpdateShop from "./shop/pages/UpdateShop";
 import Dashboard from "./user/pages/Dashboard";
+import UpdateUser from "./user/pages/UpdateUser";
+import { AuthContext } from "./shared/context/auth-context";
+import { useAuth } from "./shared/hooks/auth-hook";
+
 //import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const Users = React.lazy(() => import("./user/pages/User"));
 const Authenticate = React.lazy(() => import("./user/pages/Authenticate"));
 
 const App = () => {
-  const { token, login, logout, userId } = useAuth();
+  const { token, login, logout, userId, rol } = useAuth();
 
   let routes;
 
@@ -36,6 +38,12 @@ const App = () => {
         </Route>
         <Route path="/users" exact>
           <Users />
+        </Route>
+        <Route path="/:userId/user/update" exact>
+          <UpdateUser />
+        </Route>
+        <Route path="/user/dashboard" exact>
+          <Dashboard />
         </Route>
         <Route path="/markets/near/:addr" exact>
           <MarketNear />
@@ -61,7 +69,6 @@ const App = () => {
         <Route path="/user/dashboard" exact>
           <Dashboard />
         </Route>
-
         <Redirect to="/" />
       </Switch>
     );
@@ -71,7 +78,10 @@ const App = () => {
         <Route path="/" exact>
           <Landing />
         </Route>
-        <Route path="/users" exact>
+        <Route path="/:userId/user/update" exact>
+          <UpdateUser />
+        </Route>
+        <Route path="/user/:uid" exact>
           <Users />
         </Route>
         <Route path="/:marketId/market/edit" exact>
@@ -106,6 +116,7 @@ const App = () => {
         isLoggedIn: !!token,
         token: token,
         userId: userId,
+        rol: rol,
         login: login,
         logout: logout,
       }}
