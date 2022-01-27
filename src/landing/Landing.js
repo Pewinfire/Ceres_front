@@ -1,33 +1,12 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-
-import Input from "../shared/components/FormElements/Input";
-import { VALIDATOR_REQUIRE } from "../shared/util/validators";
 import { useForm } from "../shared/hooks/form-hook";
-import Button from "../shared/components/FormElements/Button";
+
 import "./Landing.css";
 import InputLanding from "../shared/components/FormElements/InputLanding";
 
 const Landing = () => {
- 
   const [img, setImg] = useState(Math.floor(Math.random() * (3 - 1 + 1)) + 1);
-  const history = useHistory();
-  const [formState, inputHandler] = useForm(
-    {
-      address: {
-        value: "",
-        isValid: false,
-      },
-    },
-    false
-  );
-
-  const searchSubmitHandler = async (event) => {
-    event.preventDefault();
-    try {
-      await history.push(`/markets/near/${formState.inputs.address.value}`);
-    } catch (error) {}
-  };
 
   return (
     <div className="videoWrapper">
@@ -40,25 +19,7 @@ const Landing = () => {
       ></video>
 
       <div className="contenido-del-video">
-        <form className="place-form" onSubmit={searchSubmitHandler}>
-          <InputLanding />
-         {/*  <Input
-            id="address"
-            element="input"
-            validators={[VALIDATOR_REQUIRE()]}
-            placeholder="Introduce una dirección"
-            onInput={inputHandler}
-            className={"inputo"}
-            dClassName={"envoltorio"}
-          />
-          <Button
-            dClassName="botton"
-            type="submit"
-            disabled={!formState.isValid}
-          >
-            Buscar
-          </Button> */}
-        </form>
+        <InputLanding />
       </div>
     </div>
   );

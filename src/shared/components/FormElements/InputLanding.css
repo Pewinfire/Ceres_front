@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap");
+
+.location-search-input {
+  position: relative;
+  border-radius: 40px 0px 0px 40px;
+  border: 0.1563vw solid #1a976e;
+  text-align: center;
+  float: left;
+  font-family: Haettenschweiler;
+  font-size: 1.5vw;
+  height: 2.3vw;
+  width: 20.3vw;
+}
+
+.autocomplete-dropdown-container {
+  position: fixed;
+  left: 1vw;
+  top: 2.5vw;
+  width: 20vw;
+  font-family: Haettenschweiler;
+  font-size: 1.2vw;
+  background-color: white;
+  border-right: 0.5vw solid #1a976e;
+  border-left: 0.5vw solid #1a976e;
+  border-bottom: 0.5vw solid #1a976e;
+  border-radius: 0px 0px 40px 40px;
+  text-align: left;
+}
+
+.envoltorio {
+  position: absolute;
+  border-radius: 40px 0px 0px 40px;
+  border: 0.364585vw solid #1a976e;
+  width: 21vw;
+}
+
+.inputo {
+  width: 20.3vw;
+}
+
+.suggestion-item--active {
+  background-color: white;
+}
+
+
+.botton:disabled,
+.botton:hover:disabled,
+.botton:active:disabled {
+  background: #1a976e;
+  color: #979797;
+  border-color: #ccc;
+  cursor: not-allowed;
+}
+
+.botton:hover,
+.botton:active {
+  background: #0fa774;
+
+}

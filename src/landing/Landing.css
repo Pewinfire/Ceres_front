@@ -42,11 +42,12 @@ video {
 
 .botton{
   position: relative;
-  left: 21.2vw;
+  left: 21vw;
   top: 0.02vw;
-  padding: 0.72vw;
+  padding: 0.84vw;
   padding-right: 3vw;
   background-color: #1a976e;
+  border: transparent;
   color: #efefef;
   text-shadow: #0b4230 0.1em 0.1em 0.2em;
   border-radius: 0px 40px 40px 0px;

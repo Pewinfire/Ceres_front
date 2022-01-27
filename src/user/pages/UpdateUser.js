@@ -7,7 +7,6 @@ import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 import {
   VALIDATOR_REQUIRE,
-  VALIDATOR_MINLENGTH,
 } from "../../shared/util/validators";
 import { useForm } from "../../shared/hooks/form-hook";
 import { useHttpClient } from "../../shared/hooks/http-hook";
@@ -30,8 +29,6 @@ const UpdateUser = () => {
       dni: { value: "", isValid: false },
       phone: { value: "", isValid: false },
       address: { value: "", isValid: false },
-      oldpassword: { value: "", isValid: false },
-      password: { value: "", isValid: false },
       image: { value: null, isValid: false },
       imageup: { value: false },
     },
@@ -39,53 +36,55 @@ const UpdateUser = () => {
   );
 
   useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const responseData = await sendRequest(
-          `${process.env.REACT_APP_BACKEND_URL}/users/${userId}`,
-          "GET",
-          null,
-          {
-            Authorization: "Bearer " + auth.token,
-          }
-        );
-        setLoadedUser(responseData.user);
-        setFormData(
-          {
-            name: {
-              value: responseData.user.name,
-              isValid: false,
+    if (auth.token) {
+      const fetchUser = async () => {
+        try {
+          const responseData = await sendRequest(
+            `${process.env.REACT_APP_BACKEND_URL}/users/${userId}`,
+            "GET",
+            null,
+            {
+              Authorization: "Bearer " + auth.token,
+            }
+          );
+          setLoadedUser(responseData.user);
+          setFormData(
+            {
+              name: {
+                value: responseData.user.name,
+                isValid: true,
+              },
+              lastname: {
+                value: responseData.user.lastname,
+                isValid: true,
+              },
+              dni: {
+                value: responseData.user.dni,
+                isValid: true,
+              },
+              phone: {
+                value: responseData.user.phone,
+                isValid: true,
+              },
+              address: {
+                value: responseData.user.address,
+                isValid: true,
+              },
+              image: { value: responseData.user.image, isValid: true },
+              imageup: {
+                value: false,
+                isValid: true,
+              },
             },
-            lastname: {
-              value: responseData.user.lastname,
-              isValid: false,
-            },
-            dni: {
-              value: responseData.user.dni,
-              isValid: false,
-            },
-            phone: {
-              value: responseData.user.phone,
-              isValid: false,
-            },
-            address: {
-              value: responseData.user.address,
-              isValid: false,
-            },
-            image: { value: responseData.user.image, isValid: true },
-            imageup: {
-              value: false,
-              isValid: true,
-            },
-          },
-          true
-        );
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchUser();
-  }, [sendRequest, userId, setFormData]);
+            true
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      fetchUser();
+    }
+  }, [sendRequest, userId, setFormData, auth.token]);
 
   const userUpdateSubmitHandler = async (event) => {
     event.preventDefault();
@@ -93,8 +92,6 @@ const UpdateUser = () => {
       const formData = new FormData();
       formData.append("name", formState.inputs.name.value);
       formData.append("lastname", formState.inputs.lastname.value);
-      formData.append("oldpassword", formState.inputs.password.value);
-      formData.append("password", formState.inputs.password.value);
       formData.append("dni", formState.inputs.dni.value);
       formData.append("phone", formState.inputs.phone.value);
       formData.append("address", formState.inputs.phone.value);
@@ -117,10 +114,11 @@ const UpdateUser = () => {
     } catch (err) {
       console.log(err);
     }
-    await history.push(`/`);
   };
 
-  if (!loadedUser && !error) {
+
+
+  if (!loadedUser && !error && !isLoading) {
     return (
       <div className="center">
         <Card>
@@ -133,7 +131,7 @@ const UpdateUser = () => {
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
-      {isLoading && (
+      {isLoading &&  (
         <div className="center">
           <LoadingSpinner />
         </div>
@@ -195,24 +193,7 @@ const UpdateUser = () => {
             initialValue={loadedUser.address}
             initialValid={true}
           />
-          <Input
-            id="oldpassword"
-            element="input"
-            type="oldpassword"
-            label="Password antiguo"
-            validators={[VALIDATOR_MINLENGTH(6)]}
-            errorText="La contraseña introducida debe tener mas de 6 caracteres ."
-            onInput={inputHandler}
-          />
-          <Input
-            id="password"
-            element="input"
-            type="password"
-            label="Contraseña nueva"
-            validators={[VALIDATOR_MINLENGTH(6)]}
-            errorText="La contraseña introducida debe tener mas de 6 caracteres ."
-            onInput={inputHandler}
-          />
+  
           <ImageUpload
             center
             id="image"

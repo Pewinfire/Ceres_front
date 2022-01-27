@@ -46,7 +46,7 @@ const Authenticate = () => {
           image: undefined,
           dni: undefined,
           phone: undefined,
-          address:undefined,
+          address: undefined,
         },
         formState.inputs.email.isValid && formState.inputs.password.isValid
       );
@@ -121,51 +121,51 @@ const Authenticate = () => {
         <form onSubmit={authSubmitHandler}>
           {!isLoginMode && (
             <React.Fragment>
-            <Input
-              element="input"
-              id="name"
-              type="text"
-              label="Nombre"
-              validators={[VALIDATOR_REQUIRE]}
-              errorText="Por favor, introduce un nombre"
-              onInput={inputHandler}
-            />
-            <Input
-              element="input"
-              id="lastname"
-              type="text"
-              label="Apellido"
-              validators={[VALIDATOR_REQUIRE]}
-              errorText="Por favor, introduce un apellido"
-              onInput={inputHandler}
-            />
               <Input
-              element="input"
-              id="dni"
-              type="text"
-              label="NIF"
-              validators={[VALIDATOR_REQUIRE]}
-              errorText="Por favor, introduce un DNI o NIE  valido"
-              onInput={inputHandler}
-            />
+                element="input"
+                id="name"
+                type="text"
+                label="Nombre"
+                validators={[VALIDATOR_REQUIRE]}
+                errorText="Por favor, introduce un nombre"
+                onInput={inputHandler}
+              />
               <Input
-              element="input"
-              id="phone"
-              type="text"
-              label="Telefono de contacto"
-              validators={[VALIDATOR_REQUIRE]}
-              errorText="Por favor, introduce un telefono valido"
-              onInput={inputHandler}
-            />
-             <Input
-              element="input"
-              id="address"
-              type="text"
-              label="Dirección"
-              validators={[VALIDATOR_REQUIRE]}
-              errorText="Por favor, introduce una dirección"
-              onInput={inputHandler}
-            />
+                element="input"
+                id="lastname"
+                type="text"
+                label="Apellido"
+                validators={[VALIDATOR_REQUIRE]}
+                errorText="Por favor, introduce un apellido"
+                onInput={inputHandler}
+              />
+              <Input
+                element="input"
+                id="dni"
+                type="text"
+                label="NIF"
+                validators={[VALIDATOR_REQUIRE]}
+                errorText="Por favor, introduce un DNI o NIE  valido"
+                onInput={inputHandler}
+              />
+              <Input
+                element="input"
+                id="phone"
+                type="text"
+                label="Telefono de contacto"
+                validators={[VALIDATOR_REQUIRE]}
+                errorText="Por favor, introduce un telefono valido"
+                onInput={inputHandler}
+              />
+              <Input
+                element="input"
+                id="address"
+                type="text"
+                label="Dirección"
+                validators={[VALIDATOR_REQUIRE]}
+                errorText="Por favor, introduce una dirección"
+                onInput={inputHandler}
+              />
             </React.Fragment>
           )}
           {!isLoginMode && (
