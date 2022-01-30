@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import { useForm } from "../shared/hooks/form-hook";
-
 import "./Landing.css";
 import InputLanding from "../shared/components/FormElements/InputLanding";
 

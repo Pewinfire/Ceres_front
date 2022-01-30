@@ -50,7 +50,7 @@ const NewShop = () => {
     const fetchMarkets = async () => {
       try {
         const responseData = await sendRequest(
-          `${process.env.REACT_APP_BACKEND_URL}/market`
+          `${process.env.REACT_APP_BACKEND_URL}/market/name/merca`
         );
 
         let lista = responseData.markets.map((market) => {

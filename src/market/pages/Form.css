@@ -9,3 +9,13 @@
   border-radius: 6px;
   background: white;
 }
+
+.pagination{
+  background-color: transparent;
+  color: white;
+  position: fixed;
+  right: 0%;
+  bottom: 0%;
+  width: 15%;
+
+}

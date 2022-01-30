@@ -1,6 +1,6 @@
 .market-list {
   list-style: none;
-  margin: 9rem auto;
+  margin: 1.5vw auto;
   padding: 0 9%  0;
   width: 100%;
   display: flex;
@@ -9,8 +9,23 @@
   
   max-height: 20rem;
 }
-
-
+.search-box{
+  position: relative;
+  margin-top: 9vw;
+  left: 69%;
+  width: 20vw;
+ 
+ 
+}
+.search{
+  font-family: Haettenschweiler;
+  font-size: 10vw;
+  background-color: white;
+  border: transparent;
+  overflow:hidden;
+  border-radius: 40px 40px 40px 0px;
+ 
+}
 /*   @media (min-width: 768px) {
     .market-list {
       align-items: center;

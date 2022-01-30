@@ -1,66 +1,140 @@
 .ds-item {
   margin: 1rem 0;
 }
-
-.ds-item__content {
-    display: inline-block;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    text-decoration: none;
-    padding: 1rem;
-    color: white;
-    background: #f3bd60;   display: flex;
+.contenedor {
+  position: absolute;
+  background-color: white;
+  padding: 0 9% 0;
+  width: 75%;
+  top: 25%;
+  left: 12.5%;
+  height: 75%;
+  border: 5px hidden #1c6ea4;
+  border-radius: 39px;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.33);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.33);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.33);
 }
-
-.ds-item__a {
-    display: flex;
-  align-items: center;
-  width: 100%;
-  height: 100%;
+.ButtonMenu {
+  background-color: transparent;
+  position: relative;
+  top: -15vw;
+  left: 3vw;
+  width: 50vw;
+  color: #39bda7;
+}
+.avatarPos {
+  position: relative;
+  top: -15%;
+  left: -20%;
+}
+/* From cssds-ds-buttons.io */
+.ds-button {
+  display: inline-block;
+  padding: 0.5vw 1vw 0vw;
+  border: 1px solid white;
+  border-radius: 40px 40px 20px 20px;
+  transition: all 0.5s ease-in;
+  position: relative;
+  overflow: hidden;
+  color: #39bda7;
+  z-index: 1;
+  background-color: white;
   text-decoration: none;
-  padding: 1rem;
-  color: white;
-  background: #f3bd60;
+  font-size: 0.6vw;
+}
+.ds-button p {
+  margin-top: 0.3vw;
+  font-family: "Staatliches" !important;
 }
 
-.ds-item__icon {
-  text-align: center;
+.ds-button:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.25);
+  top: 100%;
+  width: 140%;
+  height: 180%;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
 }
 
-.ds-item__modal-content {
-  padding: 0;
+.ds-button:after {
+  content: "";
+  position: absolute;
+  left: 55%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.45);
+  top: 180%;
+  width: 160%;
+  height: 190%;
+  background-color: #39bda7;
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
 }
 
-.ds-item__modal-actions {
-  text-align: right;
+.ds-button:hover {
+  color: #ffffff;
+  border: 1px solid #39bda7;
 }
 
-.ds-item__actions button,
-.ds-item__actions a {
-  margin: 0.1rem;
+.ds-button:hover:before {
+  top: -35%;
+  background-color: #39bda7;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
 }
 
-.map-container {
-  height: 15rem;
-  width: 100%;
+.ds-button:hover:after {
+  top: -45%;
+  background-color: #39bda7;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
 }
 
+.ds-card {
+  position: relative;
+  max-width: 25vw;
+  height: 7vw;
+}
+
+.ds-card .ds-button {
+  position: absolute;
+  bottom: 1vw;
+  left: 9vw;
+  width: 15vw;
+  height: 5vw;
+  border-radius: 0px;
+}
+.ds-card p {
+  font-size: 1.5vw;
+}
+.ds-card img {
+  position: absolute;
+  bottom: 1vw;
+  max-width: 5.2vw;
+  height: auto;
+}
 
 .ds-list {
-  list-style: none;
-  margin: 0 auto;
-  padding: 0;
-  width: 90%;
-  max-width: 60rem;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  position: relative;
+  top: -12vw;
 }
 
-@media (min-width: 768px) {
-  .ds-list {
-    align-items: center;
-    flex-wrap: row wrap;
-  }
+.ds-list ul {
+  list-style: none;
+  margin: 4px;
+  padding: 1%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.ds-list li {
+  flex: 1 0 49%;
+  margin: 4px;
+  padding: 1%;
 }

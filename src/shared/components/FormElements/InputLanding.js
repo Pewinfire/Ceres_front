@@ -18,10 +18,6 @@ export default class InputLanding extends React.Component {
     this.setState({ address });
   };
 
-  searchSubmitHandler = () => {
-    this.props.history.push(`/markets/near/${this.state.address}`);
-  };
-
   render() {
     return (
       <div>
