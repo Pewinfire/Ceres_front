@@ -5,13 +5,10 @@ import Button from "../../shared/components/FormElements/Button";
 import Card from "../../shared/components/UIElements/Card";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import ErrorModal from "../../shared/components/UIElements/ErrorModal";
-import {
-  VALIDATOR_REQUIRE,
-} from "../../shared/util/validators";
+import { VALIDATOR_REQUIRE } from "../../shared/util/validators";
 import { useForm } from "../../shared/hooks/form-hook";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import ImageUpload from "../../shared/components/FormElements/ImageUpload";
-
 import { AuthContext } from "../../shared/context/auth-context";
 import "./Form.css";
 
@@ -111,12 +108,11 @@ const UpdateUser = () => {
           Authorization: "Bearer " + auth.token,
         }
       );
+      history.push(`/user/dashboard`);
     } catch (err) {
       console.log(err);
     }
   };
-
-
 
   if (!loadedUser && !error && !isLoading) {
     return (
@@ -131,7 +127,7 @@ const UpdateUser = () => {
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
-      {isLoading &&  (
+      {isLoading && (
         <div className="center">
           <LoadingSpinner />
         </div>
@@ -193,7 +189,7 @@ const UpdateUser = () => {
             initialValue={loadedUser.address}
             initialValid={true}
           />
-  
+
           <ImageUpload
             center
             id="image"
