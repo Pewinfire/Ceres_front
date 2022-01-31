@@ -49,7 +49,7 @@ const UpdateUser = () => {
             {
               name: {
                 value: responseData.user.name,
-                isValid: true,
+                isValid: false,
               },
               lastname: {
                 value: responseData.user.lastname,
@@ -196,10 +196,13 @@ const UpdateUser = () => {
             onInput={inputHandler}
             preview={`${process.env.REACT_APP_BACKEND_IMG}/${loadedUser.image}`}
           />
+          <div className="right">
+            <Button to={`/${auth.userId}/user/update`}>Volver </Button>
 
-          <Button type="submit" disabled={!formState.isValid}>
-            UPDATE User
-          </Button>
+            <Button type="submit" disabled={!formState.isValid}>
+              UPDATE User
+            </Button>
+          </div>
         </form>
       )}
     </React.Fragment>

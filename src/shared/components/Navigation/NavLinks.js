@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../context/auth-context";
+import AuthButton from "../FormElements/AuthButton";
 import "./NavLinks.css";
 
 const NavLinks = (props) => {
@@ -21,7 +22,7 @@ const NavLinks = (props) => {
       )}
       {auth.isLoggedIn && (
         <li>
-          <NavLink to="/user/dashboard"> <i className="far fa-user"></i></NavLink>
+          <AuthButton></AuthButton>
         </li>
       )}
       {!auth.isLoggedIn && (

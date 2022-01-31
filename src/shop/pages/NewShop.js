@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import Input from "../../shared/components/FormElements/Input";
 import Button from "../../shared/components/FormElements/Button";
@@ -11,8 +11,8 @@ import {
 } from "../../shared/util/validators";
 import { useForm } from "../../shared/hooks/form-hook";
 import { useHttpClient } from "../../shared/hooks/http-hook";
-
-//import { AuthContext } from "../../shared/context/auth-context";
+import Card from "../../shared/components/UIElements/Card";
+import { AuthContext } from "../../shared/context/auth-context";
 
 import "./Form.css";
 import { Autocomplete, TextField } from "@mui/material";
@@ -24,6 +24,7 @@ const NewShop = () => {
   const [owners, setOwners] = useState();
   const [owner, setOwner] = useState();
   const [isValid, setIsValid] = useState(false);
+  const auth = useContext(AuthContext);
 
   const [formState, inputHandler] = useForm(
     {
@@ -47,10 +48,11 @@ const NewShop = () => {
   const history = useHistory(); //para volver a la pagina anterior
 
   useEffect(() => {
+    
     const fetchMarkets = async () => {
       try {
         const responseData = await sendRequest(
-          `${process.env.REACT_APP_BACKEND_URL}/market/name/merca`
+          `${process.env.REACT_APP_BACKEND_URL}/market/name/0/10000000/merca`
         );
 
         let lista = responseData.markets.map((market) => {
@@ -67,25 +69,32 @@ const NewShop = () => {
   }, [sendRequest]);
 
   useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const responseData = await sendRequest(
-          `${process.env.REACT_APP_BACKEND_URL}/users`
-        );
+    if (auth.token) {
+      const fetchUsers = async () => {
+        try {
+          const responseData = await sendRequest(
+            `${process.env.REACT_APP_BACKEND_URL}/users/vendors/`,
+            "GET",
+            null,
+            {
+              Authorization: "Bearer " + auth.token,
+            }
+          );
 
-        let lista = responseData.users.map((user) => {
-          let item = {};
-          item.id = user.id;
-          item.label = user.name;
-          item.field = "owner";
+          let lista = responseData.users.map((user) => {
+            let item = {};
+            item.id = user.id;
+            item.label = user.name;
+            item.field = "owner";
 
-          return item;
-        });
-        setOwners(lista);
-      } catch (err) {}
-    };
-    fetchUsers();
-  }, [sendRequest]);
+            return item;
+          });
+          setOwners(lista);
+        } catch (err) {}
+      };
+      fetchUsers();
+    }
+  }, [sendRequest, auth.token]);
 
   const placeSubmitHandler = async (event) => {
     event.preventDefault();
@@ -123,65 +132,71 @@ const NewShop = () => {
     }
   };
 
+
+
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
-      <form className="style-form" onSubmit={placeSubmitHandler}>
-        {isLoading && <LoadingSpinner asOverlay />}
-        <Input
-          id="name"
-          element="input"
-          type="text"
-          label="Nombre del Puesto"
-          validators={[VALIDATOR_REQUIRE()]}
-          errorText="Please enter a valid Title"
-          onInput={inputHandler}
-        />
-        <Input
-          id="description"
-          element="textArea"
-          type="text"
-          label="Descripción"
-          validators={[VALIDATOR_MINLENGTH(5)]}
-          errorText="Por favor, introduce un codigo postal valido (at least 5 characters)."
-          onInput={inputHandler}
-        />
-        <Input
-          id="location"
-          element="input"
-          label="Localización"
-          validators={[VALIDATOR_REQUIRE()]}
-          errorText="Please enter a valid address."
-          onInput={inputHandler}
-        />
+      {!isLoading && (
+        <form className="style-form" onSubmit={placeSubmitHandler}>
+          {isLoading && <LoadingSpinner asOverlay />}
+          <Input
+            id="name"
+            element="input"
+            type="text"
+            label="Nombre del Puesto"
+            validators={[VALIDATOR_REQUIRE()]}
+            errorText="Please enter a valid Title"
+            onInput={inputHandler}
+          />
+          <Input
+            id="description"
+            element="textArea"
+            type="text"
+            label="Descripción"
+            validators={[VALIDATOR_MINLENGTH(5)]}
+            errorText="Por favor, introduce un codigo postal valido (at least 5 characters)."
+            onInput={inputHandler}
+          />
+          <Input
+            id="location"
+            element="input"
+            label="Localización"
+            validators={[VALIDATOR_REQUIRE()]}
+            errorText="Please enter a valid address."
+            onInput={inputHandler}
+          />
 
-        <div style={{ flex: "row" }}>
-          <Autocomplete
-            id="marketo"
-            options={markets}
-            getOptionLabel={(option) => option.label} // si en la segunda metes mas props'{ 1, 2} filtra por campos
-            sx={{ width: 300 }}
-            onChange={autoComplet}
-            renderInput={(params) => <TextField {...params} label="Mercado" />}
-            isOptionEqualToValue={(option) => option.id}
-          />
-          <Autocomplete
-            id="owner"
-            options={owners}
-            getOptionLabel={(option) => option.label} // si en la segunda metes mas props'{ 1, 2} filtra por campos
-            sx={{ width: 300 }}
-            onChange={autoComplet}
-            renderInput={(params) => (
-              <TextField {...params} label="Propietario" />
-            )}
-            isOptionEqualToValue={(option) => option.id}
-          />
-        </div>
-        <ImageUpload center id="image" onInput={inputHandler} />
-        <Button type="submit" disabled={!formState.isValid && isValid}>
-          Añadir Tienda
-        </Button>
-      </form>
+          <div style={{ flex: "row" }}>
+            <Autocomplete
+              id="marketo"
+              options={markets}
+              getOptionLabel={(option) => option.label} // si en la segunda metes mas props'{ 1, 2} filtra por campos
+              sx={{ width: 300 }}
+              onChange={autoComplet}
+              renderInput={(params) => (
+                <TextField {...params} label="Mercado" />
+              )}
+              isOptionEqualToValue={(option) => option.id}
+            />
+            <Autocomplete
+              id="owner"
+              options={owners}
+              getOptionLabel={(option) => option.label} // si en la segunda metes mas props'{ 1, 2} filtra por campos
+              sx={{ width: 300 }}
+              onChange={autoComplet}
+              renderInput={(params) => (
+                <TextField {...params} label="Propietario" />
+              )}
+              isOptionEqualToValue={(option) => option.id}
+            />
+          </div>
+          <ImageUpload center id="image" onInput={inputHandler} />
+          <Button type="submit" disabled={!formState.isValid && isValid}>
+            Añadir Tienda
+          </Button>
+        </form>
+      )}
     </React.Fragment>
   );
 };

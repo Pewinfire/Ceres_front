@@ -16,6 +16,7 @@ import NewShop from "./shop/pages/NewShop";
 import Shops from "./shop/pages/Shops";
 import UpdateShop from "./shop/pages/UpdateShop";
 import Dashboard from "./user/pages/Dashboard";
+import AdminDashboard from "./user/pages/AdminDashboard";
 import UpdateUser from "./user/pages/UpdateUser";
 import { AuthContext } from "./shared/context/auth-context";
 import { useAuth } from "./shared/hooks/auth-hook";
@@ -27,7 +28,7 @@ const Authenticate = React.lazy(() => import("./user/pages/Authenticate"));
 
 const App = () => {
   const { token, login, logout, userId } = useAuth();
-
+  
   let routes;
 
   if (token) {
@@ -69,6 +70,9 @@ const App = () => {
         <Route path="/user/dashboard" exact>
           <Dashboard />
         </Route>
+        <Route path="/admin/admDS" exact>
+          <AdminDashboard />
+        </Route>
         <Redirect to="/" />
       </Switch>
     );
@@ -78,16 +82,6 @@ const App = () => {
         <Route path="/" exact>
           <Landing />
         </Route>
-        <Route path="/:userId/user/update" exact>
-          <UpdateUser />
-        </Route>
-        <Route path="/user/:uid" exact>
-          <Users />
-        </Route>
-        <Route path="/:marketId/market/edit" exact>
-          <UpdateMarket />
-        </Route>
-
         <Route path="/:marketId/shops/" exact>
           <Shops />
         </Route>
@@ -96,12 +90,6 @@ const App = () => {
         </Route>
         <Route path="/markets" exact>
           <Markets />
-        </Route>
-        <Route path="/:shopId/shop/edit" exact>
-          <UpdateShop />
-        </Route>
-        <Route path="/shops/new" exact>
-          <NewShop />
         </Route>
         <Route path="/auth">
           <Authenticate />
