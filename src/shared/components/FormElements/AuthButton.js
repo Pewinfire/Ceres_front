@@ -50,7 +50,7 @@ const AuthButton = (props) => {
       )}
       {!isLoading && authRol && (
         <Link to={url} exact="exact" >
-          <i class="far fa-user"></i>
+          <i className="far fa-user"></i>
         </Link>
       )}
     </div>

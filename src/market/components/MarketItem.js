@@ -45,7 +45,6 @@ const MarketsItem = (props) => {
               View on map
             </Button>
             <Button to={`/${props.id}/shops`}>Ir</Button>
-            <Button to={`/${props.id}/market/edit`}>Editar</Button>
           </div>
         </Card>
       </li>

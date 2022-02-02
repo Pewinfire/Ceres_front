@@ -32,6 +32,10 @@ const NewShop = () => {
         value: "",
         isValid: false,
       },
+      type: {
+        value: "",
+        isValid: false,
+      },
       description: {
         value: "",
         isValid: false,
@@ -100,6 +104,7 @@ const NewShop = () => {
     event.preventDefault();
     const formData = new FormData();
     formData.append("name", formState.inputs.name.value);
+    formData.append("type", formState.inputs.type.value);
     formData.append("description", formState.inputs.description.value);
     formData.append("location", formState.inputs.location.value);
     formData.append("image", formState.inputs.image.value);
@@ -147,6 +152,15 @@ const NewShop = () => {
             label="Nombre del Puesto"
             validators={[VALIDATOR_REQUIRE()]}
             errorText="Please enter a valid Title"
+            onInput={inputHandler}
+          />
+          <Input
+            id="type"
+            element="input"
+            type="text"
+            label="Tipo de establecimiento (por genero de venta)"
+            validators={[VALIDATOR_REQUIRE()]}
+            errorText="Por favor, introduce un tipo valido"
             onInput={inputHandler}
           />
           <Input

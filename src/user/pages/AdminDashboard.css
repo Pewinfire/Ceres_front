@@ -23,10 +23,11 @@
     width: 50vw;
     color: #39bda7;
   }
-  .avatarPos {
-    position: relative;
-    top: -15%;
-    left: -20%;
+  .avatarPoss {
+    z-index : 10000;
+
+    top: -5vw;
+    left: -15vw;
   }
   /* From cssds-ds-buttons.io */
   .ds-button {

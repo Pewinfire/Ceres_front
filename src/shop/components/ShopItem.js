@@ -24,7 +24,6 @@ const ShopsItem = (props) => {
           </div>
           <div className="shop-item__actions">
             <Button to={`/shops/${props.id}`}>Ir</Button>
-            <Button to={`/${props.id}/shop/edit`}>Editar</Button>
           </div>
         </Card>
       </li>

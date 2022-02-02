@@ -8,6 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Card from "../../shared/components/UIElements/Card";
 import Button from "../../shared/components/FormElements/Button";
+import { Checkbox } from "@mui/material";
 import { Avatar } from "@mui/material";
 import "./UsersList.css";
 
@@ -22,23 +23,31 @@ const UserList = (props) => {
     );
   }
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} className="Lista-container">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell className="Lista-H">Usuario</TableCell>
-            <TableCell className="Lista-H">Imagen</TableCell>
-            <TableCell align="right" className="Lista-H">
+            <TableCell className="Lista-H" align="right">
+              Usuario
+            </TableCell>
+            <TableCell className="Lista-H" >Imagen</TableCell>
+            <TableCell align="left" className="Lista-H">
               Email
             </TableCell>
-            <TableCell align="right" className="Lista-H">
-              DNI&nbsp;
+            <TableCell align="left" className="Lista-H">
+              DNI
             </TableCell>
-            <TableCell align="right" className="Lista-H">
-              Telefono&nbsp;
+            <TableCell align="left" className="Lista-H">
+              Telefono
             </TableCell>
-            <TableCell align="right" className="Lista-H">
-              Acciones&nbsp;
+            <TableCell align="left" className="Lista-H">
+              Rol
+            </TableCell>
+            <TableCell align="left" className="Lista-H">
+              &nbsp;&nbsp;&nbsp;<i className="fas fa-store"></i>
+            </TableCell>
+            <TableCell align="center" className="Lista-H">
+              Acciones
             </TableCell>
           </TableRow>
         </TableHead>
@@ -48,7 +57,12 @@ const UserList = (props) => {
               key={user.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
-              <TableCell component="th" scope="row" className="Lista">
+              <TableCell
+                component="th"
+                scope="row"
+                align="right"
+                className="Lista"
+              >
                 {user.name} {user.lastname}
               </TableCell>
               <TableCell align="right" className="Lista">
@@ -58,21 +72,27 @@ const UserList = (props) => {
                   sx={{ width: "2vw", height: "2vw" }}
                 />
               </TableCell>
-              <TableCell align="right" className="Lista">
+              <TableCell align="left" className="Lista">
                 {user.email}
               </TableCell>
-              <TableCell align="right" className="Lista">
+              <TableCell align="left" className="Lista">
                 {user.dni}
               </TableCell>
-              <TableCell align="right" className="Lista">
+              <TableCell align="left" className="Lista">
                 {user.phone}
               </TableCell>
-              <TableCell align="right" className="Lista">
+              <TableCell align="left" className="Lista">
+                {user.rol.rol}
+              </TableCell>
+              <TableCell align="left" className="Lista">
+                <Checkbox />
+              </TableCell>
+              <TableCell align="left" className="Lista">
                 <Button to={`/${user.id}/user/update`}>
                   <i className="fas fa-cogs "></i>
-                </Button>{" "}
+                </Button>
                 <Button to={`/${user.id}/user/update`}>
-                  <i class="fas fa-trash-alt"></i>
+                  <i className="fas fa-trash-alt"></i>
                 </Button>
               </TableCell>
             </TableRow>

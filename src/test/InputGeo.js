@@ -64,7 +64,7 @@ const InputLanding = (props) => {
                     })}
                     key={suggestion.placeId}
                   >
-                    <i class="fas fa-map-marker-alt" aria-hidden="true">
+                    <i className="fas fa-map-marker-alt" aria-hidden="true">
                       {suggestion.description}
                     </i>
                   </div>

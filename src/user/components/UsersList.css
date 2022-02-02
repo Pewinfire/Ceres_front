@@ -1,10 +1,22 @@
-.Lista{
+.Lista {
   font-family: "Staatliches" !important;
-  font-size: 0.9vw;
+  font-size: 0.9vw !important;
 }
 
-.Lista-H{
+.Lista-H {
   font-family: "Staatliches" !important;
   background-color: #39bda7;
-  font-size: 1.2vw;
+  padding-top: 2.8vw !important;
+  font-size: 1.2vw !important;
 }
+
+.Lista-container {
+  position: relative; 
+  top: -4.55vw;
+  left: -9vw;
+  width: 75vw !important ;
+  border-radius: 39px !important;
+
+ }
+
+ 
