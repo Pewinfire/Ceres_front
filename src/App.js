@@ -17,6 +17,7 @@ import Shops from "./shop/pages/Shops";
 import UpdateShop from "./shop/pages/UpdateShop";
 import Dashboard from "./user/pages/Dashboard";
 import AdminDashboard from "./user/pages/AdminDashboard";
+import SellerDashboard from "./user/pages/SellerDashboard";
 import UpdateUser from "./user/pages/UpdateUser";
 import { AuthContext } from "./shared/context/auth-context";
 import { useAuth } from "./shared/hooks/auth-hook";
@@ -72,6 +73,9 @@ const App = () => {
         </Route>
         <Route path="/admin/admDS" exact>
           <AdminDashboard />
+        </Route>
+        <Route path="/seller/sllrDS" exact>
+          <SellerDashboard />
         </Route>
         <Redirect to="/" />
       </Switch>

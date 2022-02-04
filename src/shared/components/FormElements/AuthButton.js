@@ -32,7 +32,7 @@ const AuthButton = (props) => {
           setUrl("/admin/admDS");
           break;
         case "isSeller":
-          setUrl("/seller/sllrDS/");
+          setUrl("/seller/sllrDS");
           break;
         case "isClient":
           setUrl("/user/dashboard");

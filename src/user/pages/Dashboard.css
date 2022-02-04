@@ -21,7 +21,7 @@
   top: -15vw;
   left: 3vw;
   width: 50vw;
-  color: #39bda7;
+  color: white;
 }
 .avatarPos {
   position: relative;
@@ -32,7 +32,7 @@
 .ds-button {
   display: inline-block;
   padding: 0.5vw 1vw 0vw;
-  border: 1px solid white;
+  border: 1px solid #39bda7;
   border-radius: 40px 40px 20px 20px;
   transition: all 0.5s ease-in;
   position: relative;
@@ -71,7 +71,7 @@
   top: 180%;
   width: 160%;
   height: 190%;
-  background-color: #39bda7;
+  background-color: white;
   border-radius: 50%;
   display: block;
   transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);

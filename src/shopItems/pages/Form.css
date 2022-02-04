@@ -1,0 +1,62 @@
+.style-form {
+  position: relative;
+  top: -10vw;
+  left: 2vw;
+  list-style: none;
+  margin: 0 auto;
+  padding: 1rem;
+  width: 90%;
+  max-width: 40rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 6px;
+  background: white;
+}
+.style-formUP {
+  position: relative;
+  list-style: none;
+  top: 15vw;
+  left: 37vw;
+  padding: 3vw;
+  width: 30vw;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 6px;
+  background: white;
+}
+
+.right {
+  display: flex;
+  margin-top: 6vw;
+  justify-content: space-between;
+}
+
+.modal-button-cancel {
+  position: absolute;
+  top: 16vw;
+  right: 33vw;
+  font: inherit;
+  padding: 0.4vw 1.1vw;
+  border: 0.1vw solid #a31e1e;
+  border-radius: 0.4vw;
+  background: #a31e1e;
+  color: white;
+  cursor: pointer;
+  margin-right: 1rem;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.modal-button-ok {
+  position: relative;
+  top: 1.5vw;
+  left: 18.3vw;
+  font: inherit;
+  padding: 0.4vw 1.1vw;
+  border: 0.1vw solid #3E8E7E;
+  border-radius: 0.4vw;
+  background: #3E8E7E;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
