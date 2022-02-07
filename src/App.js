@@ -18,7 +18,7 @@ import UpdateShop from "./shop/pages/UpdateShop";
 import Dashboard from "./user/pages/Dashboard";
 import AdminDashboard from "./user/pages/AdminDashboard";
 import SellerDashboard from "./user/pages/SellerDashboard";
-import UpdateUser from "./user/pages/UpdateUser";
+import ShopPage from "./shop/pages/ShopPage"
 import { AuthContext } from "./shared/context/auth-context";
 import { useAuth } from "./shared/hooks/auth-hook";
 
@@ -41,12 +41,6 @@ const App = () => {
         <Route path="/users" exact>
           <Users />
         </Route>
-        <Route path="/:userId/user/update" exact>
-          <UpdateUser />
-        </Route>
-        <Route path="/user/dashboard" exact>
-          <Dashboard />
-        </Route>
         <Route path="/markets/near/:addr" exact>
           <MarketNear />
         </Route>
@@ -62,11 +56,8 @@ const App = () => {
         <Route path="/:marketId/shops" exact>
           <Shops />
         </Route>
-        <Route path="/:shopId/shop/edit" exact>
-          <UpdateShop />
-        </Route>
-        <Route path="/shops/new" exact>
-          <NewShop />
+        <Route path="/shopPage/:shopId">
+          <ShopPage />
         </Route>
         <Route path="/user/dashboard" exact>
           <Dashboard />
@@ -99,6 +90,9 @@ const App = () => {
           <Authenticate />
         </Route>
         <Redirect to="/auth" />
+        <Route path="/shopPage/:shopId">
+          <ShopPage />
+        </Route>
       </Switch>
     );
   }

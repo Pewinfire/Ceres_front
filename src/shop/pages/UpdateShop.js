@@ -1,5 +1,4 @@
-import React, { useEffect, useState /* useContext */ } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import Input from "../../shared/components/FormElements/Input";
 import Button from "../../shared/components/FormElements/Button";
 import Card from "../../shared/components/UIElements/Card";
@@ -13,15 +12,11 @@ import { useForm } from "../../shared/hooks/form-hook";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import ImageUpload from "../../shared/components/FormElements/ImageUpload";
 
-// import { AuthContext } from '../../shared/context/auth-context';
 import "./Form.css";
 
-const UpdateShop = () => {
-  // const auth = useContext(AuthContext);
+const UpdateShop = (props) => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedShop, setLoadedShop] = useState();
-  const shopId = useParams().shopId;
-  const history = useHistory();
 
   const [formState, inputHandler, setFormData] = useForm(
     {
@@ -47,7 +42,7 @@ const UpdateShop = () => {
     const fetchShop = async () => {
       try {
         const responseData = await sendRequest(
-          `${process.env.REACT_APP_BACKEND_URL}/shop/${shopId}`
+          `${process.env.REACT_APP_BACKEND_URL}/shop/${props.shop}`
         );
         setLoadedShop(responseData.shop);
         setFormData(
@@ -77,12 +72,12 @@ const UpdateShop = () => {
       }
     };
     fetchShop();
-  }, [sendRequest, shopId, setFormData]);
+  }, [sendRequest, props.shop, setFormData]);
 
   const shopUpdateSubmitHandler = async (event) => {
     event.preventDefault();
-    console.log(formState.inputs.image.value)
-    console.log(loadedShop.image)
+    console.log(formState.inputs.image.value);
+    console.log(loadedShop.image);
     try {
       const formData = new FormData();
       formData.append("name", formState.inputs.name.value);
@@ -91,27 +86,25 @@ const UpdateShop = () => {
       if (formState.inputs.image.value !== loadedShop.image) {
         formState.inputs.imageup.value = true;
         formData.append("image", formState.inputs.image.value);
-        setLoadedShop(null);
         
       }
-     
+
       formData.append("imageup", formState.inputs.imageup.value);
 
       await sendRequest(
-        `${process.env.REACT_APP_BACKEND_URL}/shop/${shopId}`,
+        `${process.env.REACT_APP_BACKEND_URL}/shop/${props.shop}`,
         "PATCH",
-        formData
-        /*  {
-          Authorization: "Bearer " + auth.token,
-        } */
+        formData,
+          {
+            Authorization: "Bearer " + props.token,
+          }
       );
       // history.push(`/Shops`);
     } catch (err) {
       console.log(err);
     }
+    props.close()
   };
-
- 
 
   if (!loadedShop && !error) {
     return (
@@ -172,10 +165,13 @@ const UpdateShop = () => {
             onInput={inputHandler}
             preview={`${process.env.REACT_APP_BACKEND_IMG}/${loadedShop.image}`}
           />
+          <div className="right">
+          <Button onClick={props.close}>Volver </Button>
 
-          <Button type="submit" disabled={!formState.isValid}>
-            UPDATE Shop
-          </Button>
+            <Button type="submit" disabled={!formState.isValid}>
+              UPDATE Shop
+            </Button>
+          </div>
         </form>
       )}
     </React.Fragment>

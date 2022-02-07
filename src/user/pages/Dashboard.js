@@ -6,6 +6,7 @@ import { AuthContext } from "../../shared/context/auth-context";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
+import ProfileMenu from "../components/ProfileMenu";
 import "./Dashboard.css";
 
 // falta autentificacion.
@@ -101,45 +102,11 @@ const Dashboard = () => {
             </Button>
           </div>
           {profile && (
-            <div className="ds-list">
-              <ul>
-                <li>
-                  <Card className="ds-card">
-                    <img
-                      src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/update.png`}
-                      alt="update"
-                    ></img>
-                    <Button
-                      to={`/${auth.userId}/user/update`}
-                      dClassName="ds-button"
-                    >
-                      <p>Actualiza tus datos de usuario </p>
-                    </Button>
-                  </Card>
-                </li>
-                <li>
-                  <Card className="ds-card">
-                    <img
-                      src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/shield.png`}
-                      alt="Seguridad y datos de inicio de sesión"
-                    ></img>
-                    <Button dClassName="ds-button">
-                      <p>Cambiar contraseña </p>
-                    </Button>
-                  </Card>
-                </li>
-                <li>
-                  <Card className="ds-card">
-                    <img
-                      src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/customer-service.png`}
-                      alt="Ayuda"
-                    ></img>
-                    <Button dClassName="ds-button">
-                      <p>Asistencia</p>
-                    </Button>
-                  </Card>
-                </li>
-              </ul>
+            <div>
+              <ProfileMenu
+                user={auth.userId}
+                token={auth.token} /* back={{buttonHandler}} */
+              />
             </div>
           )}
         </div>

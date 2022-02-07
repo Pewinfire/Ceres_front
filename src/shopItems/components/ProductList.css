@@ -1,55 +1,53 @@
 .Lista {
-    font-family: "Staatliches" !important;
-    font-size: 0.9vw !important;
-    padding: 0vw 1.5vw 0.2vw 1.5vw !important;
-  }
-  
-  .Lista-H {
-    font-family: "Staatliches" !important;
-    background-color: #39bda7;
-    padding:  4vw 1.5vw 1.5vw 1.5vw !important;
-    color: white !important;
-    font-size: 1.2vw !important;
-  }
-  
-  .Lista-container {
-    position: relative; 
-    top: -16.55vw;
-    left: -9vw;
-    width: 74.53vw !important ;
-    border-radius: 39px !important;
-  
-   }
-  
-   .paginationx{
-    background-color: transparent;
-    color: white;
-    position: relative;
-    left: 55vw;
-    bottom: 16vw;
-    width: 15%;
-  
-  }
-  .search-boxx{
-    position: absolute;
-    top: 0.5vw;
-    right: 5vw;
-    width: 15vw;
-    background-color: #39bda7;
-   
-   
-  }
-  .searchx{
-    font-family: "Staatliches" !important;
-    font-size: 1.2vw !important;
-    background-color: white;
-    border: transparent;
-    overflow:hidden;
-    border-radius: 40px 40px 40px 0px;
-   
-  }
+  font-family: "Staatliches" !important;
+  font-size: 0.9vw !important;
+  padding: 0vw 1.5vw 0.2vw 1.5vw !important;
+}
 
- /*  .ds-modal{
-    position: absolute !important;
-    bottom:5vw !important;
-  } */
+.Lista-H {
+  background-color: #39bda7;
+  padding: 6vw 1.5vw 1.5vw 1.5vw !important;
+  color: white !important;
+}
+
+.Lista-container {
+  position: relative;
+  top: -16.55vw;
+  left: -8.9vw;
+  width: 74vw !important ;
+  border-radius: 39px !important;
+}
+
+.paginationx {
+  background-color: transparent;
+  color: white;
+  position: relative;
+  left: 55vw;
+  bottom: 16vw;
+  width: 15%;
+}
+.search-boxx {
+  position: absolute;
+  top: 2.5vw;
+  right: 3vw;
+  width: 15vw;
+  background-color: #39bda7;
+}
+.searchx {
+  font-family: "Staatliches" !important;
+  font-size: 1.2vw !important;
+  background-color: white;
+  border: transparent;
+  overflow: hidden;
+  border-radius: 40px 40px 40px 0px;
+}
+
+.dir-button {
+  font-size: 1.2vw;
+  border: hidden;
+  background-color: transparent;
+  color: white;
+  display: flex;
+  font-size: 1.2vw !important;
+  font-family: "Staatliches" !important;
+}

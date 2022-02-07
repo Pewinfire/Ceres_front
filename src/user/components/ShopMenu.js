@@ -5,20 +5,21 @@ import { AuthContext } from "../../shared/context/auth-context";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import Modal from "../../shared/components/UIElements/Modal";
 import ShopItems from "../../shopItems/pages/ShopItems";
+import NewProduct from "../../shopItems/pages/NewProduct";
 /* import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner"; */
 import "./ShopMenu.css";
-import NewProduct from "../../shopItems/pages/NewProduct";
+import UpdateShop from "../../shop/pages/UpdateShop";
 
 const ShopMenu = (props) => {
   const [status, setStatus] = useState();
   const [newProduct, setNewProduct] = useState(false);
+  const [updateShop, setUpdateShop] = useState(false);
   const [productList, setProductList] = useState(false);
   const [general, setGeneral] = useState(true);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [loadedShop, setLoadedShop] = useState();
-
 
   useEffect(() => {
     const fetchShop = async () => {
@@ -39,16 +40,25 @@ const ShopMenu = (props) => {
         setNewProduct(true);
         setProductList(false);
         setGeneral(false);
+        setUpdateShop(false);
         break;
       case "adminProduct":
         setNewProduct(false);
         setProductList(true);
         setGeneral(false);
+        setUpdateShop(false);
+        break;
+      case "updateShop":
+        setNewProduct(false);
+        setProductList(false);
+        setGeneral(false);
+        setUpdateShop(true);
         break;
       case "general":
         setNewProduct(false);
         setProductList(false);
         setGeneral(true);
+        setUpdateShop(false);
     }
   };
   const showStatusWarningHandler = () => {
@@ -118,8 +128,8 @@ const ShopMenu = (props) => {
               <li>
                 <Card className="ds-card">
                   <img
-                    src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/update.png`}
-                    alt="update"
+                    src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/new.png`}
+                    alt="new"
                   ></img>
                   <Button
                     dClassName="ds-button"
@@ -132,8 +142,8 @@ const ShopMenu = (props) => {
               <li>
                 <Card className="ds-card">
                   <img
-                    src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/shield.png`}
-                    alt="Seguridad y datos de inicio de sesión"
+                    src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/admin.png`}
+                    alt="admin"
                   ></img>
                   <Button
                     dClassName="ds-button"
@@ -146,24 +156,46 @@ const ShopMenu = (props) => {
               <li>
                 <Card className="ds-card">
                   <img
-                    src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/shield.png`}
-                    alt="Seguridad y datos de inicio de sesión"
+                    src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/shopUpdate.png`}
+                    alt="Ayuda"
                   ></img>
                   <Button
                     dClassName="ds-button"
-                    onClick={showStatusWarningHandler}
+                    onClick={buttonHandler("updateShop")}
                   >
-                    <p>Activar/Desactivar Tienda </p>
+                    <p>Modificar datos de la tienda</p>
                   </Button>
                 </Card>
               </li>
               <li>
                 <Card className="ds-card">
                   <img
-                    src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/customer-service.png`}
+                    src={
+                      (status &&
+                        `${process.env.REACT_APP_BACKEND_IMG}/uploads/images/closed.png`) ||
+                      `${process.env.REACT_APP_BACKEND_IMG}/uploads/images/open.png`
+                    }
+                    alt="open/close"
+                  ></img>
+
+                  <Button
+                    dClassName="ds-button"
+                    onClick={showStatusWarningHandler}
+                  >
+                    <p>{(status && "Desactivar Tienda") || "Activar Tienda"}</p>
+                  </Button>
+                </Card>
+              </li>
+              <li>
+                <Card className="ds-card">
+                  <img
+                    src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/shops.png`}
                     alt="Ayuda"
                   ></img>
-                  <Button dClassName="ds-button">
+                  <Button
+                    dClassName="ds-button"
+                    to={`/shopPage/${props.shop}`}
+                  >
                     <p>Ir a tienda</p>
                   </Button>
                 </Card>
@@ -171,8 +203,27 @@ const ShopMenu = (props) => {
             </ul>
           </div>
         )}
-        {newProduct && <NewProduct shop={loadedShop.id} token={props.token} />}
-        {productList && <ShopItems shop={loadedShop.id} token={props.token} />}
+        {newProduct && (
+          <NewProduct
+            shop={loadedShop.id}
+            token={props.token}
+            close={buttonHandler}
+          />
+        )}
+        {productList && (
+          <ShopItems
+            shop={loadedShop.id}
+            token={props.token}
+            close={buttonHandler("general")}
+          />
+        )}
+        {updateShop && (
+          <UpdateShop
+            shop={loadedShop.id}
+            token={props.token}
+            close={buttonHandler("general")}
+          />
+        )}
       </div>
     </React.Fragment>
   );

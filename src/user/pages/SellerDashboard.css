@@ -5,10 +5,10 @@
     position: absolute;
     background-color: white;
     padding: 0 9% 0;
-    width: 75%;
+    width: 74vw;
     top: 25%;
     left: 12.5%;
-    height: 75%;
+    height: 50vw;
     border: 5px hidden #1c6ea4;
     border-radius: 39px;
     -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.33);
@@ -26,7 +26,7 @@
   .avatarPos {
     z-index : 10000;
 
-    top: -25%;
+    top: -12%;
     left: -25%;
   }
   /* From cssds-ds-buttons.io */

@@ -9,3 +9,29 @@
   border-radius: 6px;
   background: white;
 }
+
+.error-m {
+  position: relative;
+  top: 19vw;
+  list-style: none;
+  margin: 0 auto;
+  padding: 3vw;
+  width: 33vw;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 6px;
+  background: white;
+}
+
+.error-m-button {
+  font: inherit;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid #3e8e7e;
+  border-radius: 4px;
+  background: #3e8e7e;
+  color: white;
+  cursor: pointer;
+  margin-right: 1rem;
+  text-decoration: none;
+
+ 
+}

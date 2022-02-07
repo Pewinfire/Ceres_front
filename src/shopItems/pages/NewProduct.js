@@ -46,7 +46,6 @@ const NewProduct = (props) => {
   const [categories, setCategories] = useState();
   const [cats, setCats] = useState([]);
 
-
   const [formState, inputHandler] = useForm(
     {
       name: {
@@ -84,8 +83,8 @@ const NewProduct = (props) => {
 
   const placeSubmitHandler = async (event) => {
     event.preventDefault();
-    let lista =cats.map((cat) => {
-      return cat.id
+    let lista = cats.map((cat) => {
+      return cat.id;
     });
     console.log(lista);
     const formData = new FormData();
@@ -177,9 +176,13 @@ const NewProduct = (props) => {
           </Select>
 
           <ImageUpload center id="image" onInput={inputHandler} />
-          <Button type="submit" disabled={!formState.isValid && isValid}>
-            Añadir Producto
-          </Button>
+          <div className="right">
+            <Button onClick={props.close("general")}>Volver </Button>
+
+            <Button type="submit" disabled={!formState.isValid && isValid}>
+              Añadir Producto
+            </Button>
+          </div>
         </form>
       )}
     </React.Fragment>

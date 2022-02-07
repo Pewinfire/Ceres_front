@@ -76,8 +76,9 @@ const ProductList = (props) => {
           <TableHead>
             <TableRow>
               <TableCell className="Lista-H" align="right">
-                Producto{" "}
-                <Button onClick={() => sort("name")}>
+                <Button onClick={() => sort("name")} dClassName="dir-button">
+                  {" "}
+                  Producto&nbsp;&nbsp;&nbsp;
                   {(props.dir === 1 && <i class="fas fa-sort-up"></i>) || (
                     <i class="fas fa-sort-down"></i>
                   )}
@@ -91,16 +92,22 @@ const ProductList = (props) => {
                 Categorias
               </TableCell>
               <TableCell align="left" className="Lista-H">
-                Precio{" "}
-                <Button onClick={() => sort("stats.price")}>
+                <Button
+                  onClick={() => sort("stats.price")}
+                  dClassName="dir-button"
+                >
+                  Precio&nbsp;&nbsp;&nbsp;
                   {(props.dir === 1 && <i class="fas fa-sort-up"></i>) || (
                     <i class="fas fa-sort-down"></i>
                   )}
                 </Button>
               </TableCell>
               <TableCell align="left" className="Lista-H">
-                Stock
-                <Button onClick={() => sort("stats.stock")}>
+                <Button
+                  onClick={() => sort("stats.stock")}
+                  dClassName="dir-button"
+                >
+                  Stock&nbsp;&nbsp;&nbsp;
                   {(props.dir === 1 && <i class="fas fa-sort-up"></i>) || (
                     <i class="fas fa-sort-down"></i>
                   )}

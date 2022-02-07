@@ -1,5 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import Input from "../../shared/components/FormElements/Input";
 import Button from "../../shared/components/FormElements/Button";
 import Card from "../../shared/components/UIElements/Card";
@@ -9,15 +8,12 @@ import { VALIDATOR_REQUIRE } from "../../shared/util/validators";
 import { useForm } from "../../shared/hooks/form-hook";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import ImageUpload from "../../shared/components/FormElements/ImageUpload";
-import { AuthContext } from "../../shared/context/auth-context";
-import "./Form.css";
 
-const UpdateUser = () => {
-  const auth = useContext(AuthContext);
+import "../pages/Form.css";
+
+const UpdateUser = (props) => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedUser, setLoadedUser] = useState();
-  const userId = useParams().userId;
-  const history = useHistory();
 
   const [formState, inputHandler, setFormData] = useForm(
     {
@@ -33,55 +29,53 @@ const UpdateUser = () => {
   );
 
   useEffect(() => {
-    if (auth.token) {
-      const fetchUser = async () => {
-        try {
-          const responseData = await sendRequest(
-            `${process.env.REACT_APP_BACKEND_URL}/users/${userId}`,
-            "GET",
-            null,
-            {
-              Authorization: "Bearer " + auth.token,
-            }
-          );
-          setLoadedUser(responseData.user);
-          setFormData(
-            {
-              name: {
-                value: responseData.user.name,
-                isValid: false,
-              },
-              lastname: {
-                value: responseData.user.lastname,
-                isValid: true,
-              },
-              dni: {
-                value: responseData.user.dni,
-                isValid: true,
-              },
-              phone: {
-                value: responseData.user.phone,
-                isValid: true,
-              },
-              address: {
-                value: responseData.user.address,
-                isValid: true,
-              },
-              image: { value: responseData.user.image, isValid: true },
-              imageup: {
-                value: false,
-                isValid: true,
-              },
+    const fetchUser = async () => {
+      try {
+        const responseData = await sendRequest(
+          `${process.env.REACT_APP_BACKEND_URL}/users/${props.user}`,
+          "GET",
+          null,
+          {
+            Authorization: "Bearer " + props.token,
+          }
+        );
+        setLoadedUser(responseData.user);
+        setFormData(
+          {
+            name: {
+              value: responseData.user.name,
+              isValid: false,
             },
-            true
-          );
-        } catch (err) {
-          console.log(err);
-        }
-      };
-      fetchUser();
-    }
-  }, [sendRequest, userId, setFormData, auth.token]);
+            lastname: {
+              value: responseData.user.lastname,
+              isValid: true,
+            },
+            dni: {
+              value: responseData.user.dni,
+              isValid: true,
+            },
+            phone: {
+              value: responseData.user.phone,
+              isValid: true,
+            },
+            address: {
+              value: responseData.user.address,
+              isValid: true,
+            },
+            image: { value: responseData.user.image, isValid: true },
+            imageup: {
+              value: false,
+              isValid: true,
+            },
+          },
+          true
+        );
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchUser();
+  }, [sendRequest, props.user, setFormData, props.token]);
 
   const userUpdateSubmitHandler = async (event) => {
     event.preventDefault();
@@ -101,17 +95,17 @@ const UpdateUser = () => {
       formData.append("imageup", formState.inputs.imageup.value);
 
       await sendRequest(
-        `${process.env.REACT_APP_BACKEND_URL}/users/${userId}`,
+        `${process.env.REACT_APP_BACKEND_URL}/users/${props.user}`,
         "PATCH",
         formData,
         {
-          Authorization: "Bearer " + auth.token,
+          Authorization: "Bearer " + props.token,
         }
       );
-      history.push(`/user/dashboard`);
     } catch (err) {
       console.log(err);
     }
+    props.close()
   };
 
   if (!loadedUser && !error && !isLoading) {
@@ -197,10 +191,10 @@ const UpdateUser = () => {
             preview={`${process.env.REACT_APP_BACKEND_IMG}/${loadedUser.image}`}
           />
           <div className="right">
-            <Button to={`/${auth.userId}/user/update`}>Volver </Button>
+            <Button onClick={props.close}>Volver </Button>
 
             <Button type="submit" disabled={!formState.isValid}>
-              UPDATE User
+              Actualizar
             </Button>
           </div>
         </form>
