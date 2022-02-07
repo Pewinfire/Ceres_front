@@ -77,7 +77,7 @@ const Dashboard = () => {
         </div>
       )}
       {!isLoading && user && (
-        <div className="contenedor">
+        <div>
           <Avatar
             alt="avatar"
             src={`${process.env.REACT_APP_BACKEND_IMG}/${user.image}`}
@@ -101,14 +101,17 @@ const Dashboard = () => {
               </i>
             </Button>
           </div>
-          {profile && (
-            <div>
-              <ProfileMenu
-                user={auth.userId}
-                token={auth.token} /* back={{buttonHandler}} */
-              />
-            </div>
-          )}
+
+          <div className="contenedor">
+            {profile && (
+              <div>
+                <ProfileMenu
+                  user={auth.userId}
+                  token={auth.token} /* back={{buttonHandler}} */
+                />
+              </div>
+            )}
+          </div>
         </div>
       )}
     </React.Fragment>

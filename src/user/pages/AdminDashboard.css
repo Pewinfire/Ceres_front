@@ -34,7 +34,7 @@
     display: inline-block;
     padding: 0.5vw 1vw 0vw;
     border: 1px solid white;
-    border-radius: 40px 40px 20px 20px;
+    border-radius: 15vw 15vw 15vw 15vw;
     transition: all 0.5s ease-in;
     position: relative;
     overflow: hidden;

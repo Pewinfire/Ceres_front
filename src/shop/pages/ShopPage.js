@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import { useParams } from "react-router-dom";
-import { Box } from "@mui/system";
-import Input from "@mui/material/Input";
-import { Pagination } from "@mui/material";
-import "./ShopPage.css"
+import "./ShopPage.css";
+import ShopPageProductList from "../components/ShopPageProductList";
+import { AuthContext } from "../../shared/context/auth-context";
 
-const ShopItems = (props) => {
+const ShopItems = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedShopProducts, setLoadedShopProducts] = useState();
   const [search, setSearch] = useState("producto");
@@ -19,16 +18,16 @@ const ShopItems = (props) => {
   const [sort, setSort] = useState("name");
   const [dir, setDir] = useState(1);
   const [loadedShop, setLoadedShop] = useState();
- 
+  const auth = useContext(AuthContext);
   const [status, setStatus] = useState();
-  const shopId= useParams().shopId;
+  const shopId = useParams().shopId;
 
   useEffect(() => {
     const fetchShop = async () => {
       try {
         const responseData = await sendRequest(
           `${process.env.REACT_APP_BACKEND_URL}/shop/${shopId}`
-        ); 
+        );
         setLoadedShop(responseData.shop);
         setStatus(responseData.shop.active);
       } catch (err) {}
@@ -91,13 +90,43 @@ const ShopItems = (props) => {
             <LoadingSpinner />
           </div>
         )}
-        {!isLoading && loadedShopProducts && <div className="shopBanner">
-            <div className="banner">
-
+        {!isLoading && loadedShop && (
+          <div>
+            <div className="shopBanner">
+              <div className="banner">
+                <img
+                  src={`${process.env.REACT_APP_BACKEND_IMG}/${loadedShop.image}`}
+                  alt={loadedShop.name}
+                />
+                <div className="banner-text">
+                  <h1>{loadedShop.name}</h1>
+                  <h2 className="score">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </h2>
+                  <h2>{loadedShop.description}</h2>
+                  <h3>{loadedShop.location}</h3>
+                </div>
+              </div>
             </div>
-            
-            
-            </div>}
+            {/*  overflow:auto; */}
+            <div className="shopPlist">
+              {(loadedShop.active && (
+                <ShopPageProductList shop={loadedShop.id} />
+              )) || <h1>La tienda no esta activa en estos momentos</h1>}
+            </div>
+            <div className="shopCart">
+              {(auth.userId && "cart") || (
+                <h1>
+                  Necesita loguearse primero para poder realizar una compra
+                </h1>
+              )}
+            </div>
+          </div>
+        )}
       </React.Fragment>
     </div>
   );

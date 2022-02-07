@@ -192,10 +192,7 @@ const ShopMenu = (props) => {
                     src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/shops.png`}
                     alt="Ayuda"
                   ></img>
-                  <Button
-                    dClassName="ds-button"
-                    to={`/shopPage/${props.shop}`}
-                  >
+                  <Button dClassName="ds-button" to={`/shopPage/${props.shop}`}>
                     <p>Ir a tienda</p>
                   </Button>
                 </Card>

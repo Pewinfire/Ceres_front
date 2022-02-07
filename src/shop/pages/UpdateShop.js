@@ -125,6 +125,7 @@ const UpdateShop = (props) => {
         </div>
       )}
       {!isLoading && loadedShop && (
+        <div className="form-container">
         <form className="style-form" onSubmit={shopUpdateSubmitHandler}>
           <Input
             id="name"
@@ -173,6 +174,7 @@ const UpdateShop = (props) => {
             </Button>
           </div>
         </form>
+        </div>
       )}
     </React.Fragment>
   );

@@ -7,9 +7,8 @@ import { useHttpClient } from "../../shared/hooks/http-hook";
 import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import ShopMenu from "../components/ShopMenu";
-import "./SellerDashboard.css";
 import ProfileMenu from "../components/ProfileMenu";
-
+import "./SellerDashboard.css";
 // falta autentificacion.
 
 const Dashboard = () => {
@@ -88,7 +87,8 @@ const Dashboard = () => {
         </div>
       )}
       {!isLoading && user && (
-        <div className="contenedor">
+        <div>
+        <div className="top">
           <Avatar
             alt="avatar"
             src={`${process.env.REACT_APP_BACKEND_IMG}/${user.image}`}
@@ -117,6 +117,8 @@ const Dashboard = () => {
               </i>
             </Button>
           </div>
+          </div>
+          <div className="contenedor">
           {profile && <div>
             <ProfileMenu user={auth.userId} token={auth.token}/* back={{buttonHandler}} */ /></div>}
           {shop && (
@@ -124,7 +126,8 @@ const Dashboard = () => {
               <ShopMenu shop={user.shop} token={auth.token} />
             </div>
           )}
-        </div>
+          </div>
+          </div>
       )}
     </React.Fragment>
   );

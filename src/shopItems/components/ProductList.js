@@ -77,7 +77,7 @@ const ProductList = (props) => {
             <TableRow>
               <TableCell className="Lista-H" align="right">
                 <Button onClick={() => sort("name")} dClassName="dir-button">
-                  {" "}
+                  
                   Producto&nbsp;&nbsp;&nbsp;
                   {(props.dir === 1 && <i class="fas fa-sort-up"></i>) || (
                     <i class="fas fa-sort-down"></i>

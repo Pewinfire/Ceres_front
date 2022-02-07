@@ -35,6 +35,7 @@ const CustomerService = (props) => {
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
+      <div className="form-container">
       <form className="style-form" onSubmit={helpSubmitHandler}>
         {isLoading && <LoadingSpinner asOverlay />}
         <Input
@@ -69,6 +70,7 @@ const CustomerService = (props) => {
           </Button>
         </div>
       </form>
+      </div>
     </React.Fragment>
   );
 };

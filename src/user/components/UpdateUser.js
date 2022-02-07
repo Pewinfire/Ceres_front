@@ -105,7 +105,7 @@ const UpdateUser = (props) => {
     } catch (err) {
       console.log(err);
     }
-    props.close()
+    props.close();
   };
 
   if (!loadedUser && !error && !isLoading) {
@@ -127,77 +127,79 @@ const UpdateUser = (props) => {
         </div>
       )}
       {!isLoading && loadedUser && (
-        <form className="style-form" onSubmit={userUpdateSubmitHandler}>
-          <Input
-            element="input"
-            id="name"
-            type="text"
-            label="Nombre"
-            validators={[VALIDATOR_REQUIRE]}
-            errorText="Por favor, introduce un nombre"
-            onInput={inputHandler}
-            initialValue={loadedUser.name}
-            initialValid={true}
-          />
-          <Input
-            element="input"
-            id="lastname"
-            type="text"
-            label="Apellido"
-            validators={[VALIDATOR_REQUIRE]}
-            errorText="Por favor, introduce un apellido"
-            onInput={inputHandler}
-            initialValue={loadedUser.lastname}
-            initialValid={true}
-          />
-          <Input
-            element="input"
-            id="dni"
-            type="text"
-            label="NIF"
-            validators={[VALIDATOR_REQUIRE]}
-            errorText="Por favor, introduce un DNI o NIE  valido"
-            onInput={inputHandler}
-            initialValue={loadedUser.dni}
-            initialValid={true}
-          />
-          <Input
-            element="input"
-            id="phone"
-            type="text"
-            label="Telefono de contacto"
-            validators={[VALIDATOR_REQUIRE]}
-            errorText="Por favor, introduce un telefono valido"
-            onInput={inputHandler}
-            initialValue={loadedUser.phone}
-            initialValid={true}
-          />
-          <Input
-            element="input"
-            id="address"
-            type="text"
-            label="Dirección"
-            validators={[VALIDATOR_REQUIRE]}
-            errorText="Por favor, introduce una dirección"
-            onInput={inputHandler}
-            initialValue={loadedUser.address}
-            initialValid={true}
-          />
+        <div className="form-container">
+          <form className="style-form" onSubmit={userUpdateSubmitHandler}>
+            <Input
+              element="input"
+              id="name"
+              type="text"
+              label="Nombre"
+              validators={[VALIDATOR_REQUIRE]}
+              errorText="Por favor, introduce un nombre"
+              onInput={inputHandler}
+              initialValue={loadedUser.name}
+              initialValid={true}
+            />
+            <Input
+              element="input"
+              id="lastname"
+              type="text"
+              label="Apellido"
+              validators={[VALIDATOR_REQUIRE]}
+              errorText="Por favor, introduce un apellido"
+              onInput={inputHandler}
+              initialValue={loadedUser.lastname}
+              initialValid={true}
+            />
+            <Input
+              element="input"
+              id="dni"
+              type="text"
+              label="NIF"
+              validators={[VALIDATOR_REQUIRE]}
+              errorText="Por favor, introduce un DNI o NIE  valido"
+              onInput={inputHandler}
+              initialValue={loadedUser.dni}
+              initialValid={true}
+            />
+            <Input
+              element="input"
+              id="phone"
+              type="text"
+              label="Telefono de contacto"
+              validators={[VALIDATOR_REQUIRE]}
+              errorText="Por favor, introduce un telefono valido"
+              onInput={inputHandler}
+              initialValue={loadedUser.phone}
+              initialValid={true}
+            />
+            <Input
+              element="input"
+              id="address"
+              type="text"
+              label="Dirección"
+              validators={[VALIDATOR_REQUIRE]}
+              errorText="Por favor, introduce una dirección"
+              onInput={inputHandler}
+              initialValue={loadedUser.address}
+              initialValid={true}
+            />
 
-          <ImageUpload
-            center
-            id="image"
-            onInput={inputHandler}
-            preview={`${process.env.REACT_APP_BACKEND_IMG}/${loadedUser.image}`}
-          />
-          <div className="right">
-            <Button onClick={props.close}>Volver </Button>
+            <ImageUpload
+              center
+              id="image"
+              onInput={inputHandler}
+              preview={`${process.env.REACT_APP_BACKEND_IMG}/${loadedUser.image}`}
+            />
+            <div className="right">
+              <Button onClick={props.close}>Volver </Button>
 
-            <Button type="submit" disabled={!formState.isValid}>
-              Actualizar
-            </Button>
-          </div>
-        </form>
+              <Button type="submit" disabled={!formState.isValid}>
+                Actualizar
+              </Button>
+            </div>
+          </form>
+        </div>
       )}
     </React.Fragment>
   );

@@ -12,10 +12,10 @@
 
 .Lista-container {
   position: relative;
-  top: -16.55vw;
-  left: -8.9vw;
+  top: -1vw;
+  left: -7vw;
   width: 74vw !important ;
-  border-radius: 39px !important;
+  border-radius: 25px !important;
 }
 
 .paginationx {
@@ -23,8 +23,8 @@
   color: white;
   position: relative;
   left: 55vw;
-  bottom: 16vw;
-  width: 15%;
+  bottom: 0vw;
+  width: 15vw;
 }
 .search-boxx {
   position: absolute;

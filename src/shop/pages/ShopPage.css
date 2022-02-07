@@ -1,0 +1,99 @@
+.shopBanner {
+  position: absolute;
+
+  top: 7.5vw;
+  left: 9vw;
+  background-color: white;
+  width: 82vw;
+  height: 15vw;
+  border: 5px hidden #1c6ea4;
+  border-radius: 9px;
+  box-shadow: 0px 0px 15px 17px rgba(0, 0, 0, 0.1);
+}
+.banner {
+  display: flex;
+}
+.banner img {
+  clip-path: circle(26vw at 0 0);
+  object-position: -5vw -1vw;
+  border-radius: 9px;
+  width: 33vw !important;
+  height: 15vw;
+  object-fit: cover;
+}
+
+.banner-text {
+  position: absolute;
+  font-family: "Staatliches" !important;
+  color: #3e8e7e;
+  text-shadow: 2px 2px 10px rgba(150, 150, 150, 0.3);
+}
+
+.banner-text h1 {
+  position: relative;
+  top: -1.5vw;
+  left: 29vw;
+  font-size: 5vw;
+}
+
+.banner-text .score {
+  position: relative;
+  width: 33vw;
+  top: -8.8vw;
+  left: 52vw;
+  font-size: 2.2vw;
+  color: #fabb51;
+}
+
+.banner-text h2 {
+  position: relative;
+  width: 33vw;
+  top: -8.5vw;
+  left: 29vw;
+  font-size: 1.2vw;
+}
+
+.banner-text h3 {
+  position: relative;
+  width: 20vw;
+  top: -8.5vw;
+  left: 62vw;
+  font-size: 1.2vw;
+  text-align: start;
+}
+.shopPlist {
+  position: absolute;
+  top: 26vw;
+  left: 9vw;
+  background-color: white;
+  width: 53vw;
+  height: 15vw;
+  border: 5px hidden #1c6ea4;
+  border-radius: 9px;
+  box-shadow: 0px 0px 15px 17px rgba(0, 0, 0, 0.1);
+  overflow:auto;
+}
+
+.shopPlist h1 {
+    position: relative;
+    top: 3vw;
+    left:12vw;
+    font-family: "Staatliches" !important;
+    color: #3e8e7e;
+    font-size: 2.5vw;
+    width: 25vw;
+    text-shadow: 2px 2px 10px rgba(150, 150, 150, 0.3);
+}
+
+.shopCart {
+    position: absolute;
+    top: 26vw;
+    right: 9vw;
+    background-color: white;
+    width: 25.5vw;
+    height: 15vw;
+    border: 5px hidden #1c6ea4;
+    border-radius: 9px;
+    box-shadow: 0px 0px 15px 17px rgba(0, 0, 0, 0.1);
+    overflow:auto;
+  }

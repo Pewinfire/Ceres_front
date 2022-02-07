@@ -126,64 +126,66 @@ const NewProduct = (props) => {
         </div>
       )}
       {!isLoading && categories && (
-        <form className="style-form" onSubmit={placeSubmitHandler}>
-          {isLoading && <LoadingSpinner asOverlay />}
-          <Input
-            id="name"
-            element="input"
-            type="text"
-            label="Nombre del Producto"
-            validators={[VALIDATOR_REQUIRE()]}
-            errorText="Please enter a valid Title"
-            onInput={inputHandler}
-          />
-          <Input
-            id="description"
-            element="textArea"
-            type="text"
-            label="Descripción"
-            validators={[VALIDATOR_MINLENGTH(5)]}
-            errorText="Por favor, introduce un codigo postal valido (at least 5 characters)."
-            onInput={inputHandler}
-          />
-          <InputLabel id="demo-multiple-chip-label">Categorias</InputLabel>
-          <Select
-            labelId="demo-multiple-chip-label"
-            id="demo-multiple-chip"
-            multiple
-            value={cats}
-            onChange={handleChange}
-            input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
-            renderValue={(selected) => (
-              <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
-                {selected.map((value) => (
-                  <Chip key={value.id} label={value.label} />
-                ))}
-              </Box>
-            )}
-            MenuProps={MenuProps}
-          >
-            {categories.map((category) => (
-              <MenuItem
-                key={category.id}
-                value={category}
-                label={category.label}
-                style={getStyles(category.label, cats, theme)}
-              >
-                {category.label}
-              </MenuItem>
-            ))}
-          </Select>
+        <div className="form-container">
+          <form className="style-form" onSubmit={placeSubmitHandler}>
+            {isLoading && <LoadingSpinner asOverlay />}
+            <Input
+              id="name"
+              element="input"
+              type="text"
+              label="Nombre del Producto"
+              validators={[VALIDATOR_REQUIRE()]}
+              errorText="Please enter a valid Title"
+              onInput={inputHandler}
+            />
+            <Input
+              id="description"
+              element="textArea"
+              type="text"
+              label="Descripción"
+              validators={[VALIDATOR_MINLENGTH(5)]}
+              errorText="Por favor, introduce un codigo postal valido (at least 5 characters)."
+              onInput={inputHandler}
+            />
+            <InputLabel id="demo-multiple-chip-label">Categorias</InputLabel>
+            <Select
+              labelId="demo-multiple-chip-label"
+              id="demo-multiple-chip"
+              multiple
+              value={cats}
+              onChange={handleChange}
+              input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
+              renderValue={(selected) => (
+                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
+                  {selected.map((value) => (
+                    <Chip key={value.id} label={value.label} />
+                  ))}
+                </Box>
+              )}
+              MenuProps={MenuProps}
+            >
+              {categories.map((category) => (
+                <MenuItem
+                  key={category.id}
+                  value={category}
+                  label={category.label}
+                  style={getStyles(category.label, cats, theme)}
+                >
+                  {category.label}
+                </MenuItem>
+              ))}
+            </Select>
 
-          <ImageUpload center id="image" onInput={inputHandler} />
-          <div className="right">
-            <Button onClick={props.close("general")}>Volver </Button>
+            <ImageUpload center id="image" onInput={inputHandler} />
+            <div className="right">
+              <Button onClick={props.close("general")}>Volver </Button>
 
-            <Button type="submit" disabled={!formState.isValid && isValid}>
-              Añadir Producto
-            </Button>
-          </div>
-        </form>
+              <Button type="submit" disabled={!formState.isValid && isValid}>
+                Añadir Producto
+              </Button>
+            </div>
+          </form>
+        </div>
       )}
     </React.Fragment>
   );
