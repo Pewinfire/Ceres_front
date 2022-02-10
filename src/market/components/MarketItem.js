@@ -38,13 +38,13 @@ const MarketsItem = (props) => {
           </div>
           <div className="market-item__info">
             <h2>{props.name}</h2>
-            <h3>{props.address}</h3>
+            <p>{props.address}</p>
           </div>
           <div className="market-item__actions">
-            <Button inverse onClick={openMapHandler}>
-              View on map
+            <Button  onClick={openMapHandler}>
+            <i class="fas fa-map-marked-alt fa-3x"></i>
             </Button>
-            <Button to={`/${props.id}/shops`}>Ir</Button>
+            <Button to={`/${props.id}/shops`}  ><i class="fas fa-sign-in-alt fa-3x"></i></Button>
           </div>
         </Card>
       </li>

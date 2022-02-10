@@ -6,7 +6,8 @@ import { useParams } from "react-router-dom";
 import { Box } from "@mui/system";
 import Input from "@mui/material/Input";
 import { Pagination } from "@mui/material";
-
+import "./ShopPageProductList.css";
+import ShopPageProducts from "./ShopPageProducts";
 
 const ShopPageProductList = (props) => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
@@ -14,10 +15,10 @@ const ShopPageProductList = (props) => {
   const [search, setSearch] = useState("producto");
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [size, setSize] = useState(5);
+  const [size, setSize] = useState(33);
   const [update, setUpdate] = useState(false);
-  const [sort, setSort] =useState("name");
-  const [dir, setDir]=useState(1);
+  const [sort, setSort] = useState("name");
+  const [dir, setDir] = useState(1);
   const shopId = useParams().shopId;
 
   useEffect(() => {
@@ -33,7 +34,18 @@ const ShopPageProductList = (props) => {
       } catch (err) {}
     };
     fetchShopsProducts();
-  }, [sendRequest, shopId, search, page, size, totalPages, props.shop, update, sort, dir]);
+  }, [
+    sendRequest,
+    shopId,
+    search,
+    page,
+    size,
+    totalPages,
+    props.shop,
+    update,
+    sort,
+    dir,
+  ]);
 
   const handleTextFieldKeyDown = (event) => {
     switch (event.key) {
@@ -65,7 +77,7 @@ const ShopPageProductList = (props) => {
     setSort(sort);
     setDir(dir === 1 ? -1 : 1);
   };
- 
+
   return (
     <div>
       <React.Fragment>
@@ -76,9 +88,23 @@ const ShopPageProductList = (props) => {
           </div>
         )}
         {!isLoading && loadedShopProducts && (
-          <div className="verde">
-            
-       
+          <div >
+            <ul className="shopPageProduct-List">
+              {loadedShopProducts.map((product) => {
+                if (product.stats)
+                  return (
+                    <li>
+                      <ShopPageProducts
+                        name={product.name}
+                        img={product.image}
+                        description={product.description}
+                        price={product.stats.price}
+                        categories={product.categories}
+                      />
+                    </li>
+                  );
+              })}
+            </ul>
           </div>
         )}
       </React.Fragment>
@@ -87,6 +113,3 @@ const ShopPageProductList = (props) => {
 };
 
 export default ShopPageProductList;
-
-
-

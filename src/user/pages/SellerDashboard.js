@@ -87,47 +87,53 @@ const Dashboard = () => {
         </div>
       )}
       {!isLoading && user && (
-        <div>
-        <div className="top">
-          <Avatar
-            alt="avatar"
-            src={`${process.env.REACT_APP_BACKEND_IMG}/${user.image}`}
-            sx={{ width: "12vw", height: "12vw" }}
-            className="avatarPos"
-          />
-          <div className="ButtonMenu">
-            <Button dClassName="ds-button" onClick={buttonHandler("profile")}>
-              <i className="fas fa-user fa-2x">
-                <p>Mi Perfil</p>
-              </i>
-            </Button>
-            <Button dClassName="ds-button" onClick={buttonHandler("shop")}>
-              <i className="fas fa-store fa-2x">
-                <p>Mi Tienda</p>
-              </i>
-            </Button>
-            <Button dClassName="ds-button" onClick={buttonHandler("orders")}>
-              <i className="fas fa-file-invoice fa-2x">
-                <p>Pedidos</p>
-              </i>
-            </Button>
-            <Button dClassName="ds-button" onClick={buttonHandler("reviews")}>
-              <i className="fas fa-star-half-alt fa-2x">
-                <p>Opiniones</p>
-              </i>
-            </Button>
-          </div>
+        <>
+          <div className="top">
+            <Avatar
+              alt="avatar"
+              src={`${process.env.REACT_APP_BACKEND_IMG}/${user.image}`}
+              sx={{ width: "12vw", height: "12vw" }}
+              className="avatarPos"
+            />
+            <div className="ButtonMenu">
+              <Button dClassName="ds-button" onClick={buttonHandler("profile")}>
+                <i className="fas fa-user fa-2x">
+                  <p>Mi Perfil</p>
+                </i>
+              </Button>
+              <Button dClassName="ds-button" onClick={buttonHandler("shop")}>
+                <i className="fas fa-store fa-2x">
+                  <p>Mi Tienda</p>
+                </i>
+              </Button>
+              <Button dClassName="ds-button" onClick={buttonHandler("orders")}>
+                <i className="fas fa-file-invoice fa-2x">
+                  <p>Pedidos</p>
+                </i>
+              </Button>
+              <Button dClassName="ds-button" onClick={buttonHandler("reviews")}>
+                <i className="fas fa-star-half-alt fa-2x">
+                  <p>Opiniones</p>
+                </i>
+              </Button>
+            </div>
           </div>
           <div className="contenedor">
-          {profile && <div>
-            <ProfileMenu user={auth.userId} token={auth.token}/* back={{buttonHandler}} */ /></div>}
-          {shop && (
-            <div>
-              <ShopMenu shop={user.shop} token={auth.token} />
-            </div>
-          )}
+            {profile && (
+              <div className="options">
+                <ProfileMenu
+                  user={auth.userId}
+                  token={auth.token} /* back={{buttonHandler}} */
+                />
+              </div>
+            )}
+            {shop && (
+              <>
+                <ShopMenu shop={user.shop} token={auth.token} />
+              </>
+            )}
           </div>
-          </div>
+        </>
       )}
     </React.Fragment>
   );

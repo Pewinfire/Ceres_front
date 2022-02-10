@@ -6,6 +6,9 @@ import { useParams } from "react-router-dom";
 import "./ShopPage.css";
 import ShopPageProductList from "../components/ShopPageProductList";
 import { AuthContext } from "../../shared/context/auth-context";
+import Button from "../../shared/components/FormElements/Button";
+import { Modal } from "@mui/material";
+import Authenticate from "../../user/pages/Authenticate"
 
 const ShopItems = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
@@ -13,7 +16,7 @@ const ShopItems = () => {
   const [search, setSearch] = useState("producto");
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [size, setSize] = useState(5);
+  const [size, setSize] = useState(6);
   const [update, setUpdate] = useState(false);
   const [sort, setSort] = useState("name");
   const [dir, setDir] = useState(1);
@@ -22,6 +25,13 @@ const ShopItems = () => {
   const [status, setStatus] = useState();
   const shopId = useParams().shopId;
 
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const showStatusWarningHandler = () => {
+    setShowConfirmModal(true);
+  };
+  const cancelDeleteHandler = () => {
+    setShowConfirmModal(false);
+  };
   useEffect(() => {
     const fetchShop = async () => {
       try {
@@ -83,13 +93,17 @@ const ShopItems = () => {
 
   return (
     <div>
+      <ErrorModal error={error} onClear={clearError} />
+      {isLoading && (
+        <div className="center">
+          <LoadingSpinner />
+        </div>
+      )}
       <React.Fragment>
-        <ErrorModal error={error} onClear={clearError} />
-        {isLoading && (
-          <div className="center">
-            <LoadingSpinner />
-          </div>
-        )}
+        <Modal open={showConfirmModal} onClose={cancelDeleteHandler}>
+          <Authenticate close={cancelDeleteHandler} />
+        </Modal>
+
         {!isLoading && loadedShop && (
           <div>
             <div className="shopBanner">
@@ -120,9 +134,12 @@ const ShopItems = () => {
             </div>
             <div className="shopCart">
               {(auth.userId && "cart") || (
-                <h1>
-                  Necesita loguearse primero para poder realizar una compra
-                </h1>
+                <div>
+                  <h1>
+                    Necesita loguearse primero para poder realizar una compra
+                  </h1>
+                  <Button onClick={showStatusWarningHandler}>Iniciar Sesión</Button>
+                </div>
               )}
             </div>
           </div>

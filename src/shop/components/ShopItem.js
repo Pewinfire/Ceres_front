@@ -8,7 +8,7 @@ import "./ShopItem.css";
 
 const ShopsItem = (props) => {
   return (
-    <React.Fragment>
+       <React.Fragment>
       <li className="shop-item">
         <Card className="shop-item__content">
           <div className="shop-item__image">
@@ -18,16 +18,16 @@ const ShopsItem = (props) => {
             />
           </div>
           <div className="shop-item__info">
-            <h2>{props.name}</h2>
-            <h4>{props.location}</h4>
+            <h1>{props.name}</h1>
             <p>{props.description}</p>
           </div>
           <div className="shop-item__actions">
-            <Button to={`/shops/${props.id}`}>Ir</Button>
+            <Button to={`/shopPage/${props.id}`}>Ir</Button>
           </div>
         </Card>
       </li>
     </React.Fragment>
+
   );
 };
 

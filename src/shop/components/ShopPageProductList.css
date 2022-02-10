@@ -1,0 +1,16 @@
+.shopPageProduct-List {
+  list-style: none;
+  margin-top: 0.2vw auto;
+
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+
+  flex: 0 1 calc(33% - 8px);
+  display: flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+}

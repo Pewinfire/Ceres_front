@@ -17,7 +17,7 @@ import { useHttpClient } from "../../shared/hooks/http-hook";
 
 import "./Authenticate.css";
 
-const Authenticate = () => {
+const Authenticate = (props) => {
   const auth = useContext(AuthContext);
   const [isLoginMode, setIsLoginMode] = useState(true);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
@@ -89,6 +89,9 @@ const Authenticate = () => {
       } catch (err) {
         // se maneja en el hook
       }
+      if (props.close) {
+        props.close();
+      }
     } else {
       const formData = new FormData();
       formData.append("email", formState.inputs.email.value);
@@ -117,7 +120,7 @@ const Authenticate = () => {
       <ErrorModal error={error} onClear={clearError} />
       <Card className="authentication">
         {isLoading && <LoadingSpinner asOverlay />}
-        <h2>Login Required</h2>
+        <h2>Iniciar Sesión</h2>
         <form onSubmit={authSubmitHandler}>
           {!isLoginMode && (
             <React.Fragment>
@@ -190,13 +193,14 @@ const Authenticate = () => {
             onInput={inputHandler}
           />
           <Button type="submit" disabled={!formState.isValid}>
-            {isLoginMode ? "Login" : "Signup"}
+            {isLoginMode ? "Iniciar" : "Registrarse"}
           </Button>
         </form>
-        <Button inverse onClick={switchModeHandler}>
-          {" "}
-          Switch to {isLoginMode ? "Signup" : "Login"}
-        </Button>
+        {!props.close && (
+          <Button inverse onClick={switchModeHandler}>
+            {isLoginMode ? "Registrar cuenta" : "Iniciar Sesión"}
+          </Button>
+        )}
       </Card>
     </React.Fragment>
   );

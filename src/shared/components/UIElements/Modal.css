@@ -6,14 +6,17 @@
   width: 80%;
   background: white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  border-radius: 8px;
+  border-radius: 2vw;
+  font-family: "Staatliches" !important;
 }
 
 .modal__header {
   width: 100%;
   padding: 1rem 0.5rem;
-  background: #2a006e;
+  background: #f3bf66;
   color: white;
+  border-radius: 2vw 2vw 0 0 ;
+  font-size: 1.2vw;
 }
 
 .modal__header h2 {

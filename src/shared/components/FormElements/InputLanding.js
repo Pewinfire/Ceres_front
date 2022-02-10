@@ -39,7 +39,7 @@ export default class InputLanding extends React.Component {
               <div className="envoltorio">
                 <input
                   {...getInputProps({
-                    placeholder: "Buscar mercados...",
+                    placeholder: "Introduce una dirección...",
                     className: "location-search-input",
                   })}
                 />
@@ -73,8 +73,9 @@ export default class InputLanding extends React.Component {
                       key={suggestion.placeId}
                     >
                       <i className="fas fa-map-marker-alt" aria-hidden="true">
-                        {suggestion.description}
                       </i>
+                        {suggestion.description}
+                      
                     </div>
                   );
                 })}

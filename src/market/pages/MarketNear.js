@@ -64,7 +64,7 @@ const MarketNear = () => {
               id="fullWidth"
               className="search"
               inputProps={{ style: { fontSize: 30 } }} // font size of input text
-              InputLabelProps={{ style: { fontSize: 30 } }}
+              inputlabelprops={{ style: { fontSize: 30 } }}
               placeholder="  Buscar"
               onKeyDown={handleTextFieldKeyDown}
             />

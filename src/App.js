@@ -18,7 +18,7 @@ import UpdateShop from "./shop/pages/UpdateShop";
 import Dashboard from "./user/pages/Dashboard";
 import AdminDashboard from "./user/pages/AdminDashboard";
 import SellerDashboard from "./user/pages/SellerDashboard";
-import ShopPage from "./shop/pages/ShopPage"
+import ShopPage from "./shop/pages/ShopPage";
 import { AuthContext } from "./shared/context/auth-context";
 import { useAuth } from "./shared/hooks/auth-hook";
 
@@ -29,7 +29,7 @@ const Authenticate = React.lazy(() => import("./user/pages/Authenticate"));
 
 const App = () => {
   const { token, login, logout, userId } = useAuth();
-  
+
   let routes;
 
   if (token) {
@@ -89,10 +89,10 @@ const App = () => {
         <Route path="/auth">
           <Authenticate />
         </Route>
-        <Redirect to="/auth" />
         <Route path="/shopPage/:shopId">
           <ShopPage />
         </Route>
+        <Redirect to="/auth" />
       </Switch>
     );
   }

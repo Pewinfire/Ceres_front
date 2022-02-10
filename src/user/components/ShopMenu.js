@@ -86,7 +86,7 @@ const ShopMenu = (props) => {
 
   return (
     <React.Fragment>
-      <div>
+      <>
         {general && (
           <div className="ds-list">
             <Modal
@@ -121,7 +121,11 @@ const ShopMenu = (props) => {
                 </div>
                 <div className="ds-tienda-status">
                   <h2>{(status && "Activo") || "Inactivo"}</h2>
+                  <Button dClassname="ds-tienda-status-button" to={`/shopPage/${props.shop}`}>
+                  Ir a tienda
+                  </Button>
                 </div>
+                
               </Card>
             )}
             <ul>
@@ -186,17 +190,6 @@ const ShopMenu = (props) => {
                   </Button>
                 </Card>
               </li>
-              <li>
-                <Card className="ds-card">
-                  <img
-                    src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/shops.png`}
-                    alt="Ayuda"
-                  ></img>
-                  <Button dClassName="ds-button" to={`/shopPage/${props.shop}`}>
-                    <p>Ir a tienda</p>
-                  </Button>
-                </Card>
-              </li>
             </ul>
           </div>
         )}
@@ -221,7 +214,7 @@ const ShopMenu = (props) => {
             close={buttonHandler("general")}
           />
         )}
-      </div>
+      </>
     </React.Fragment>
   );
 };

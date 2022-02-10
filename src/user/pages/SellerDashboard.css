@@ -9,14 +9,15 @@
   top: 12vw;
   left: 12vw;
   display:flex;
-  height: 51vw;
+
   border: 0vw hidden #1c6ea4;
   border-radius: 2vw;
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.33);
   -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.33);
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.33);
-  height: max-content;
+  
 }
+
 
 .ButtonMenu {
   background-color: transparent;
@@ -125,7 +126,8 @@
 
 .ds-list {
   position: relative;
-  top: 5vw;
+  top: 1.8vw;
+  height: auto;
 }
 
 .ds-list ul {
