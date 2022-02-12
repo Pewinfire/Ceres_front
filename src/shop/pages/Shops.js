@@ -23,7 +23,7 @@ const Shops = () => {
       } catch (err) {}
     };
     fetchShops();
-  }, [sendRequest, marketId]); // allows to run certain code only when certain dependencies change (first argument),  . Second arg = array of dependencies , data that needs to change for this return. recarga cada vez que se hace una request
+  }, [sendRequest]); // allows to run certain code only when certain dependencies change (first argument),  . Second arg = array of dependencies , data that needs to change for this return. recarga cada vez que se hace una request
 
   return (
     <React.Fragment>

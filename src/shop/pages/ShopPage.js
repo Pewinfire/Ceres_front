@@ -44,7 +44,7 @@ const ShopItems = () => {
       } catch (err) {}
     };
     fetchShop();
-  }, [sendRequest, status, shopId]);
+  }, [sendRequest, status]);
 
   return (
     <div>

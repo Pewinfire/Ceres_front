@@ -20,6 +20,8 @@ import AdminDashboard from "./user/pages/AdminDashboard";
 import SellerDashboard from "./user/pages/SellerDashboard";
 import ShopPage from "./shop/pages/ShopPage";
 import { AuthContext } from "./shared/context/auth-context";
+import { CSSTransition } from "react-transition-group";
+
 import { useAuth } from "./shared/hooks/auth-hook";
 
 //import { TransitionGroup, CSSTransition } from "react-transition-group";
@@ -29,7 +31,14 @@ const Authenticate = React.lazy(() => import("./user/pages/Authenticate"));
 
 const App = () => {
   const { token, login, logout, userId } = useAuth();
-
+  const route = [
+    { path: "/", Component: Landing },
+    { path: "/shopPage/:shopId", Component: ShopPage },
+    { path: "/markets", Component: Markets },
+    { path: "/markets/near/:addr", Component: MarketNear },
+    { path: "/:marketId/shops", Component: Shops },
+    { path: "/seller/sllrDS", Component: SellerDashboard },
+  ];
   let routes;
 
   if (token) {
@@ -44,14 +53,8 @@ const App = () => {
         <Route path="/markets/near/:addr" exact>
           <MarketNear />
         </Route>
-        <Route path="/markets/new" exact>
-          <NewMarket />
-        </Route>
         <Route path="/markets" exact>
           <Markets />
-        </Route>
-        <Route path="/:marketId/market/edit" exact>
-          <UpdateMarket />
         </Route>
         <Route path="/:marketId/shops" exact>
           <Shops />
@@ -116,7 +119,23 @@ const App = () => {
               </div>
             }
           >
-            {routes}
+            {" "}
+            {route.map(({ path, Component }) => (
+              <Route key={path} exact path={path}>
+                {({ match }) => (
+                  <CSSTransition
+                    in={match != null}
+                    timeout={900}
+                    classNames="page"
+                    unmountOnExit
+                  >
+                    <div className="page">
+                      <Component />
+                    </div>
+                  </CSSTransition>
+                )}
+              </Route>
+            ))}
           </Suspense>
         </main>
       </Router>

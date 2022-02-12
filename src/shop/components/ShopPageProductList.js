@@ -121,7 +121,7 @@ const ShopPageProductList = (props) => {
   return (
     <div>
       <React.Fragment>
-        <ErrorModal error={error} onClear={clearError} />
+      
         {isLoading && (
           <div className="center">
             <LoadingSpinner />

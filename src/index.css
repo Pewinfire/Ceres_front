@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap");
 
 * {
   box-sizing: border-box;
@@ -8,7 +8,9 @@
 html {
   font-family: "Staatliches" !important;
 }
-
+::-webkit-scrollbar {
+  display: none;
+}
 body {
   margin: 0;
   background-color: #347769;
@@ -44,4 +46,25 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.page {
+}
+/* entering */
+.page-enter {  
+  opacity: 0;
+}
+/* entered */
+.page-enter-active {
+  opacity: 1;
+  transition: all 333ms linear 300ms;
+}
+/* exiting */
+.page-exit {
+  opacity: 1;
+}
+/* exit */
+.page-exit-active {
+  opacity: 0;
+  transition: all 333ms linear
 }
