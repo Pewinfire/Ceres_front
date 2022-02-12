@@ -82,135 +82,42 @@
     color: white;
   }
 }
-
-.nav-links .batton {
-  --border-radius: 0.9vw;
-  --border-width: 0.3vw;
-  appearance: none;
-  position: relative;
-  padding:  0.4vw 1vw 0.4vw 1vw;
-  border: 0;
-  background-color: transparent;
-  font-family: "Staatliches";
+.main-navigation__header-nav .batton {
+  background: linear-gradient(-45deg, #00b545, #4ee7c6, #27c8b7, #077936);
+  background-size: 800% 400%;
+  padding: 0.3vw 2vw;
+  display: inline-block;
+  border: none;
+  border-radius: 3vw;
   font-size: 1.8vw;
-  color: #fff;
-  z-index: 2;
-  overflow: hidden;
-}
-
-.nav-links .batton::after {
-  --m-i: linear-gradient(#000, #000);
-  --m-o: content-box, padding-box;
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  padding: var(--border-width);
-  border-radius: var(--border-radius);
-  background-image: conic-gradient(
-    #488cfb,
-    #29dbbc,
-    #ddf505,
-    #ff9f0e,
-    #e440bb,
-    #655adc,
-    #488cfb
-  );
-  -webkit-mask-image: var(--m-i), var(--m-i);
-  mask-image: var(--m-i), var(--m-i);
-  -webkit-mask-origin: var(--m-o);
-  mask-origin: var(--m-o);
-  -webkit-mask-clip: var(--m-o);
-  mask-composite: exclude;
-  -webkit-mask-composite: destination-out;
-  filter: hue-rotate(0);
-  animation: rotate-hue linear 1500ms infinite;
-  animation-play-state: running;
-}
-
-.nav-links .batton::before {
-  content: "";
-  width: 0;
-  height: 300%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(45deg);
-  background: #7cd1b8;
-  transition: 0.8s ease;
-  display: block;
-  z-index: -1;
-  
-}
-
-.nav-links .batton:hover::before {
-  width: 105%;
-  
-}
-
-.nav-links .batton:hover {
-  color: #fff;
-  
-}
-@keyframes rotate-hue {
-  to {
-    filter: hue-rotate(1turn);
+  color: white;
+  transition: all .5s ease-in-out;
+  animation: gradient 6s infinite cubic-bezier(.62, .28, .23, .99) both;
+ }
+ 
+ .main-navigation__header-nav .batton:hover {
+  animation: gradient 3s infinite;
+  transform: scale(1.05);
+  background: linear-gradient(-45deg, #00b545, #4ee7c6, #27c8b7, #077936);
+  background-size: 800% 400%;
+  animation: gradient 10s infinite cubic-bezier(.62, .28, .23, .99) both;
+ }
+ 
+ .main-navigation__header-nav .batton:active {
+  animation: gradient 3s infinite;
+  transform: scale(0.8);
+ }
+ 
+ @keyframes gradient {
+  0% {
+   background-position: 0% 50%;
   }
-}
-
-.nav-links .batton:hover,
-.nav-links .batton:active {
-  background: transparent;
-  
-}
-.nav-links .batton,
-.nav-links .batton::after {
-  box-sizing: border-box;
-  
-  
-}
-
-.nav-links .batton:active {
-    --border-width: 0.3vw;
-}
-
- /* From cssbuttons.io by @nikk7007 
-.nav-links .hidden {
-  padding: 0.8em 1.8em;
-  border: 2px solid #17C3B2;
-  position: relative;
-  overflow: hidden;
-  background-color: transparent;
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 16px;
-  transition: .3s;
-  z-index: 1;
-  font-family: inherit;
-  color: #17C3B2;
- }
  
- .nav-links .hidden::before {
-  content: '';
-  width: 0;
-  height: 300%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(45deg);
-  background: #17C3B2;
-  transition: .5s ease;
-  display: block;
-  z-index: -1;
- }
+  50% {
+   background-position: 100% 50%;
+  }
  
- .nav-links .hidden:hover::before {
-  width: 105%;
+  100% {
+   background-position: 0% 50%;
+  }
  }
- 
- .nav-links .hidden:hover {
-  color: #111;
- }
-  */

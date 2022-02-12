@@ -85,6 +85,7 @@
 
 .ds-button:hover {
   color: #39bda7;
+  background-color: white;
   border: 0.25vw solid white;
 }
 
