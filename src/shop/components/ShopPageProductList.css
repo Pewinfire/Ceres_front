@@ -1,16 +1,78 @@
 .shopPageProduct-List {
   list-style: none;
   margin-top: 0.2vw auto;
-
   width: 100%;
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-
   flex: 0 1 calc(33% - 8px);
   display: flex;
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: row;
   flex-direction: row;
+}
+
+.sp-sizes {
+  position: relative;
+  top: 33vh;
+  left: 33vw;
+  width: 33vw;
+  height: 15vw;
+}
+.sp-sizes h2 {
+  color: #3e8e7e;
+  font-size: 1.8vw;
+  padding-left: 1vw;
+}
+.sp-lista {
+  display: flex !important;
+  justify-content: space-evenly !important;
+  padding: 0;
+}
+.sp-chip-button {
+  display: flex;
+}
+.sp-sizes button {
+  font-size: 1.5vw !important;
+  height: 2.5vw;
+  width: 5vw;
+  position: relative;
+  bottom: -3vw;
+  left: 25vw;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+.css-1p823my-MuiListItem-root {
+  padding: 0.1vw !important;
+}
+.chip button {
+  position: relative;
+  left: 1vw;
+  padding: 0.4vw 1.1vw;
+  border: 0.1vw hidden #a31e1e;
+  border-radius: 0.4vw;
+}
+.css-1haevf0-MuiButtonBase-root-MuiChip-root {
+  font-family: "Staatliches" !important;
+  font-size: 1.5vw !important;
+  background-color: #3e8e7e !important;
+  color: white !important;
+  height: 2.3vw !important;
+  width: 7vw;
+}
+.css-sr4zzr-MuiButtonBase-root-MuiChip-root{
+  font-family: "Staatliches" !important;
+  font-size: 1.5vw !important;
+  border-color: #3e8e7e !important;
+  background-color: white !important;
+  color: #3e8e7e !important;
+  height: 2.3vw !important;
+  width: 7vw;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  transition: all 0.3s linear;
 }

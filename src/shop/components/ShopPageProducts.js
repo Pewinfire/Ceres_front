@@ -1,30 +1,31 @@
 import React from "react";
+import Button from "../../shared/components/FormElements/Button";
 import "./ShopPageProducts.css";
 
 const ShopPageProducts = (props) => {
   return (
     <div className="ps-item">
-      <div class="property-card">
+      <div className="property-card">
         <a href="#">
-          <div class="property-image">
+          <div className="property-image">
             <img
               src={`${process.env.REACT_APP_BACKEND_IMG}/${props.img}`}
             ></img>
-            <div class="property-image-title">
+            <div className="property-image-title">
               {/*   <h5>Card Title</h5>  */}
             </div>
           </div>
         </a>
-        <div class="property-description">
+        <div className="property-description">
           <h5> {props.name} </h5>
           <p>{props.description}</p>
-         {/*  <div class="property-social-icons">
-            <i class="fa-solid fa-basket-shopping fa-2x"></i>
+         {/*  <div className="property-social-icons">
+            <i className="fa-solid fa-basket-shopping fa-2x"></i>
           </div> */}
         </div>
         <a href="#">
-          <div class="property-social-icons">
-            <i class="fa-solid fa-basket-shopping fa-2x"></i>
+          <div className="property-social-icons">
+           <Button dClassname="ps-button" onClick={()=>props.selectSizes(props.id, props.sizes)}> <i className="fa-solid fa-basket-shopping fa-2x"></i></Button>
           </div>
         </a>
       </div>

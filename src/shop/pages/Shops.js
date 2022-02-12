@@ -5,6 +5,7 @@ import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import { useParams } from "react-router-dom";
 
+
 const Shops = () => {
 
   const { isLoading, error, sendRequest, clearError } = useHttpClient();

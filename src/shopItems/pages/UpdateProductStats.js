@@ -5,17 +5,33 @@ import Button from "../../shared/components/FormElements/Button";
 import Card from "../../shared/components/UIElements/Card";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import ErrorModal from "../../shared/components/UIElements/ErrorModal";
-import {
-  VALIDATOR_REQUIRE,
-} from "../../shared/util/validators";
+import { VALIDATOR_REQUIRE } from "../../shared/util/validators";
 import { useForm } from "../../shared/hooks/form-hook";
 import { useHttpClient } from "../../shared/hooks/http-hook";
+import Chip from "@mui/material/Chip";
+
+import {
+  Autocomplete,
+  Input as InputM,
+  Select,
+  TextField,
+} from "@mui/material";
+
 import "./Form.css";
+import { ListItem } from "@mui/material";
 
 const UpdateProductStats = (props) => {
   // const auth = useContext(AuthContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedProduct, setLoadedProduct] = useState();
+  const [size, setSize] = useState();
+  const [chipFormats, setChipFormats] = useState([]);
+  const [format, setFormat] = useState({ label: "Gramos", value: "gr" });
+  const formats = [
+    { label: "Gramos", value: "gr" },
+    { label: "Unidad", value: "u" },
+    { label: "Docena", value: "doc" },
+  ];
 
   const [formState, inputHandler, setFormData] = useForm(
     {
@@ -29,7 +45,7 @@ const UpdateProductStats = (props) => {
       },
       discount: {
         value: "",
-        isValid: false,
+        isValid: true,
       },
     },
     false
@@ -48,23 +64,25 @@ const UpdateProductStats = (props) => {
               value: responseData.product.stats
                 ? responseData.product.stats.price
                 : 0,
-              isValid: false,
+              isValid: true,
             },
             stock: {
               value: responseData.product.stats
                 ? responseData.product.stats.stock
                 : 0,
-              isValid: false,
+              isValid: true,
             },
             discount: {
               value: responseData.product.stats
                 ? responseData.product.stats.discount
                 : 0,
-              isValid: false,
+              isValid: true,
             },
           },
           true
         );
+        setChipFormats(responseData.product.stats.size);
+        setFormat({ label: " ", value: responseData.product.stats.format });
       } catch (err) {
         console.log(err);
       }
@@ -78,7 +96,10 @@ const UpdateProductStats = (props) => {
       price: parseFloat(formState.inputs.price.value),
       stock: parseFloat(formState.inputs.stock.value),
       discount: parseFloat(formState.inputs.discount.value),
+      size: chipFormats.sort((a, b) => a.value - b.value),
+      format: format.value,
     };
+    console.log(chipFormats);
     console.log("ar meno entra");
     try {
       await sendRequest(
@@ -87,13 +108,37 @@ const UpdateProductStats = (props) => {
         JSON.stringify({
           stats,
         }),
-        {"Content-Type": "application/json" ,
+        {
+          "Content-Type": "application/json",
           Authorization: "Bearer " + props.token,
         }
       );
-      console.log(stats);
+      console.log(format.value);
     } catch (err) {}
-   props.close();
+    props.close();
+  };
+
+  const handleDelete = (chipToDelete) => () => {
+    setChipFormats((chips) =>
+      chips.filter((chip) => chip.value !== chipToDelete.value)
+    );
+  };
+
+  const setSiz = (event) => {
+    setSize(event.target.value);
+    console.log(size);
+  };
+
+  const handleAdd = () => {
+    setChipFormats([...chipFormats, { value: Number(size) }]);
+    /*  setChipFormats(chipFormats.sort((a, b) => a.value - b.value)); */
+    console.log(chipFormats);
+  };
+
+  const autoComplet = async (event, value) => {
+    event.defaultMuiPrevented = true;
+    setFormat(value);
+    console.log(format);
   };
 
   if (!loadedProduct && !error) {
@@ -115,18 +160,19 @@ const UpdateProductStats = (props) => {
         </div>
       )}
       {!isLoading && loadedProduct && (
-        <form className="style-formUP" onSubmit={productUpdateSubmitHandler}>
+        <form className="style-formUP">
           <Input
             id="price"
             element="input"
             type="number"
-            label="Precio"
+            label="Precio (kg, pieza)"
             validators={[VALIDATOR_REQUIRE()]}
             errorText="Por favor, introduce un nombre válido."
             onInput={inputHandler}
             initialValue={loadedProduct.stats ? loadedProduct.stats.price : 0}
             initialValid={true}
           />
+
           <Input
             id="stock"
             element="input"
@@ -138,6 +184,51 @@ const UpdateProductStats = (props) => {
             initialValue={loadedProduct.stats ? loadedProduct.stats.stock : 0}
             initialValid={true}
           />
+          <Autocomplete
+            id="format"
+            options={formats}
+            getOptionLabel={(option) => option.label} // si en la segunda metes mas props'{ 1, 2} filtra por campos
+            sx={{ width: 300 }}
+            onChange={autoComplet}
+            renderInput={(params) => <TextField {...params} label="Formato" />}
+            isOptionEqualToValue={(option) => option.value}
+          />
+          <div className="chip">
+            <InputM
+              fullWidth
+              label="Formato"
+              id="fullWidth"
+              type="number"
+              className="chipInput"
+              inputProps={{ style: { fontSize: 15 } }} // font size of input text
+              inputlabelprops={{ style: { fontSize: 15 } }}
+              placeholder="En numero, Ej: 1 (pieza), 100(gramos) "
+              onInput={setSiz}
+            />
+            <Button type="button" onClick={handleAdd}>
+              <i className="fas fa-plus"></i>
+            </Button>
+          </div>
+          <div className="up-chip">
+            {chipFormats.map((data) => {
+              let icon;
+
+              /*   if (data.label === "React") {
+              icon = <TagFacesIcon />;
+            } */
+
+              return (
+                <ListItem>
+                  <Chip
+                    label={data.value + " " + format.value}
+                    onDelete={
+                      data.label === "React" ? undefined : handleDelete(data)
+                    }
+                  />
+                </ListItem>
+              );
+            })}
+          </div>
           <Input
             id="discount"
             element="input"
@@ -151,7 +242,12 @@ const UpdateProductStats = (props) => {
             }
             initialValid={true}
           />
-          <Button type="submit" dClassName="modal-button-ok" disabled={!formState.isValid}>
+          <Button
+            type="submit"
+            dClassName="modal-button-ok"
+            disabled={!formState.isValid}
+            onClick={productUpdateSubmitHandler}
+          >
             Actualizar
           </Button>
         </form>

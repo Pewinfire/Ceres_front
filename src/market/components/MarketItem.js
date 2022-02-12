@@ -42,9 +42,9 @@ const MarketsItem = (props) => {
           </div>
           <div className="market-item__actions">
             <Button  onClick={openMapHandler}>
-            <i class="fas fa-map-marked-alt fa-3x"></i>
+            <i className="fas fa-map-marked-alt fa-3x"></i>
             </Button>
-            <Button to={`/${props.id}/shops`}  ><i class="fas fa-sign-in-alt fa-3x"></i></Button>
+            <Button to={`/${props.id}/shops`}  ><i className="fas fa-sign-in-alt fa-3x"></i></Button>
           </div>
         </Card>
       </li>

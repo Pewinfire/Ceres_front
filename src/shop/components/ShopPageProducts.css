@@ -105,11 +105,13 @@
 
 /* Social Icons */
 
-.property-social-icons {
+.property-social-icons button {
   height: 1.5vw;
   width: 1.5vw;
   color: #3e8e7e;
   position: absolute;
+  background-color: transparent !important;
+  border: hidden;
   top: 1vw;
   right: 1.5vw;
   -webkit-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -128,12 +130,12 @@
   height: 120%;
 }
 
-.property-card:hover .property-social-icons {
+.property-card:hover .property-social-icons button{
   color: white;
   top: 10vw;
 }
 
-.property-card:hover .property-social-icons:hover {
+.property-card:hover .property-social-icons button:hover {
   cursor: pointer;
   
 }

@@ -14,25 +14,41 @@
 .style-formUP {
   position: relative;
   list-style: none;
-  top: 15vw;
+  top: 10vw;
   left: 37vw;
   padding: 3vw;
   width: 30vw;
-
+  font-size: 1.1vw;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   border-radius: 6px;
   background: white;
 }
-
+.style-formUP .input {
+  margin-bottom: 1.2vw;
+}
+.style-formUP .button {
+  font-size: 0.9vw;
+}
+.up-chip {
+  display: flex;
+  padding: 1vw 2vw;
+}
 .right {
   display: flex;
   margin-top: 2vw;
   justify-content: space-between;
 }
-
+.css-1k430x0-MuiButtonBase-root-MuiChip-root {
+  font-family: "Staatliches" !important;
+  font-size: 1vw !important;
+  background-color: #3e8e7e !important;
+  color: white !important;
+  height: 1.5vw !important;
+  width: 5vw;
+}
 .modal-button-cancel {
   position: absolute;
-  top: 16vw;
+  top: 11vw;
   right: 33vw;
   font: inherit;
   padding: 0.4vw 1.1vw;
@@ -52,11 +68,52 @@
   left: 18.3vw;
   font: inherit;
   padding: 0.4vw 1.1vw;
-  border: 0.1vw solid #3E8E7E;
+  border: 0.1vw solid #3e8e7e;
   border-radius: 0.4vw;
-  background: #3E8E7E;
+  background: #3e8e7e;
   color: white;
   cursor: pointer;
   text-decoration: none;
   display: inline-block;
 }
+
+.chip {
+  display: flex;
+}
+
+.chipInput {
+  margin-top: 0.5vw;
+  padding-bottom: 0.5vw;
+  font-family: "Staatliches" !important;
+  font-size: 3vw !important;
+}
+
+.css-1k430x0-MuiButtonBase-root-MuiChip-root .MuiChip-deleteIcon {
+  color: white !important;
+}
+
+.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
+  font-family: "Staatliches" !important;
+  font-size: 1.1vw !important;
+}
+
+.css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root {
+  width: 24vw !important;
+  height: 2.8vw !important;
+  margin-bottom: 1vw !important;
+}
+.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root {
+  font-family: "Staatliches" !important;
+}
+
+.css-viou3o-MuiAutocomplete-root .MuiOutlinedInput-root  {
+  font-family: "Staatliches" !important;
+}
+
+/* .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input {
+  font-family: "Staatliches" !important;
+}
+
+.css-1d3z3hw-MuiOutlinedInput-notchedOutline{
+  font-family: "Staatliches" !important;
+} */

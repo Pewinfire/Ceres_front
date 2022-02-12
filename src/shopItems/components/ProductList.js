@@ -66,7 +66,7 @@ const ProductList = (props) => {
               dClassName="modal-button-cancel"
               onClick={cancelDeleteHandler}
             >
-              <i class="fas fa-times"></i>
+              <i className="fas fa-times"></i>
             </Button>
           </React.Fragment>
         </div>
@@ -79,8 +79,8 @@ const ProductList = (props) => {
                 <Button onClick={() => sort("name")} dClassName="dir-button">
                   
                   Producto&nbsp;&nbsp;&nbsp;
-                  {(props.dir === 1 && <i class="fas fa-sort-up"></i>) || (
-                    <i class="fas fa-sort-down"></i>
+                  {(props.dir === 1 && <i className="fas fa-sort-up"></i>) || (
+                    <i className="fas fa-sort-down"></i>
                   )}
                 </Button>
               </TableCell>
@@ -97,8 +97,8 @@ const ProductList = (props) => {
                   dClassName="dir-button"
                 >
                   Precio&nbsp;&nbsp;&nbsp;
-                  {(props.dir === 1 && <i class="fas fa-sort-up"></i>) || (
-                    <i class="fas fa-sort-down"></i>
+                  {(props.dir === 1 && <i className="fas fa-sort-up"></i>) || (
+                    <i className="fas fa-sort-down"></i>
                   )}
                 </Button>
               </TableCell>
@@ -108,8 +108,8 @@ const ProductList = (props) => {
                   dClassName="dir-button"
                 >
                   Stock&nbsp;&nbsp;&nbsp;
-                  {(props.dir === 1 && <i class="fas fa-sort-up"></i>) || (
-                    <i class="fas fa-sort-down"></i>
+                  {(props.dir === 1 && <i className="fas fa-sort-up"></i>) || (
+                    <i className="fas fa-sort-down"></i>
                   )}
                 </Button>
               </TableCell>
