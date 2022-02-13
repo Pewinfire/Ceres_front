@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-
 import MarketList from "../components/MarketList";
 import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import { useHttpClient } from "../../shared/hooks/http-hook";
+import { Pagination } from "@mui/material";
 import { Box } from "@mui/system";
 import Input from "@mui/material/Input";
-import { Pagination } from "@mui/material";
 
 const Markets = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
@@ -15,6 +14,7 @@ const Markets = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [size, setSize] = useState(3);
+  
   useEffect(() => {
     const fetchMarkets = async () => {
       try {
