@@ -26,7 +26,6 @@ import { useAuth } from "./shared/hooks/auth-hook";
 
 //import { TransitionGroup, CSSTransition } from "react-transition-group";
 
-const Users = React.lazy(() => import("./user/pages/User"));
 const Authenticate = React.lazy(() => import("./user/pages/Authenticate"));
 
 const App = () => {
@@ -38,6 +37,8 @@ const App = () => {
     { path: "/markets/near/:addr", Component: MarketNear },
     { path: "/:marketId/shops", Component: Shops },
     { path: "/seller/sllrDS", Component: SellerDashboard },
+    { path: "dashboard", Component: ShopPage },
+    { path: "/admin/admDS", Component: AdminDashboard },
   ];
   let routes;
 
@@ -46,9 +47,6 @@ const App = () => {
       <Switch>
         <Route path="/" exact>
           <Landing />
-        </Route>
-        <Route path="/users" exact>
-          <Users />
         </Route>
         <Route path="/markets/near/:addr" exact>
           <MarketNear />
@@ -119,7 +117,6 @@ const App = () => {
               </div>
             }
           >
-            {" "}
             {route.map(({ path, Component }) => (
               <Route key={path} exact path={path}>
                 {({ match }) => (
