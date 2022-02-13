@@ -4,47 +4,37 @@ import {
   Route,
   Redirect,
   Switch,
+  withRouter,
 } from "react-router-dom";
 import Landing from "./landing/Landing";
-import MarketNear from "./market/pages/MarketNear";
-import Markets from "./market/pages/Markets";
-import NewMarket from "./market/pages/NewMarket";
-import UpdateMarket from "./market/pages/UpdateMarket";
 import MainNavigation from "./shared/components/Navigation/MainNavigation";
 import LoadingSpinner from "./shared/components/UIElements/LoadingSpinner";
-import NewShop from "./shop/pages/NewShop";
+/* import MarketNear from "./market/pages/MarketNear";
+import Markets from "./market/pages/Markets";
 import Shops from "./shop/pages/Shops";
-import UpdateShop from "./shop/pages/UpdateShop";
 import Dashboard from "./user/pages/Dashboard";
 import AdminDashboard from "./user/pages/AdminDashboard";
 import SellerDashboard from "./user/pages/SellerDashboard";
-import ShopPage from "./shop/pages/ShopPage";
+import ShopPage from "./shop/pages/ShopPage"; */
 import { AuthContext } from "./shared/context/auth-context";
-import { CSSTransition } from "react-transition-group";
-
 import { useAuth } from "./shared/hooks/auth-hook";
-
-//import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const Authenticate = React.lazy(() => import("./user/pages/Authenticate"));
+const MarketNear = React.lazy(() => import("./market/pages/MarketNear"));
+const Markets = React.lazy(() => import("./market/pages/Markets"));
+const Shops = React.lazy(() => import("./shop/pages/Shops"));
+const Dashboard = React.lazy(() => import("./user/pages/Dashboard"));
+const AdminDashboard = React.lazy(() => import("./user/pages/AdminDashboard"));
+const SellerDashboard = React.lazy(() =>
+  import("./user/pages/SellerDashboard")
+);
+const ShopPage = React.lazy(() => import("./shop/pages/ShopPage"));
 
-const App = () => {
-  const { token, login, logout, userId } = useAuth();
-  const route = [
-    { path: "/", Component: Landing },
-    { path: "/shopPage/:shopId", Component: ShopPage },
-    { path: "/markets", Component: Markets },
-    { path: "/markets/near/:addr", Component: MarketNear },
-    { path: "/:marketId/shops", Component: Shops },
-    { path: "/seller/sllrDS", Component: SellerDashboard },
-    { path: "dashboard", Component: ShopPage },
-    { path: "/admin/admDS", Component: AdminDashboard },
-  ];
-  let routes;
-
-  if (token) {
-    routes = (
-      <Switch>
+const AnimatedSwitch = withRouter(({ location }) => (
+  <TransitionGroup>
+    <CSSTransition key={location.key} classNames="page" timeout={900}>
+      <Switch location={location}>
         <Route path="/" exact>
           <Landing />
         </Route>
@@ -71,10 +61,13 @@ const App = () => {
         </Route>
         <Redirect to="/" />
       </Switch>
-    );
-  } else {
-    routes = (
-      <Switch>
+    </CSSTransition>
+  </TransitionGroup>
+));
+const AnimatedSwitchNT = withRouter(({ location }) => (
+  <TransitionGroup>
+    <CSSTransition key={location.key} classNames="page" timeout={900}>
+      <Switch location={location}>
         <Route path="/" exact>
           <Landing />
         </Route>
@@ -95,8 +88,12 @@ const App = () => {
         </Route>
         <Redirect to="/auth" />
       </Switch>
-    );
-  }
+    </CSSTransition>
+  </TransitionGroup>
+));
+const App = () => {
+  const { token, login, logout, userId } = useAuth();
+
   return (
     <AuthContext.Provider
       value={{
@@ -117,22 +114,7 @@ const App = () => {
               </div>
             }
           >
-            {route.map(({ path, Component }) => (
-              <Route key={path} exact path={path}>
-                {({ match }) => (
-                  <CSSTransition
-                    in={match != null}
-                    timeout={900}
-                    classNames="page"
-                    unmountOnExit
-                  >
-                    <div className="page">
-                      <Component />
-                    </div>
-                  </CSSTransition>
-                )}
-              </Route>
-            ))}
+            {(!token && <AnimatedSwitchNT />) || <AnimatedSwitch />}
           </Suspense>
         </main>
       </Router>
