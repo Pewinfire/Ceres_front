@@ -13,8 +13,7 @@ import UpdateProductStats from "../pages/UpdateProductStats";
 import { Checkbox } from "@mui/material";
 import { Avatar } from "@mui/material";
 import Box from "@mui/material/Box";
-/* import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography'; */
+
 import Modal from "@mui/material/Modal";
 
 import "./ProductList.css";
@@ -28,7 +27,7 @@ const ProductList = (props) => {
     return (
       <div className="center">
         <Card>
-          <h2> No Shops Found</h2>
+          <h2> No se han encontrado productos</h2>
         </Card>
       </div>
     );
@@ -84,19 +83,19 @@ const ProductList = (props) => {
                   )}
                 </Button>
               </TableCell>
-              <TableCell className="Lista-H">Imagen</TableCell>
+              <TableCell className="Lista-H"><h2>Imagen</h2></TableCell>
               <TableCell align="left" className="Lista-H">
-                Descripción
+                <h2>Descripción</h2>
               </TableCell>
               <TableCell align="left" className="Lista-H">
-                Categorias
+                <h2>Categorias</h2>
               </TableCell>
               <TableCell align="left" className="Lista-H">
                 <Button
                   onClick={() => sort("stats.price")}
                   dClassName="dir-button"
                 >
-                  Precio&nbsp;&nbsp;&nbsp;
+                 Categorias
                   {(props.dir === 1 && <i className="fas fa-sort-up"></i>) || (
                     <i className="fas fa-sort-down"></i>
                   )}
@@ -117,7 +116,7 @@ const ProductList = (props) => {
                 Activo
               </TableCell>
               <TableCell align="center" className="Lista-H">
-                Acciones
+              <h2>Acciones</h2>
               </TableCell>
             </TableRow>
           </TableHead>

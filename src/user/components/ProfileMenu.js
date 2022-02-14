@@ -98,7 +98,7 @@ const ProfileMenu = (props) => {
                 </Card>
               </li>
             </ul>
-          </div>
+            </div>
         </React.Fragment>
       )}
       {update && (

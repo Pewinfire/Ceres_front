@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react";
-import ErrorModal from "../../shared/components/UIElements/ErrorModal";
+
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import { useHttpClient } from "../../shared/hooks/http-hook";
+/* import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 import { useParams } from "react-router-dom";
 import { Box } from "@mui/system";
 import Input from "@mui/material/Input";
-import { Pagination } from "@mui/material";
+import { Pagination } from "@mui/material"; */
 import { Modal } from "@mui/material";
-import "./ShopPageProductList.css";
 import ShopPageProducts from "./ShopPageProducts";
 import Card from "../../shared/components/UIElements/Card";
 import Chip from "@mui/material/Chip";
 import Button from "../../shared/components/FormElements/Button";
 import { ListItem } from "@mui/material";
+import "./ShopPageProductList.css";
+import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 
 const ShopPageProductList = (props) => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
@@ -23,7 +25,6 @@ const ShopPageProductList = (props) => {
   const [sort, setSort] = useState("name");
   const [dir, setDir] = useState(1);
   const [totalPages, setTotalPages] = useState(0); */
-  const [update, setUpdate] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [productId, setProductId] = useState();
   const [productSizes, setProductSizes] = useState([]);
@@ -120,8 +121,8 @@ const ShopPageProductList = (props) => {
 
   return (
     <div>
+       <ErrorModal error={error} onClear={clearError} />
       <React.Fragment>
-      
         {isLoading && (
           <div className="center">
             <LoadingSpinner />
@@ -157,13 +158,13 @@ const ShopPageProductList = (props) => {
                   dClassname="sp-chip-button"
                   onClick={addToCart}
                 >
-                  <i class="fas fa-shopping-basket"></i>
+                  <i className="fas fa-shopping-basket"></i>
                 </Button>
               </Card>
             </Modal>
             <ul className="shopPageProduct-List">
               {loadedShopProducts.map((product) => {
-                if (product.stats)
+                if (product.stats && product.stats.price !== 0 ) {
                   return (
                     <li>
                       <ShopPageProducts
@@ -178,6 +179,9 @@ const ShopPageProductList = (props) => {
                       />
                     </li>
                   );
+                } else {
+                  return null;
+                }
               })}
             </ul>
           </div>

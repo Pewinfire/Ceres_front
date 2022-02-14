@@ -128,9 +128,9 @@ const Dashboard = () => {
               </div>
             )}
             {shop && (
-              <>
+              <div className="options">
                 <ShopMenu shop={user.shop} token={auth.token} />
-              </>
+              </div>
             )}
           </div>
         </>

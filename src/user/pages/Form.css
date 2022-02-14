@@ -1,22 +1,22 @@
 .style-form {
   position: relative;
   list-style: none;
-  margin: 0 auto;
-  padding: 1rem;
+  margin-top: 5vw;
   width: 90%;
-  max-width: 20vw;
+  height: auto;
+  max-width: 50vw;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  border-radius: 6px;
+  border-radius: 1vw;
   background: white;
+  font-size: 1vw;
 }
 
-.form-container{
-  position: absolute;
-  top: 13vw;
-  left: 10vw;
-  width: 50vw;
-  height:auto;
-  
+.form-container {
+  position: relative;
+  top: -8vw;
+  left: -22vw;
+  width: 100vw;
+  height: auto;
 }
 
 .error-m {
@@ -41,6 +41,4 @@
   cursor: pointer;
   margin-right: 1rem;
   text-decoration: none;
-
- 
 }

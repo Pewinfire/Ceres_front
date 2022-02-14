@@ -19,7 +19,7 @@ const UserCart = (props) => {
       case "gr":
         return quantity * 1000 + "gr";
       case "doc":
-        if (quantity == 0.5) {
+        if (quantity === 0.5) {
           return "1/2 doc";
         } else {
           return quantity + "doc";
@@ -28,7 +28,7 @@ const UserCart = (props) => {
   };
 
   const updateRender = () => {
-    setUpdateRender(update == true ? false : true);
+    setUpdateRender(update === true ? false : true);
   };
 
   useEffect(() => {
@@ -73,7 +73,7 @@ const UserCart = (props) => {
         <>
           <div className="cart-header">
             <h1>
-              Cesta <i class="fas fa-shopping-basket"></i>
+              Cesta <i className="fas fa-shopping-basket"></i>
             </h1>
           </div>
           <div className="cart-list">
@@ -106,7 +106,7 @@ const UserCart = (props) => {
                                   deleteCartItem(cartItem.product.id)
                                 }
                               >
-                                <i class="fa-solid fa-square-minus"></i>
+                                <i className="fa-solid fa-square-minus"></i>
                               </Button>
                             </h2>
 

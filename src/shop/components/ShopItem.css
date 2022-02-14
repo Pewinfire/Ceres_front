@@ -37,12 +37,12 @@
 
 .shop-item__actions {
   text-align: center;
-  margin-top: 1.3vw;
+  margin-top: 1.5vw;
   border-top: 1px solid #ccc;
   height: 3.6vw;
   background-color: #3e8e7e;
   font-family: "Staatliches" !important;
-  font-size: 1.5vw;
+  font-size: 1.8vw;
 }
 
 .shop-item__modal-content {

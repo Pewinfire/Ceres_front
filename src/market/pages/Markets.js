@@ -6,6 +6,7 @@ import { useHttpClient } from "../../shared/hooks/http-hook";
 import { Pagination } from "@mui/material";
 import { Box } from "@mui/system";
 import Input from "@mui/material/Input";
+import "./Form.css"
 
 const Markets = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
@@ -75,14 +76,15 @@ const Markets = () => {
             />
           </Box>
           <MarketList items={loadedMarkets} />
+          <div className="pagination">
           <Pagination
             count={totalPages}
             page={page}
-            className="pagination"
             color="success"
             onChange={selectPage}
             size="large"
           />
+          </div>
         </div>
       )}
     </React.Fragment>

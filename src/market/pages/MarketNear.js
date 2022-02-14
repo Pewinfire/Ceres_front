@@ -7,6 +7,7 @@ import { useHttpClient } from "../../shared/hooks/http-hook";
 import { Pagination } from "@mui/material";
 import { Box } from "@mui/system";
 import Input from "@mui/material/Input";
+import "./Form.css"
 
 const MarketNear = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();

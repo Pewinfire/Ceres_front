@@ -115,6 +115,11 @@ const Dashboard = () => {
               <Users />
             </div>
           )}
+           {general && (
+            <div className="ds-list">
+              <Users />
+            </div>
+          )}
           {markets && (
             <div className="ds-list">
               <ul>

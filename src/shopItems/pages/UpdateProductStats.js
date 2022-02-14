@@ -1,5 +1,4 @@
 import React, { useEffect, useState /* useContext */ } from "react";
-import { useParams, useHistory } from "react-router-dom";
 import Input from "../../shared/components/FormElements/Input";
 import Button from "../../shared/components/FormElements/Button";
 import Card from "../../shared/components/UIElements/Card";
@@ -9,13 +8,7 @@ import { VALIDATOR_REQUIRE } from "../../shared/util/validators";
 import { useForm } from "../../shared/hooks/form-hook";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import Chip from "@mui/material/Chip";
-
-import {
-  Autocomplete,
-  Input as InputM,
-  Select,
-  TextField,
-} from "@mui/material";
+import { Autocomplete, Input as InputM, TextField } from "@mui/material";
 
 import "./Form.css";
 import { ListItem } from "@mui/material";
@@ -211,12 +204,6 @@ const UpdateProductStats = (props) => {
           </div>
           <div className="up-chip">
             {chipFormats.map((data) => {
-              let icon;
-
-              /*   if (data.label === "React") {
-              icon = <TagFacesIcon />;
-            } */
-
               return (
                 <ListItem>
                   <Chip

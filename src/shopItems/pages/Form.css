@@ -1,27 +1,33 @@
 .style-form {
   position: relative;
-  top: -10vw;
-  left: 2vw;
   list-style: none;
-  margin: 0 auto;
-  padding: 1rem;
+  margin-top: 5vw;
   width: 90%;
-  max-width: 40rem;
+  height: auto;
+  max-width: 50vw;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  border-radius: 6px;
+  border-radius: 1vw;
   background: white;
+  font-size: 1vw;
+}
+.form-container2 {
+  position: relative;
+  top: -8vw;
+  left: -22vw;
+  width: 100vw;
+  height: auto;
 }
 .style-formUP {
   position: relative;
   list-style: none;
-  top: 10vw;
-  left: 37vw;
-  padding: 3vw;
-  width: 30vw;
-  font-size: 1.1vw;
+  margin-top: 5vw;
+  width: 90%;
+  height: auto;
+  max-width: 50vw;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  border-radius: 6px;
+  border-radius: 1vw;
   background: white;
+  font-size: 1vw;
 }
 .style-formUP .input {
   margin-bottom: 1.2vw;
@@ -106,7 +112,7 @@
   font-family: "Staatliches" !important;
 }
 
-.css-viou3o-MuiAutocomplete-root .MuiOutlinedInput-root  {
+.css-viou3o-MuiAutocomplete-root .MuiOutlinedInput-root {
   font-family: "Staatliches" !important;
 }
 
