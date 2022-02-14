@@ -95,7 +95,7 @@ const ProductList = (props) => {
                   onClick={() => sort("stats.price")}
                   dClassName="dir-button"
                 >
-                 Categorias
+                 Precio
                   {(props.dir === 1 && <i className="fas fa-sort-up"></i>) || (
                     <i className="fas fa-sort-down"></i>
                   )}
