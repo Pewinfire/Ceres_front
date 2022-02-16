@@ -153,6 +153,7 @@ const Users = (props) => {
                   items={loadedUsers}
                   token={props.token}
                   user={updateUserButton}
+                  update={updateFetch}
                   dir={dir}
                 />
               )}

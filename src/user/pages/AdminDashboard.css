@@ -122,7 +122,8 @@
   
   .ds-list {
     position: relative;
-    top: -12vw;
+    top: 2.2vw;
+    left: 1vw;
   }
   
   .ds-list ul {

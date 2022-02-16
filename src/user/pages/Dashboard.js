@@ -7,7 +7,7 @@ import { useHttpClient } from "../../shared/hooks/http-hook";
 import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import ProfileMenu from "../components/ProfileMenu";
-import "./Dashboard.css";
+import "./SellerDashboard";
 
 // falta autentificacion.
 

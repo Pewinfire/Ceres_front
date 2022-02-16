@@ -59,11 +59,11 @@ const MarketNear = () => {
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
-      {isLoading && (
+    {/*   {isLoading && (
         <div className="center">
           <LoadingSpinner />
         </div>
-      )}
+      )} */}
       {!isLoading && loadedMarkets && (
         <div>
           <Box

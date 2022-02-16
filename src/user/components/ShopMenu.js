@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import Button from "../../shared/components/FormElements/Button";
 import Card from "../../shared/components/UIElements/Card";
-import { AuthContext } from "../../shared/context/auth-context";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import Modal from "../../shared/components/UIElements/Modal";
 import ShopItems from "../../shopItems/pages/ShopItems";

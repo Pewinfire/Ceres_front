@@ -55,11 +55,11 @@ const Shops = () => {
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
-      {isLoading && (
+      {/* { && (
         <div className="center">
           <LoadingSpinner />
         </div>
-      )}
+      )} */}
       {!isLoading && loadedShops && (
         <div>
           <Box

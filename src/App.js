@@ -33,7 +33,7 @@ const ShopPage = React.lazy(() => import("./shop/pages/ShopPage"));
 
 const AnimatedSwitch = withRouter(({ location }) => (
   <TransitionGroup>
-    <CSSTransition key={location.key} classNames="page" timeout={900}>
+    <CSSTransition key={location.key} classNames="page" timeout={600}>
       <Switch location={location}>
         <Route path="/" exact>
           <Landing />
@@ -66,7 +66,7 @@ const AnimatedSwitch = withRouter(({ location }) => (
 ));
 const AnimatedSwitchNT = withRouter(({ location }) => (
   <TransitionGroup>
-    <CSSTransition key={location.key} classNames="page" timeout={900}>
+    <CSSTransition key={location.key} classNames="page" timeout={600}>
       <Switch location={location}>
         <Route path="/" exact>
           <Landing />

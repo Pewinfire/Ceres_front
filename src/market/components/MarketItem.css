@@ -1,17 +1,21 @@
 .market-item {
   margin: 4px;
   width: 50%;
+  
   padding: 1%;
   flex: 0 1 calc(33% - 8px);
 }
 
+
 .market-item__content {
   padding: 0;
+  
 }
 
 .market-item__info {
   padding: 1rem;
   text-align: center;
+  height: 11vw;
 }
 
 .market-item__image {

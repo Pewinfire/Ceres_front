@@ -48,8 +48,7 @@ body {
   align-items: center;
 }
 
-.page {
-}
+
 /* entering */
 .page-enter {  
   opacity: 0;
@@ -57,7 +56,7 @@ body {
 /* entered */
 .page-enter-active {
   opacity: 1;
-  transition: all 333ms linear 300ms;
+  transition: opacity 700ms;
 }
 /* exiting */
 .page-exit {
@@ -66,5 +65,5 @@ body {
 /* exit */
 .page-exit-active {
   opacity: 0;
-  transition: all 333ms linear
+  transition: opacity 700ms;
 }

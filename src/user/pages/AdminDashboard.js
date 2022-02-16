@@ -7,7 +7,9 @@ import { useHttpClient } from "../../shared/hooks/http-hook";
 import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import Users from "./User";
+import AdminMarketsMenu from "../components/AdminMarketsMenu";
 import "./SellerDashboard.css";
+import AdminShopsMenu from "../components/AdminShopsMenu";
 
 // falta autentificacion.
 
@@ -124,80 +126,12 @@ const Dashboard = () => {
             )}
             {markets && (
               <div className="ds-list">
-                <ul>
-                  <li>
-                    <Card className="ds-card">
-                      <img
-                        src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/update.png`}
-                        alt="update"
-                      ></img>
-                      <Button to={`/markets/new`} dClassName="ds-button">
-                        <p>Create Market </p>
-                      </Button>
-                    </Card>
-                  </li>
-                  <li>
-                    <Card className="ds-card">
-                      <img
-                        src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/shield.png`}
-                        alt="Seguridad y datos de inicio de sesión"
-                      ></img>
-                      <Button dClassName="ds-button">
-                        <p>`/:marketId/market/edit` </p>
-                      </Button>
-                    </Card>
-                  </li>
-                  <li>
-                    <Card className="ds-card">
-                      <img
-                        src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/customer-service.png`}
-                        alt="Ayuda"
-                      ></img>
-                      <Button dClassName="ds-button">
-                        <p>Asistencia</p>
-                      </Button>
-                    </Card>
-                  </li>
-                </ul>
+                <AdminMarketsMenu token={auth.token} />
               </div>
             )}
             {shops && (
               <div className="ds-list">
-                <ul>
-                  <li>
-                    <Card className="ds-card">
-                      <img
-                        src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/update.png`}
-                        alt="update"
-                      ></img>
-                      <Button to={`/shops/new`} dClassName="ds-button">
-                        <p>Create Shop </p>
-                      </Button>
-                    </Card>
-                  </li>
-                  <li>
-                    <Card className="ds-card">
-                      <img
-                        src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/shield.png`}
-                        alt="Seguridad y datos de inicio de sesión"
-                      ></img>
-                      <Button dClassName="ds-button">
-                        <p>`/:marketId/market/edit` </p>
-                      </Button>
-                    </Card>
-                  </li>
-                  <li>
-                    <Card className="ds-card">
-                      <img
-                        src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/customer-service.png`}
-                        alt="Ayuda"
-                      ></img>
-                      <Button dClassName="ds-button">
-                        <p>Asistencia</p>
-                      </Button>
-                    </Card>
-                  </li>
-                </ul>
+                <AdminShopsMenu token={auth.token} />
               </div>
             )}
           </div>
