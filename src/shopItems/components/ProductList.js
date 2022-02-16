@@ -13,7 +13,7 @@ import UpdateProductStats from "../pages/UpdateProductStats";
 import { Checkbox } from "@mui/material";
 import { Avatar } from "@mui/material";
 import Box from "@mui/material/Box";
-
+import { CSSTransition } from "react-transition-group";
 import Modal from "@mui/material/Modal";
 
 import "./ProductList.css";
@@ -21,7 +21,7 @@ import "./ProductList.css";
 const ProductList = (props) => {
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [modalId, setModalId] = useState(false);
-  const [columna, setColumna] = useState("name");
+  
 
   if (props.items.length === 0) {
     return (
@@ -41,10 +41,6 @@ const ProductList = (props) => {
     props.update();
   };
 
-  const sort = (sort) => {
-    setColumna(sort);
-    props.sort(sort);
-  };
 
   return (
     <React.Fragment>
@@ -70,110 +66,47 @@ const ProductList = (props) => {
           </React.Fragment>
         </div>
       </Modal>
-      <TableContainer component={Paper} className="Lista-container">
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell className="Lista-H" align="right">
-                <Button onClick={() => sort("name")} dClassName="dir-button">
-                  
-                  Producto&nbsp;&nbsp;&nbsp;
-                  {(props.dir === 1 && <i className="fas fa-sort-up"></i>) || (
-                    <i className="fas fa-sort-down"></i>
-                  )}
-                </Button>
-              </TableCell>
-              <TableCell className="Lista-H"><h2>Imagen</h2></TableCell>
-              <TableCell align="left" className="Lista-H">
-                <h2>Descripción</h2>
-              </TableCell>
-              <TableCell align="left" className="Lista-H">
-                <h2>Categorias</h2>
-              </TableCell>
-              <TableCell align="left" className="Lista-H">
-                <Button
-                  onClick={() => sort("stats.price")}
-                  dClassName="dir-button"
-                >
-                 Precio
-                  {(props.dir === 1 && <i className="fas fa-sort-up"></i>) || (
-                    <i className="fas fa-sort-down"></i>
-                  )}
-                </Button>
-              </TableCell>
-              <TableCell align="left" className="Lista-H">
-                <Button
-                  onClick={() => sort("stats.stock")}
-                  dClassName="dir-button"
-                >
-                  Stock&nbsp;&nbsp;&nbsp;
-                  {(props.dir === 1 && <i className="fas fa-sort-up"></i>) || (
-                    <i className="fas fa-sort-down"></i>
-                  )}
-                </Button>
-              </TableCell>
-              <TableCell align="left" className="Lista-H">
-                Activo
-              </TableCell>
-              <TableCell align="center" className="Lista-H">
-              <h2>Acciones</h2>
-              </TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {props.items.map((product) => (
-              <TableRow
-                key={product.id}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell
-                  component="th"
-                  scope="row"
-                  align="right"
-                  className="Lista"
-                >
-                  {product.name}
-                </TableCell>
-                <TableCell align="right" className="Lista">
-                  <Avatar
-                    alt={product.name}
-                    src={`${process.env.REACT_APP_BACKEND_IMG}/${product.image}`}
-                    sx={{ width: "2vw", height: "2vw" }}
-                  />
-                </TableCell>
-                <TableCell align="left" className="Lista">
-                  {product.description}
-                </TableCell>
-                <TableCell align="left" className="Lista">
-                  {product.categories.map((category) => {
-                    return category.name + "  ";
-                  })}
-                </TableCell>
-                <TableCell align="left" className="Lista">
-                  {(product.stats && product.stats.price) || "N/A"}
-                </TableCell>
-                <TableCell align="left" className="Lista">
-                  {(product.stats && product.stats.stock) || "N/A"}
-                </TableCell>
-                <TableCell align="left" className="Lista">
-                  <Checkbox />
-                </TableCell>
-                <TableCell align="left" className="Lista">
-                  <Button onClick={() => showStatusWarningHandler(product.id)}>
-                    <i className="fas fa-cogs "></i>
-                  </Button>
-                  <Button to={`//user/update`}>
-                    <i className="fas fa-cogs "></i>
-                  </Button>
-                  <Button to={`//user/update`}>
-                    <i className="fas fa-trash-alt"></i>
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      {props.items.map((product) => (
+         <CSSTransition
+         key={product.id}
+         timeout={500}
+         classNames="item"
+       >
+        <tr className="ds-tabdata">
+          <td>{product.name}</td>
+          <td>
+            {" "}
+            <Avatar
+              alt={product.name}
+              src={`${process.env.REACT_APP_BACKEND_IMG}/${product.image}`}
+              sx={{ width: "2vw", height: "2vw" }}
+            />
+          </td>
+          <td> {product.description.slice(0,22)}...</td>
+          <td>
+            {" "}
+            {product.categories.map((category) => {
+              return category.name + "  ";
+            })}
+          </td>
+          <td> {(product.stats && product.stats.price) || "N/A"}</td>
+          <td> {(product.stats && product.stats.stock) || "N/A"}</td>
+
+          <td className="ds-tabdata-actions">
+            {" "}
+            <Button onClick={() => showStatusWarningHandler(product.id)}>
+              <i className="fa-solid fa-chart-line"></i>
+            </Button>
+            <Button to={`//user/update`}>
+              <i className="fas fa-cogs "></i>
+            </Button>
+            <Button to={`//user/update`}>
+              <i className="fas fa-trash-alt"></i>
+            </Button>
+          </td>
+        </tr>
+        </CSSTransition>
+      ))}
     </React.Fragment>
   );
 };

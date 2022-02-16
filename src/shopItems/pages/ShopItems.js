@@ -7,6 +7,8 @@ import { Box } from "@mui/system";
 import Input from "@mui/material/Input";
 import { Pagination } from "@mui/material";
 import ProductList from "../components/ProductList";
+import Button from "../../shared/components/FormElements/Button";
+import "./ShopItem.css";
 
 const ShopItems = (props) => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
@@ -16,10 +18,11 @@ const ShopItems = (props) => {
   const [totalPages, setTotalPages] = useState(0);
   const [size, setSize] = useState(5);
   const [update, setUpdate] = useState(false);
-  const [sort, setSort] =useState("name");
-  const [dir, setDir]=useState(1);
+  const [sort, setSort] = useState("name");
+  const [columna, setColumna] = useState("name");
+  const [dir, setDir] = useState(1);
   const shopId = useParams().shopId;
-
+  const [transition, setTransition] = useState(false);
   useEffect(() => {
     const fetchShopsProducts = async () => {
       try {
@@ -33,7 +36,18 @@ const ShopItems = (props) => {
       } catch (err) {}
     };
     fetchShopsProducts();
-  }, [sendRequest, shopId, search, page, size, totalPages, props.shop, update, sort, dir]);
+  }, [
+    sendRequest,
+    shopId,
+    search,
+    page,
+    size,
+    totalPages,
+    props.shop,
+    update,
+    sort,
+    dir,
+  ]);
 
   const handleTextFieldKeyDown = (event) => {
     switch (event.key) {
@@ -65,50 +79,90 @@ const ShopItems = (props) => {
     setSort(sort);
     setDir(dir === 1 ? -1 : 1);
   };
- 
+
   return (
     <div>
       <React.Fragment>
         <ErrorModal error={error} onClear={clearError} />
         {isLoading && (
-          <div className="center">
+          <div className="center-container">
             <LoadingSpinner />
           </div>
         )}
-        {!isLoading && loadedShopProducts && (
-          <div className="verde">
-            <ProductList
-              items={loadedShopProducts}
-              token={props.token}
-              update={updateList}
-              sort={updateOrder}
-              dir={dir}
-            />
-            <Box
-              className="search-boxx"
-              sx={{ display: "flex", alignItems: "flex-end" }}
-            >
-              <Input
-                fullWidth
-                label="Buscar"
-                id="fullWidth"
-                className="searchx"
-                /*   inputProps={{ style: { fontSize: 30 } }} // font size of input text
-                inputlabelprops={{ style: { fontSize: 30 } }} */
-                placeholder="  Buscar"
-                onKeyDown={handleTextFieldKeyDown}
+
+        <>
+          <table className="ds-table">
+            <tr className="ds-table-head">
+              <th className="firstChild">
+                Producto
+                <Button
+                  onClick={() => updateOrder("name")}
+                  dClassName="dir-button"
+                >
+                  {(dir === 1 && <i className="fas fa-sort-up"></i>) || (
+                    <i className="fas fa-sort-down"></i>
+                  )}
+                </Button>
+              </th>
+              <th>Imagen</th>
+              <th>Descripción</th>
+              <th>Categorias</th>
+              <th className="th-order">
+                Precio{" "}
+                <Button
+                  onClick={() => updateOrder("stats.price")}
+                  dClassName="dir-button"
+                >
+                  {(dir === 1 && <i className="fas fa-sort-up"></i>) || (
+                    <i className="fas fa-sort-down"></i>
+                  )}
+                </Button>
+              </th>
+              <></>
+              <th>
+                Stock
+                <Button
+                  onClick={() => updateOrder("stats.stock")}
+                  dClassName="dir-button"
+                ></Button>
+              </th>
+              <th className="lastChild">Acciones</th>
+            </tr>
+
+            {!isLoading  && loadedShopProducts &&(
+              <ProductList
+                items={loadedShopProducts}
+                token={props.token}
+                update={updateList}
+                sort={updateOrder}
+                dir={dir}
               />
-            </Box>
-            <Pagination
-              count={totalPages}
-              page={page}
-              className="paginationx"
-              color="success"
-              onChange={selectPage}
-              size="large"
+            )}
+          </table>
+          <Box
+            className="search-boxx"
+            sx={{ display: "flex", alignItems: "flex-end" }}
+          >
+            <Input
+              fullWidth
+              label="Buscar"
+              id="fullWidth"
+              className="searchx"
+              /*   inputProps={{ style: { fontSize: 30 } }} // font size of input text
+                inputlabelprops={{ style: { fontSize: 30 } }} */
+              placeholder="  Buscar"
+              onKeyDown={handleTextFieldKeyDown}
             />
-          </div>
-        )}
+          </Box>
+          <Pagination
+            count={totalPages}
+            page={page}
+            className="paginationx"
+            color="success"
+            onChange={selectPage}
+            size="large"
+          />
+        </>
       </React.Fragment>
     </div>
   );

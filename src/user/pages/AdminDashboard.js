@@ -7,13 +7,13 @@ import { useHttpClient } from "../../shared/hooks/http-hook";
 import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import Users from "./User";
-import "./AdminDashboard.css";
+import "./SellerDashboard.css";
 
 // falta autentificacion.
 
 const Dashboard = () => {
   const [general, setGeneral] = useState(false);
-  const [profile, setProfile] = useState(true);
+  const [users, setUsers] = useState(true);
   const [markets, setMarkets] = useState(false);
   const [shops, setShops] = useState(false);
   const [user, setUser] = useState();
@@ -42,26 +42,26 @@ const Dashboard = () => {
   const buttonHandler = (value) => async () => {
     switch (value) {
       case "general": {
-        setProfile(false);
+        setUsers(false);
         setMarkets(false);
         setShops(false);
         setGeneral(true);
         break;
       }
-      case "profile":
-        setProfile(true);
+      case "users":
+        setUsers(true);
         setMarkets(false);
         setShops(false);
         setGeneral(false);
         break;
       case "markets":
-        setProfile(false);
+        setUsers(false);
         setMarkets(true);
         setShops(false);
         setGeneral(false);
         break;
       case "shops":
-        setProfile(false);
+        setUsers(false);
         setMarkets(false);
         setShops(true);
         setGeneral(false);
@@ -70,7 +70,6 @@ const Dashboard = () => {
         break;
     }
   };
-
 
   return (
     <React.Fragment>
@@ -81,124 +80,128 @@ const Dashboard = () => {
         </div>
       )}
       {!isLoading && user && (
-        <div className="contenedor">
-          <Avatar
-            alt="avatar"
-            src={`${process.env.REACT_APP_BACKEND_IMG}/${user.image}`}
-            sx={{ width: "12vw", height: "12vw" }}
-            className="avatarPoss"
-          />
-          <div className="ButtonMenu">
-            <Button dClassName="ds-button" onClick={buttonHandler("profile")}>
-              <i className="fas fa-users fa-2x">
-                <p>Usuarios</p>
-              </i>
-            </Button>
-            <Button dClassName="ds-button" onClick={buttonHandler("markets")}>
-              <i className="fas fa-map-marker-alt fa-2x">
-                <p>Mercados</p>
-              </i>
-            </Button>
-            <Button dClassName="ds-button" onClick={buttonHandler("shops")}>
-              <i className="fas fa-store fa-2x">
-                <p>Tiendas</p>
-              </i>
-            </Button>
-            <Button dClassName="ds-button" onClick={buttonHandler("general")}>
-              <i className="fas fa-cogs fa-2x">
-                <p>General</p>
-              </i>
-            </Button>
+        <>
+          <div className="top">
+            <Avatar
+              alt="avatar"
+              src={`${process.env.REACT_APP_BACKEND_IMG}/${user.image}`}
+              sx={{ width: "12vw", height: "12vw" }}
+              className="avatarPos"
+            />
+            <div className="ButtonMenu">
+              <Button dClassName="ds-button" onClick={buttonHandler("users")}>
+                <i className="fas fa-users fa-2x">
+                  <p>Usuarios</p>
+                </i>
+              </Button>
+              <Button dClassName="ds-button" onClick={buttonHandler("markets")}>
+                <i className="fas fa-map-marker-alt fa-2x">
+                  <p>Mercados</p>
+                </i>
+              </Button>
+              <Button dClassName="ds-button" onClick={buttonHandler("shops")}>
+                <i className="fas fa-store fa-2x">
+                  <p>Tiendas</p>
+                </i>
+              </Button>
+              <Button dClassName="ds-button" onClick={buttonHandler("general")}>
+                <i className="fas fa-cogs fa-2x">
+                  <p>General</p>
+                </i>
+              </Button>
+            </div>
           </div>
-          {profile && (
-            <div className="ds-list">
-              <Users />
-            </div>
-          )}
-           {general && (
-            <div className="ds-list">
-              <Users />
-            </div>
-          )}
-          {markets && (
-            <div className="ds-list">
-              <ul>
-                <li>
-                  <Card className="ds-card">
-                    <img
-                      src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/update.png`}
-                      alt="update"
-                    ></img>
-                    <Button to={`/markets/new`} dClassName="ds-button">
-                      <p>Create Market </p>
-                    </Button>
-                  </Card>
-                </li>
-                <li>
-                  <Card className="ds-card">
-                    <img
-                      src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/shield.png`}
-                      alt="Seguridad y datos de inicio de sesión"
-                    ></img>
-                    <Button dClassName="ds-button">
-                      <p>`/:marketId/market/edit` </p>
-                    </Button>
-                  </Card>
-                </li>
-                <li>
-                  <Card className="ds-card">
-                    <img
-                      src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/customer-service.png`}
-                      alt="Ayuda"
-                    ></img>
-                    <Button dClassName="ds-button">
-                      <p>Asistencia</p>
-                    </Button>
-                  </Card>
-                </li>
-              </ul>
-            </div>
-          )}
-          {shops && (
-            <div className="ds-list">
-              <ul>
-                <li>
-                  <Card className="ds-card">
-                    <img
-                      src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/update.png`}
-                      alt="update"
-                    ></img>
-                    <Button to={`/shops/new`} dClassName="ds-button">
-                      <p>Create Shop </p>
-                    </Button>
-                  </Card>
-                </li>
-                <li>
-                  <Card className="ds-card">
-                    <img
-                      src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/shield.png`}
-                      alt="Seguridad y datos de inicio de sesión"
-                    ></img>
-                    <Button dClassName="ds-button">
-                      <p>`/:marketId/market/edit` </p>
-                    </Button>
-                  </Card>
-                </li>
-                <li>
-                  <Card className="ds-card">
-                    <img
-                      src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/customer-service.png`}
-                      alt="Ayuda"
-                    ></img>
-                    <Button dClassName="ds-button">
-                      <p>Asistencia</p>
-                    </Button>
-                  </Card>
-                </li>
-              </ul>
-            </div>
-          )}
-        </div>
+          <div className="contenedor">
+            {users && (
+              <div className="options">
+                <Users token={auth.token} />
+              </div>
+            )}
+            {general && (
+              <div className="ds-list">
+                <Users />
+              </div>
+            )}
+            {markets && (
+              <div className="ds-list">
+                <ul>
+                  <li>
+                    <Card className="ds-card">
+                      <img
+                        src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/update.png`}
+                        alt="update"
+                      ></img>
+                      <Button to={`/markets/new`} dClassName="ds-button">
+                        <p>Create Market </p>
+                      </Button>
+                    </Card>
+                  </li>
+                  <li>
+                    <Card className="ds-card">
+                      <img
+                        src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/shield.png`}
+                        alt="Seguridad y datos de inicio de sesión"
+                      ></img>
+                      <Button dClassName="ds-button">
+                        <p>`/:marketId/market/edit` </p>
+                      </Button>
+                    </Card>
+                  </li>
+                  <li>
+                    <Card className="ds-card">
+                      <img
+                        src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/customer-service.png`}
+                        alt="Ayuda"
+                      ></img>
+                      <Button dClassName="ds-button">
+                        <p>Asistencia</p>
+                      </Button>
+                    </Card>
+                  </li>
+                </ul>
+              </div>
+            )}
+            {shops && (
+              <div className="ds-list">
+                <ul>
+                  <li>
+                    <Card className="ds-card">
+                      <img
+                        src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/update.png`}
+                        alt="update"
+                      ></img>
+                      <Button to={`/shops/new`} dClassName="ds-button">
+                        <p>Create Shop </p>
+                      </Button>
+                    </Card>
+                  </li>
+                  <li>
+                    <Card className="ds-card">
+                      <img
+                        src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/shield.png`}
+                        alt="Seguridad y datos de inicio de sesión"
+                      ></img>
+                      <Button dClassName="ds-button">
+                        <p>`/:marketId/market/edit` </p>
+                      </Button>
+                    </Card>
+                  </li>
+                  <li>
+                    <Card className="ds-card">
+                      <img
+                        src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/customer-service.png`}
+                        alt="Ayuda"
+                      ></img>
+                      <Button dClassName="ds-button">
+                        <p>Asistencia</p>
+                      </Button>
+                    </Card>
+                  </li>
+                </ul>
+              </div>
+            )}
+          </div>
+        </>
       )}
     </React.Fragment>
   );

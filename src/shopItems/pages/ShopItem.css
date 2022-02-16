@@ -1,0 +1,41 @@
+.ds-table {
+  width: 74vw;
+  position: relative;
+  top: -1.1vw;
+  left: -7vw;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.lastChild {
+  border-top-right-radius: 2vw !important;
+}
+.ds-table .th-order {
+  display: inline-flex;
+  margin-top: 0vw;
+
+}
+.firstChild {
+  border-top-left-radius: 2vw !important;
+  display: inline-flex;
+  margin-top: 0vw;
+}
+.ds-table-head {
+  height: 6vw;
+  background-color: #39bda7;
+  font-size: 1.5vw;
+  color: white;
+}
+
+.ds-table-head th {
+  padding: 7vw 1.5vw 0vw 1.5vw;
+}
+
+.head {
+  border-radius: 3vw;
+}
+
+.center-container{
+  position: relative;
+  right: 20vw;
+  bottom: 5vw;
+}

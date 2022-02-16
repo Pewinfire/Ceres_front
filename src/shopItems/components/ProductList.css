@@ -1,22 +1,17 @@
+.ds-tabdata-actions {
+  display: flex;
+}
+
+.ds-tabdata td {
+  font-size: 1.2vw;
+  padding: 1vw;
+  padding: 1vw 1.5vw 1vw 1.5vw;
+}
+
 .Lista {
   font-family: "Staatliches" !important;
   font-size: 0.9vw !important;
   padding: 0vw 1.5vw 0.2vw 1.5vw !important;
-}
-
-.Lista-H {
-  background-color: #39bda7;
-  font-family: "Staatliches" !important;
-  padding: 6vw 1.5vw 1.5vw 1.5vw !important;
-  color: white !important;
-}
-
-.Lista-container {
-  position: relative;
-  top: -1vw;
-  left: -7vw;
-  width: 74vw !important ;
-  border-radius: 25px !important;
 }
 
 .paginationx {

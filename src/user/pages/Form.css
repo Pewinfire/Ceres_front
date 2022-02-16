@@ -2,6 +2,10 @@
   position: relative;
   list-style: none;
   margin-top: 5vw;
+  list-style: none;
+  top: 6vw;
+  left: 27vw;
+  padding: 1rem;
   width: 90%;
   height: auto;
   max-width: 50vw;
@@ -10,6 +14,15 @@
   background: white;
   font-size: 1vw;
 }
+
+
+.right {
+  display: flex;
+  margin-top: 6vw;
+  justify-content: space-between
+}
+
+
 
 .form-container {
   position: relative;
