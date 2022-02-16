@@ -49,11 +49,11 @@ const ShopItems = () => {
   return (
     <div>
       <ErrorModal error={error} onClear={clearError} />
-      {isLoading && (
+ {/*      {isLoading && (
         <div className="center">
           <LoadingSpinner />
         </div>
-      )}
+      )} */}
       <React.Fragment>
         <Modal open={showConfirmModal} onClose={cancelDeleteHandler}>
           <Authenticate close={cancelDeleteHandler} />
