@@ -105,6 +105,7 @@ const UpdateUser = (props) => {
     } catch (err) {
       console.log(err);
     }
+    props.updateFetch()
     props.close();
   };
 

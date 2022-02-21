@@ -41,6 +41,8 @@
 .cart-list img {
   height: 6vw;
   width: 4vw;
+  margin-right: 2vw;
+  margin-top: 3vw;
   object-fit: cover;
  
 }

@@ -164,7 +164,7 @@ const ShopPageProductList = (props) => {
             </Modal>
             <ul className="shopPageProduct-List">
               {loadedShopProducts.map((product) => {
-                if (product.stats && product.stats.price !== 0 ) {
+                if (product.stats.price && product.stats.stock && product.stats.price !== 0 ) {
                   return (
                     <li>
                       <ShopPageProducts

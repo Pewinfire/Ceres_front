@@ -15,6 +15,7 @@ const Dashboard = () => {
   const [profile, setProfile] = useState(true);
   const [orders, setOrders] = useState(false);
   const [reviews, setReviews] = useState(false);
+  const [updateRender , setUpdateRender] =useState(false);
   const [user, setUser] = useState();
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const auth = useContext(AuthContext);
@@ -34,8 +35,11 @@ const Dashboard = () => {
       } catch (err) {}
     };
     fetchUsers();
-  }, [sendRequest, auth.userId, auth.token]);
+  }, [sendRequest, auth.userId, auth.token, updateRender]);
 
+  const updateFetch = () => {
+    setUpdateRender(updateRender ? false : true);
+  };
   const buttonHandler = (value) => async () => {
     switch (value) {
       case "profile":
@@ -108,6 +112,7 @@ const Dashboard = () => {
                 <ProfileMenu
                   user={auth.userId}
                   token={auth.token} /* back={{buttonHandler}} */
+                  updateFetch={updateFetch}
                 />
               </div>
             )}

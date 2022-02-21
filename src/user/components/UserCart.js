@@ -17,7 +17,7 @@ const UserCart = (props) => {
       case "u":
         return quantity + "u";
       case "gr":
-        return quantity * 1000 + "gr";
+        return quantity /1000+ "kg";
       case "doc":
         if (quantity === 0.5) {
           return "1/2 doc";

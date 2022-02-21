@@ -106,6 +106,7 @@ const ProfileMenu = (props) => {
           user={props.user}
           token={props.token}
           close={buttonHandler("general")}
+          updateFetch={props.updateFetch}
         />
       )}
         {asistencia && (
