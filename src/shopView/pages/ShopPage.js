@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
 import ErrorModal from "../../shared/components/UIElements/ErrorModal";
-import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import { useParams } from "react-router-dom";
 import ShopPageProductList from "../components/ShopPageProductList";
@@ -9,7 +8,6 @@ import Button from "../../shared/components/FormElements/Button";
 import { Modal } from "@mui/material";
 import Authenticate from "../../user/pages/Authenticate";
 import UserCart from "../../user/components/UserCart";
-
 
 import "./ShopPage.css";
 
@@ -49,11 +47,6 @@ const ShopItems = () => {
   return (
     <div>
       <ErrorModal error={error} onClear={clearError} />
- {/*      {isLoading && (
-        <div className="center">
-          <LoadingSpinner />
-        </div>
-      )} */}
       <React.Fragment>
         <Modal open={showConfirmModal} onClose={cancelDeleteHandler}>
           <Authenticate close={cancelDeleteHandler} />

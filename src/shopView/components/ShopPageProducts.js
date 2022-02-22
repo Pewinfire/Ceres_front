@@ -11,21 +11,23 @@ const ShopPageProducts = (props) => {
             <img
               src={`${process.env.REACT_APP_BACKEND_IMG}/${props.img}`}
             ></img>
-            <div className="property-image-title">
-              {/*   <h5>Card Title</h5>  */}
-            </div>
+            <div className="property-image-title"></div>
           </div>
         </a>
         <div className="property-description">
           <h5> {props.name} </h5>
           <p>{props.description}</p>
-         {/*  <div className="property-social-icons">
-            <i className="fa-solid fa-basket-shopping fa-2x"></i>
-          </div> */}
+          <h5> {props.price + " €/" + props.format} </h5>
         </div>
         <a href="#">
           <div className="property-social-icons">
-           <Button dClassname="ps-button" onClick={()=>props.selectSizes(props.id, props.sizes)}> <i className="fa-solid fa-basket-shopping fa-2x"></i></Button>
+            <Button
+              dClassname="ps-button"
+              onClick={() => props.selectSizes(props.id, props.sizes)}
+            >
+              {" "}
+              <i className="fa-solid fa-basket-shopping fa-2x"></i>
+            </Button>
           </div>
         </a>
       </div>

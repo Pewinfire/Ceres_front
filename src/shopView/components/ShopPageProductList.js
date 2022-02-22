@@ -73,10 +73,10 @@ const ShopPageProductList = (props) => {
     props.update();
   };
 
-  const showStatusWarningHandler = async (id, sizes) => {
+  const showStatusWarningHandler =  (id, sizes) => {
     setProductSizes(sizes);
     setProductId(id);
-    await setShowConfirmModal(true);
+    setShowConfirmModal(true);
   };
   const cancelDeleteHandler = () => {
     setShowConfirmModal(false);
@@ -121,7 +121,7 @@ const ShopPageProductList = (props) => {
 
   return (
     <div>
-       <ErrorModal error={error} onClear={clearError} />
+      <ErrorModal error={error} onClear={clearError} />
       <React.Fragment>
         {isLoading && (
           <div className="center">
@@ -164,7 +164,11 @@ const ShopPageProductList = (props) => {
             </Modal>
             <ul className="shopPageProduct-List">
               {loadedShopProducts.map((product) => {
-                if (product.stats.price && product.stats.stock && product.stats.price !== 0 ) {
+                if (
+                  product.stats.price &&
+                  product.stats.stock &&
+                  product.stats.price !== 0
+                ) {
                   return (
                     <li>
                       <ShopPageProducts
@@ -174,6 +178,7 @@ const ShopPageProductList = (props) => {
                         description={product.description}
                         price={product.stats.price}
                         sizes={product.stats.size}
+                        format={product.stats.format}
                         categories={product.categories}
                         selectSizes={showStatusWarningHandler}
                       />

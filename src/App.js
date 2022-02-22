@@ -29,7 +29,7 @@ const AdminDashboard = React.lazy(() => import("./user/pages/AdminDashboard"));
 const SellerDashboard = React.lazy(() =>
   import("./user/pages/SellerDashboard")
 );
-const ShopPage = React.lazy(() => import("./shop/pages/ShopPage"));
+const ShopPage = React.lazy(() => import("./shopView/pages/ShopPage"));
 
 const AnimatedSwitch = withRouter(({ location }) => (
   <TransitionGroup>

@@ -9,7 +9,6 @@ import { useForm } from "../../shared/hooks/form-hook";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import Chip from "@mui/material/Chip";
 import { Autocomplete, Input as InputM, TextField } from "@mui/material";
-
 import "./Form.css";
 import { ListItem } from "@mui/material";
 
@@ -92,8 +91,6 @@ const UpdateProductStats = (props) => {
       size: chipFormats.sort((a, b) => a.value - b.value),
       format: format.value,
     };
-    console.log(chipFormats);
-    console.log("ar meno entra");
     try {
       await sendRequest(
         `${process.env.REACT_APP_BACKEND_URL}/product/stats/${props.product}`,
@@ -119,13 +116,12 @@ const UpdateProductStats = (props) => {
 
   const setSiz = (event) => {
     setSize(event.target.value);
-    console.log(size);
   };
 
   const handleAdd = () => {
-    setChipFormats([...chipFormats, { value: Number(size) }]);
-    /*  setChipFormats(chipFormats.sort((a, b) => a.value - b.value)); */
-    console.log(chipFormats);
+    if (size && size > 0) {
+      setChipFormats([...chipFormats, { value: Number(size) }]);
+    }
   };
 
   const autoComplet = async (event, value) => {
@@ -158,9 +154,9 @@ const UpdateProductStats = (props) => {
             id="price"
             element="input"
             type="number"
-            label="Precio (kg, pieza)"
+            label="Precio (según formato)"
             validators={[VALIDATOR_REQUIRE()]}
-            errorText="Por favor, introduce un nombre válido."
+            errorText="Por favor, introduce un precio válido."
             onInput={inputHandler}
             initialValue={loadedProduct.stats ? loadedProduct.stats.price : 0}
             initialValid={true}
@@ -177,13 +173,21 @@ const UpdateProductStats = (props) => {
             initialValue={loadedProduct.stats ? loadedProduct.stats.stock : 0}
             initialValid={true}
           />
+          <p>Formato</p>
           <Autocomplete
             id="format"
             options={formats}
-            getOptionLabel={(option) => option.label} // si en la segunda metes mas props'{ 1, 2} filtra por campos
+            getOptionLabel={(option) => option.label}
+            defaultValue={
+              formats[
+                formats.findIndex(
+                  (format) => format.value === loadedProduct.stats.format
+                )
+              ]
+            }
             sx={{ width: 300 }}
             onChange={autoComplet}
-            renderInput={(params) => <TextField {...params} label="Formato" />}
+            renderInput={(params) => <TextField {...params} label="" />}
             isOptionEqualToValue={(option) => option.value}
           />
           <div className="chip">

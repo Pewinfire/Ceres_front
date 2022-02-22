@@ -12,6 +12,7 @@
 }
 .banner {
   display: flex;
+
 }
 .banner img {
   clip-path: circle(26vw at 0 0);
@@ -39,9 +40,8 @@
 .banner-text .score {
   position: relative;
   width: 33vw;
-  top: -8.8vw;
-  left: 52vw;
-  font-size: 2.2vw;
+  top: -1.5vw;
+  font-size: 1.6vw;
   color: #fabb51;
 }
 
@@ -49,16 +49,16 @@
   position: relative;
   width: 33vw;
   top: -8.5vw;
-  left: 29vw;
+  left: 29.4vw;
   font-size: 1.2vw;
 }
 
 .banner-text h3 {
   position: relative;
   width: 20vw;
-  top: -8.5vw;
-  left: 62vw;
-  font-size: 1.2vw;
+  top: -10.5vw;
+  left: 63vw;
+  font-size: 1.6vw;
   text-align: start;
 }
 .shopPlist {

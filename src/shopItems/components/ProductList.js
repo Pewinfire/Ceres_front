@@ -79,7 +79,7 @@ const ProductList = (props) => {
             <Avatar
               alt={product.name}
               src={`${process.env.REACT_APP_BACKEND_IMG}/${product.image}`}
-              sx={{ width: "2vw", height: "2vw" }}
+              sx={{ width: "3vw", height: "3vw" }}
             />
           </td>
           <td> {product.description.slice(0,22)}...</td>
@@ -90,7 +90,7 @@ const ProductList = (props) => {
             })}
           </td>
           <td> {(product.stats && product.stats.price) || "N/A"}</td>
-          <td> {(product.stats && product.stats.stock) || "N/A"}</td>
+          <td> {(product.stats && product.stats.stock + product.stats.format) || "N/A"}</td>
 
           <td className="ds-tabdata-actions">
             {" "}

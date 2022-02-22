@@ -6,19 +6,22 @@
   border-collapse: separate;
   border-spacing: 0;
 }
+.firstChild {
+  border-top-left-radius: 2vw !important;
+  display: inline-flex;
+  margin-top: 0vw;
+  width: 10vw;
+}
 .lastChild {
   border-top-right-radius: 2vw !important;
+  width: 18vw;
 }
 .ds-table .th-order {
   display: inline-flex;
   margin-top: 0vw;
 
 }
-.firstChild {
-  border-top-left-radius: 2vw !important;
-  display: inline-flex;
-  margin-top: 0vw;
-}
+
 .ds-table-head {
   height: 6vw;
   background-color: #39bda7;
