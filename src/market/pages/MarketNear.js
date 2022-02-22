@@ -7,7 +7,7 @@ import { useHttpClient } from "../../shared/hooks/http-hook";
 import { Pagination } from "@mui/material";
 import { Box } from "@mui/system";
 import Input from "@mui/material/Input";
-import "./Form.css"
+import "./Form.css";
 
 const MarketNear = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
@@ -15,7 +15,7 @@ const MarketNear = () => {
   const [search, setSearch] = useState("merca");
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [size, setSize] = useState(3);
+  const [size, setSize] = useState(6);
 
   const address = useParams().addr;
 
@@ -59,7 +59,7 @@ const MarketNear = () => {
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
-    {/*   {isLoading && (
+      {/*   {isLoading && (
         <div className="center">
           <LoadingSpinner />
         </div>
@@ -83,8 +83,8 @@ const MarketNear = () => {
           </Box>
           <MarketList items={loadedMarkets} />{" "}
           <Pagination
-            count={totalPages}
-            page={page}
+            count={totalPages >= 1 ? totalPages : 1}
+            page={page >= 1 ? page : 1}
             className="pagination"
             color="success"
             onChange={selectPage}

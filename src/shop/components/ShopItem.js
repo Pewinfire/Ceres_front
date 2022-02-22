@@ -8,7 +8,7 @@ import "./ShopItem.css";
 
 const ShopsItem = (props) => {
   return (
-       <React.Fragment>
+    <React.Fragment>
       <li className="shop-item">
         <Card className="shop-item__content">
           <div className="shop-item__image">
@@ -19,7 +19,11 @@ const ShopsItem = (props) => {
           </div>
           <div className="shop-item__info">
             <h1>{props.name}</h1>
-            <p>{props.description}</p>
+            <p>
+              {props.description.length > 100
+                ? props.description.slice(0, 100) + "..."
+                : props.description}
+            </p>
           </div>
           <div className="shop-item__actions">
             <Button to={`/shopPage/${props.id}`}>Ir</Button>
@@ -27,7 +31,6 @@ const ShopsItem = (props) => {
         </Card>
       </li>
     </React.Fragment>
-
   );
 };
 

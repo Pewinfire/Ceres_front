@@ -6,7 +6,6 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap ;
-  
   max-height: 20rem;
 }
 .search-box{
@@ -14,17 +13,26 @@
   margin-top: 9vw;
   left: 69%;
   width: 20vw;
- 
- 
 }
 .search{
-  font-family: Haettenschweiler;
+  font-family: "Staatliches" !important;
+  padding-left: 1.2vw;
   font-size: 10vw;
   background-color: white;
   border: transparent;
   overflow:hidden;
   border-radius: 40px 40px 40px 0px;
  
+}
+
+.pagination{
+  background-color: transparent;
+  color: white;
+  position: fixed;
+  right: 0%;
+  bottom: 0%;
+  width: 15%;
+
 }
 /*   @media (min-width: 768px) {
     .market-list {
