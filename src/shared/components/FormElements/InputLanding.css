@@ -62,3 +62,18 @@
   background: #0fa774;
 
 }
+
+.botton{
+  
+  
+  height: 3.05vw;
+}
+
+.botton p{
+  position: relative;
+  top: -1.7vw;
+  left:0.5Fvw;
+  font-family: "Staatliches" !important;
+  font-size: 1.5vw;
+  
+}

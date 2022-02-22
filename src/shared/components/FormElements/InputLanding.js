@@ -86,7 +86,7 @@ export default class InputLanding extends React.Component {
                   type="submit"
                   disabled={!this.state.address}
                 >
-                  Buscar
+                 <p>Buscar</p> 
                 </Button>
               </NavLink>
             </div>
