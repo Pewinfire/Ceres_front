@@ -73,8 +73,8 @@ const ProductList = (props) => {
          classNames="item"
        >
         <tr className="ds-tabdata">
-          <td>{product.name}</td>
-          <td>
+          <td className="ds-short">{product.name}</td>
+          <td className="ds-img">
             {" "}
             <Avatar
               alt={product.name}
@@ -82,17 +82,17 @@ const ProductList = (props) => {
               sx={{ width: "3vw", height: "3vw" }}
             />
           </td>
-          <td> {product.description.slice(0,22)}...</td>
-          <td>
+          <td className="ds-medium"> {product.description.slice(0,22)}...</td>
+          <td className="ds-short">
             {" "}
             {product.categories.map((category) => {
               return category.name + "  ";
             })}
           </td>
-          <td> {(product.stats && product.stats.price) || "N/A"}</td>
-          <td> {(product.stats && product.stats.stock + product.stats.format) || "N/A"}</td>
+          <td className="ds-short"> {(product.stats && product.stats.price) || "N/A"}</td>
+          <td className="ds-short"> {(product.stats && product.stats.stock + product.stats.format) || "N/A"}</td>
 
-          <td className="ds-tabdata-actions">
+          <td className="ds-tabdata-actions" >
             {" "}
             <Button onClick={() => showStatusWarningHandler(product.id)}>
               <i className="fa-solid fa-chart-line"></i>

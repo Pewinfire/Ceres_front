@@ -84,16 +84,10 @@ const ShopItems = (props) => {
     <div>
       <React.Fragment>
         <ErrorModal error={error} onClear={clearError} />
-        {isLoading && (
-          <div className="center-container">
-            <LoadingSpinner />
-          </div>
-        )}
-
         <>
           <table className="ds-table">
             <tr className="ds-table-head">
-              <th className="firstChild">
+              <th className="ds-primero">
                 Producto
                 <Button
                   onClick={() => updateOrder("name")}
@@ -104,10 +98,30 @@ const ShopItems = (props) => {
                   )}
                 </Button>
               </th>
-              <th>Imagen</th>
-              <th>Descripción</th>
-              <th>Categorias</th>
-              <th className="th-order">
+              <th className="ds-img">Imagen</th>
+              <th className="ds-medium">
+                Descripción
+                <Button
+                  onClick={() => updateOrder("description")}
+                  dClassName="dir-button"
+                >
+                  {(dir === 1 && <i className="fas fa-sort-up"></i>) || (
+                    <i className="fas fa-sort-down"></i>
+                  )}
+                </Button>
+              </th>
+              <th className="ds-short">
+                Categorias
+                <Button
+                  onClick={() => updateOrder("category")}
+                  dClassName="dir-button"
+                >
+                  {(dir === 1 && <i className="fas fa-sort-up"></i>) || (
+                    <i className="fas fa-sort-down"></i>
+                  )}
+                </Button>
+              </th>
+              <th className="ds-short">
                 Precio{" "}
                 <Button
                   onClick={() => updateOrder("stats.price")}
@@ -119,17 +133,21 @@ const ShopItems = (props) => {
                 </Button>
               </th>
               <></>
-              <th>
+              <th className="ds-short">
                 Stock
                 <Button
                   onClick={() => updateOrder("stats.stock")}
                   dClassName="dir-button"
-                ></Button>
+                >
+                  {(dir === 1 && <i className="fas fa-sort-up"></i>) || (
+                    <i className="fas fa-sort-down"></i>
+                  )}
+                </Button>
               </th>
-              <th className="lastChild">Acciones</th>
+              <th className="ds-ultimo">Acciones</th>
             </tr>
 
-            {!isLoading  && loadedShopProducts &&(
+            {!isLoading && loadedShopProducts && (
               <ProductList
                 items={loadedShopProducts}
                 token={props.token}
@@ -137,6 +155,11 @@ const ShopItems = (props) => {
                 sort={updateOrder}
                 dir={dir}
               />
+            )}
+            {isLoading && (
+              <div className="center-container">
+                <LoadingSpinner />
+              </div>
             )}
           </table>
           <Box

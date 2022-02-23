@@ -1,17 +1,37 @@
 .ds-tabdata-actions {
   display: flex;
+  width: 11.9vw;
 }
+
+.ds-tabdata-actions .button{
+  width: 1vw;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
 
 .ds-tabdata td {
   font-size: 1.2vw;
-  padding: 1vw;
-  padding: 1vw 1.5vw 1vw 1.5vw;
+padding: 1vw;
 }
 
 .Lista {
   font-family: "Staatliches" !important;
   font-size: 0.9vw !important;
   padding: 0vw 1.5vw 0.2vw 1.5vw !important;
+}
+.ds-img{
+  width:3.2%
+}
+.ds-short {
+  width: 15%;
+}
+.ds-medium {
+  width: 20%;
+}
+.ds-large {
+  width: 25%;
 }
 
 .paginationx {
@@ -38,12 +58,3 @@
   border-radius: 40px 40px 40px 0px;
 }
 
-.dir-button {
-  font-size: 1.2vw;
-  border: hidden;
-  background-color: transparent;
-  color: white;
-  display: flex;
-  font-size: 1.2vw !important;
-  font-family: "Staatliches" !important;
-}
