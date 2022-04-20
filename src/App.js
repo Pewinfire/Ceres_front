@@ -6,30 +6,23 @@ import {
   Switch,
   withRouter,
 } from "react-router-dom";
-import Landing from "./landing/Landing";
+import Landing from "./views/landing/Landing";
 import MainNavigation from "./shared/components/Navigation/MainNavigation";
 import LoadingSpinner from "./shared/components/UIElements/LoadingSpinner";
-/* import MarketNear from "./market/pages/MarketNear";
-import Markets from "./market/pages/Markets";
-import Shops from "./shop/pages/Shops";
-import Dashboard from "./user/pages/Dashboard";
-import AdminDashboard from "./user/pages/AdminDashboard";
-import SellerDashboard from "./user/pages/SellerDashboard";
-import ShopPage from "./shop/pages/ShopPage"; */
 import { AuthContext } from "./shared/context/auth-context";
 import { useAuth } from "./shared/hooks/auth-hook";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
-const Authenticate = React.lazy(() => import("./user/pages/Authenticate"));
-const MarketNear = React.lazy(() => import("./market/pages/MarketNear"));
-const Markets = React.lazy(() => import("./market/pages/Markets"));
-const Shops = React.lazy(() => import("./shop/pages/Shops"));
-const Dashboard = React.lazy(() => import("./user/pages/Dashboard"));
-const AdminDashboard = React.lazy(() => import("./user/pages/AdminDashboard"));
+const Authenticate = React.lazy(() => import("./views/user/pages/Authenticate"));
+const MarketNear = React.lazy(() => import("./views/market/pages/MarketNear"));
+const Markets = React.lazy(() => import("./views/market/pages/Markets"));
+const Shops = React.lazy(() => import("./views/shop/pages/Shops"));
+const Dashboard = React.lazy(() => import("./views/user/pages/Dashboard"));
+const AdminDashboard = React.lazy(() => import("./views/user/pages/AdminDashboard"));
 const SellerDashboard = React.lazy(() =>
-  import("./user/pages/SellerDashboard")
+  import("./views/user/pages/SellerDashboard")
 );
-const ShopPage = React.lazy(() => import("./shopView/pages/ShopPage"));
+const ShopPage = React.lazy(() => import("./views/shopView/pages/ShopPage"));
 
 const AnimatedSwitch = withRouter(({ location }) => (
   <TransitionGroup>
