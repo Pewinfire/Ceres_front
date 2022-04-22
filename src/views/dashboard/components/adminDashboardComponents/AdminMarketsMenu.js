@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Button from "../../../shared/components/FormElements/Button";
-import Card from "../../../shared/components/UIElements/Card";
-import { useHttpClient } from "../../../shared/hooks/http-hook";
+import Button from "../../../../shared/components/FormElements/Button";
+import Card from "../../../../shared/components/UIElements/Card";
+import { useHttpClient } from "../../../../shared/hooks/http-hook";
 import "./ShopMenu.css";
-import NewMarket from "../../market/pages/NewMarket";
+import NewMarket from "./NewMarket";
 
 const AdminMarketsMenu = (props) => {
   const [newMarket, setNewMarket] = useState(false);

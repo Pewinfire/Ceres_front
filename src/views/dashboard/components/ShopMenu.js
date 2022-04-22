@@ -7,7 +7,7 @@ import ShopItems from "../../shopItems/pages/ShopItems";
 import NewProduct from "../../shopItems/pages/NewProduct";
 /* import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner"; */
-import UpdateShop from "../../shop/pages/UpdateShop";
+import UpdateShop from "./UpdateShop";
 import "./ShopMenu.css";
 
 const ShopMenu = (props) => {

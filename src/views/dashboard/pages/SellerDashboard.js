@@ -11,7 +11,7 @@ import ProfileMenu from "../components/ProfileMenu";
 import "./SellerDashboard.css";
 // falta autentificacion.
 
-const Dashboard = () => {
+const SellerDashboard = () => {
   const [profile, setProfile] = useState(true);
   const [orders, setOrders] = useState(false);
   const [shop, setShop] = useState(false);
@@ -139,4 +139,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default SellerDashboard;

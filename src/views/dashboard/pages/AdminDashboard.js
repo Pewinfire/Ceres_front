@@ -6,14 +6,14 @@ import { AuthContext } from "../../../shared/context/auth-context";
 import { useHttpClient } from "../../../shared/hooks/http-hook";
 import ErrorModal from "../../../shared/components/UIElements/ErrorModal";
 import LoadingSpinner from "../../../shared/components/UIElements/LoadingSpinner";
-import Users from "./User";
-import AdminMarketsMenu from "../components/AdminMarketsMenu";
+import UsersList from "../components/adminDashboardComponents/UsersList";
+import AdminMarketsMenu from "../components/adminDashboardComponents/AdminMarketsMenu";
 import "./SellerDashboard.css";
-import AdminShopsMenu from "../components/AdminShopsMenu";
+import AdminShopsMenu from "../components/adminDashboardComponents/AdminShopsMenu";
 
 // falta autentificacion.
 
-const Dashboard = () => {
+const AdminDashboard = () => {
   const [general, setGeneral] = useState(false);
   const [users, setUsers] = useState(true);
   const [markets, setMarkets] = useState(false);
@@ -116,12 +116,12 @@ const Dashboard = () => {
           <div className="contenedor">
             {users && (
               <div className="options">
-                <Users token={auth.token} />
+                <UsersList token={auth.token} />
               </div>
             )}
             {general && (
               <div className="ds-list">
-                <Users />
+              
               </div>
             )}
             {markets && (
@@ -141,4 +141,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default AdminDashboard;

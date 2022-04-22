@@ -12,8 +12,6 @@ import { useForm } from "../../../shared/hooks/form-hook";
 import { useHttpClient } from "../../../shared/hooks/http-hook";
 import ImageUpload from "../../../shared/components/FormElements/ImageUpload";
 
-import "./Form.css";
-
 const UpdateShop = (props) => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedShop, setLoadedShop] = useState();

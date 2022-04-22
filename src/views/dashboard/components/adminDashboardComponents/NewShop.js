@@ -1,17 +1,16 @@
 import React, { useState, useEffect, useContext } from "react";
-import Input from "../../../shared/components/FormElements/Input";
-import Button from "../../../shared/components/FormElements/Button";
-import ErrorModal from "../../../shared/components/UIElements/ErrorModal";
-import LoadingSpinner from "../../../shared/components/UIElements/LoadingSpinner";
-import ImageUpload from "../../../shared/components/FormElements/ImageUpload";
+import Input from "../../../../shared/components/FormElements/Input";
+import Button from "../../../../shared/components/FormElements/Button";
+import ErrorModal from "../../../../shared/components/UIElements/ErrorModal";
+import LoadingSpinner from "../../../../shared/components/UIElements/LoadingSpinner";
+import ImageUpload from "../../../../shared/components/FormElements/ImageUpload";
 import {
   VALIDATOR_MINLENGTH,
   VALIDATOR_REQUIRE,
-} from "../../../shared/util/validators";
-import { useForm } from "../../../shared/hooks/form-hook";
-import { useHttpClient } from "../../../shared/hooks/http-hook";
-import { AuthContext } from "../../../shared/context/auth-context";
-import "./Form.css";
+} from "../../../../shared/util/validators";
+import { useForm } from "../../../../shared/hooks/form-hook";
+import { useHttpClient } from "../../../../shared/hooks/http-hook";
+import { AuthContext } from "../../../../shared/context/auth-context";
 import { Autocomplete, TextField } from "@mui/material";
 
 const NewShop = (props) => {

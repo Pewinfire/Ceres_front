@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import Card from "../../../shared/components/UIElements/Card";
-import Button from "../../../shared/components/FormElements/Button";
+import Card from "../../../../shared/components/UIElements/Card";
+import Button from "../../../../shared/components/FormElements/Button";
 import { Box } from "@mui/system";
 import { Input } from "@mui/material";
 import { Pagination } from "@mui/material";
 import { Avatar } from "@mui/material";
-import Modal from "../../../shared/components/UIElements/Modal";
-import { useHttpClient } from "../../../shared/hooks/http-hook";
-import "./UsersList.css";
+import Modal from "../../../../shared/components/UIElements/Modal";
+import { useHttpClient } from "../../../../shared/hooks/http-hook";
+import "./UsersListRow.css";
 
-const UserList = (props) => {
+const UserListRow = (props) => {
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [modalId, setModalId] = useState(false);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
@@ -108,4 +108,4 @@ const UserList = (props) => {
   );
 };
 
-export default UserList;
+export default UserListRow;

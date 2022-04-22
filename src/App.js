@@ -17,10 +17,10 @@ const Authenticate = React.lazy(() => import("./views/user/pages/Authenticate"))
 const MarketNear = React.lazy(() => import("./views/market/pages/MarketNear"));
 const Markets = React.lazy(() => import("./views/market/pages/Markets"));
 const Shops = React.lazy(() => import("./views/shop/pages/Shops"));
-const Dashboard = React.lazy(() => import("./views/user/pages/Dashboard"));
-const AdminDashboard = React.lazy(() => import("./views/user/pages/AdminDashboard"));
+const Dashboard = React.lazy(() => import("./views/dashboard/pages/Dashboard"));
+const AdminDashboard = React.lazy(() => import("./views/dashboard/pages/AdminDashboard"));
 const SellerDashboard = React.lazy(() =>
-  import("./views/user/pages/SellerDashboard")
+  import("./views/dashboard/pages/SellerDashboard")
 );
 const ShopPage = React.lazy(() => import("./views/shopView/pages/ShopPage"));
 

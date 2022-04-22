@@ -1,0 +1,39 @@
+.ds-tienda img {
+  width: 10vw;
+  height: 10vw;
+  object-fit: cover;
+}
+.ds-tienda {
+  width: 53vw;
+  display: flex;
+  margin-left: 1.5vw;
+}
+
+.ds-tienda-info {
+  font-family: "Staatliches" !important;
+  padding: 1vw 5vw 1vw;
+  font-size: 2vw;
+  color: #39bda7;
+}
+
+.ds-tienda-status {
+  font-family: "Staatliches" !important;
+  padding-right: 1vw;
+  font-size: 1.2vw;
+  color: #39bda7;
+}
+
+.ds-tienda-status .button {
+  font-size: 1.5vw;
+  height: 3vw;
+  width: 10vw;
+  position: absolute;
+  bottom: 0.5vw;
+  right: 1vw;
+  background-color: #39bda7;
+}
+
+.relleno{
+  height: 3vw;
+
+}

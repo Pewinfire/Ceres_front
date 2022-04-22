@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import Button from "../../../shared/components/FormElements/Button";
+import Button from "../../../../shared/components/FormElements/Button";
 import { Box } from "@mui/system";
 import { Input } from "@mui/material";
 import { Pagination } from "@mui/material";
-import ErrorModal from "../../../shared/components/UIElements/ErrorModal";
-import LoadingSpinner from "../../../shared/components/UIElements/LoadingSpinner";
-import { useHttpClient } from "../../../shared/hooks/http-hook";
-import UsersList from "../components/UsersList";
-import UpdateUser from "../components/UpdateUser";
-import "../components/UsersList.css";
-const Users = (props) => {
+import ErrorModal from "../../../../shared/components/UIElements/ErrorModal";
+import LoadingSpinner from "../../../../shared/components/UIElements/LoadingSpinner";
+import { useHttpClient } from "../../../../shared/hooks/http-hook";
+import UsersListRow from "./UsersListRow";
+import UpdateUser from "../UpdateUser";
+import "./UsersListRow.css";
+const UsersList = (props) => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedUsers, setLoadedUsers] = useState();
   const [update, setUpdate] = useState(true);
@@ -149,7 +149,7 @@ const Users = (props) => {
                 <th className="lastChild">Acciones</th>
               </tr>
               {!isLoading && loadedUsers && (
-                <UsersList
+                <UsersListRow
                   items={loadedUsers}
                   token={props.token}
                   user={updateUserButton}
@@ -195,4 +195,4 @@ const Users = (props) => {
   );
 };
 
-export default Users;
+export default UsersList;
