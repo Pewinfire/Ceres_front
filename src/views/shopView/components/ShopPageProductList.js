@@ -38,18 +38,17 @@ const ShopPageProductList = (props) => {
         );
         setLoadedShopProducts(responseData.products);
         /*         setTotalPages(responseData.totalPages); */
-      } catch (err) {}
+      } catch (err) { }
     };
     fetchShopsProducts();
   }, [
-    sendRequest,
+    sendRequest
     /*   search,
     page,
     size,
     sort,
     dir, 
     totalPages,*/
-    props.shop,
   ]);
 
   const addToCart = async () => {
@@ -66,14 +65,14 @@ const ShopPageProductList = (props) => {
           Authorization: "Bearer " + props.token,
         }
       );
-    } catch (err) {}
+    } catch (err) { }
 
     setCartItem({ productId: "", productSize: "" });
     setShowConfirmModal(false);
     props.update();
   };
 
-  const showStatusWarningHandler =  (id, sizes) => {
+  const showStatusWarningHandler = (id, sizes) => {
     setProductSizes(sizes);
     setProductId(id);
     setShowConfirmModal(true);
@@ -123,13 +122,8 @@ const ShopPageProductList = (props) => {
     <div>
       <ErrorModal error={error} onClear={clearError} />
       <React.Fragment>
-        {isLoading && (
-          <div className="center">
-            <LoadingSpinner />
-          </div>
-        )}
 
-        {!isLoading && loadedShopProducts && (
+        {loadedShopProducts && (
           <div>
             <Modal open={showConfirmModal} onClose={cancelDeleteHandler}>
               <Card className="sp-sizes">
