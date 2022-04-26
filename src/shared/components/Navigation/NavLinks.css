@@ -83,7 +83,7 @@
   }
 }
 .main-navigation__header-nav .batton {
-  background: linear-gradient(-45deg, #00b545, #4ee7c6, #27c8b7, #077936);
+  background: linear-gradient(-45deg, #7cd1b8, #319688, #1a888b, #0b4230);
   background-size: 800% 400%;
   padding: 0.3vw 2vw;
   display: inline-block;
@@ -98,7 +98,7 @@
  .main-navigation__header-nav .batton:hover {
   animation: gradient 3s infinite;
   transform: scale(1.05);
-  background: linear-gradient(-45deg, #00b545, #4ee7c6, #27c8b7, #077936);
+  background: linear-gradient(-45deg, #7cd1b8, #319688, #1a888b, #0b4230);
   background-size: 800% 400%;
   animation: gradient 10s infinite cubic-bezier(.62, .28, .23, .99) both;
  }
