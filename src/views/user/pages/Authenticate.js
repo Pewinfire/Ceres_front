@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-
 import Input from "../../../shared/components/FormElements/Input";
 import Button from "../../../shared/components/FormElements/Button";
 import Card from "../../../shared/components/UIElements/Card";
@@ -10,6 +9,8 @@ import {
   VALIDATOR_EMAIL,
   VALIDATOR_MINLENGTH,
   VALIDATOR_REQUIRE,
+  VALIDATOR_DNI,
+  VALIDATOR_PASS,
 } from "../../../shared/util/validators";
 import { useForm } from "../../../shared/hooks/form-hook";
 import { AuthContext } from "../../../shared/context/auth-context";
@@ -147,7 +148,7 @@ const Authenticate = (props) => {
                 id="dni"
                 type="text"
                 label="NIF"
-                validators={[VALIDATOR_REQUIRE]}
+                validators={[VALIDATOR_DNI]}
                 errorText="Por favor, introduce un DNI o NIE  valido"
                 onInput={inputHandler}
               />
@@ -192,6 +193,18 @@ const Authenticate = (props) => {
             errorText="Please enter a valid password, at least 6 characters ."
             onInput={inputHandler}
           />
+          {!isLoginMode && (
+            <Input
+              id="password2"
+              element="input"
+              type="password"
+              label="Confirmacion del password"
+              validators={[VALIDATOR_PASS(formState.inputs.password.value)]}
+              errorText="La contraseña introducida no coincide en los dos campos ."
+              onInput={inputHandler}
+            />
+          )}
+
           <Button type="submit" disabled={!formState.isValid}>
             {isLoginMode ? "Iniciar" : "Registrarse"}
           </Button>

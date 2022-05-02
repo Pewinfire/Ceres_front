@@ -129,7 +129,7 @@ const UserCart = (props) => {
           <div className="cart-footer">
             <h2>Total= </h2>
             <h1>
-            <Button to={`/user/checkout`}>Tramitar pedido</Button>
+            <Button to={`/user/checkout`}>{props.buttonText ? props.buttonText : "Tramitar pedido" }</Button>
             </h1>
           </div>
         </>

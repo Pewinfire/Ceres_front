@@ -2,8 +2,8 @@ import React from 'react'
 import {
   VALIDATOR_MINLENGTH,
   VALIDATOR_REQUIRE,
-} from "../../../../shared/util/validators";
-import { useForm } from "../../../../shared/hooks/form-hook";
+} from "../../../shared/util/validators";
+import { useForm } from "../../../shared/hooks/form-hook";
 
 const CheckoutForm = () => {
 
