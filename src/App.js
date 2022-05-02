@@ -12,6 +12,7 @@ import LoadingSpinner from "./shared/components/UIElements/LoadingSpinner";
 import { AuthContext } from "./shared/context/auth-context";
 import { useAuth } from "./shared/hooks/auth-hook";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+import Checkout from "./views/user/pages/Checkout";
 
 const Authenticate = React.lazy(() => import("./views/user/pages/Authenticate"));
 const MarketNear = React.lazy(() => import("./views/market/pages/MarketNear"));
@@ -51,6 +52,9 @@ const AnimatedSwitch = withRouter(({ location }) => (
         </Route>
         <Route path="/seller/sllrDS" exact>
           <SellerDashboard />
+        </Route>
+        <Route path="/user/checkout" exact>
+          <Checkout />
         </Route>
         <Redirect to="/" />
       </Switch>

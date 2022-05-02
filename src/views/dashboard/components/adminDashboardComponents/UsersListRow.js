@@ -98,7 +98,7 @@ const UserListRow = (props) => {
             >
               <i class="fa-solid fa-store"></i>
             </Button>
-            <Button to={`//user/update`}>
+            <Button to={`/user/update`}>
               <i className="fas fa-trash-alt"></i>
             </Button>
           </td>

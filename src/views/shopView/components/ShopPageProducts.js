@@ -36,8 +36,4 @@ const ShopPageProducts = (props) => {
 };
 
 export default ShopPageProducts;
-/* <div className="pProducto">
-      <img src={`${process.env.REACT_APP_BACKEND_IMG}/${props.img}`}></img>
-      <h1>{props.name}</h1>
-      <div className="buttones"></div>
-  </div>; */
+

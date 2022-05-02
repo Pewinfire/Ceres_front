@@ -97,10 +97,10 @@ const ProductList = (props) => {
             <Button onClick={() => showStatusWarningHandler(product.id)}>
               <i className="fa-solid fa-chart-line"></i>
             </Button>
-            <Button to={`//user/update`}>
+            <Button to={`/user/update`}>
               <i className="fas fa-cogs "></i>
             </Button>
-            <Button to={`//user/update`}>
+            <Button to={`/user/update`}>
               <i className="fas fa-trash-alt"></i>
             </Button>
           </td>

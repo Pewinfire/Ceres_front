@@ -3,7 +3,6 @@ import Button from "../../../shared/components/FormElements/Button";
 import { useHttpClient } from "../../../shared/hooks/http-hook";
 import ErrorModal from "../../../shared/components/UIElements/ErrorModal";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import LoadingSpinner from "../../../shared/components/UIElements/LoadingSpinner";
 import "./UserCart.css";
 
 const UserCart = (props) => {
@@ -130,7 +129,7 @@ const UserCart = (props) => {
           <div className="cart-footer">
             <h2>Total= </h2>
             <h1>
-              <Button>Tramitar pedido</Button>
+            <Button to={`/user/checkout`}>Tramitar pedido</Button>
             </h1>
           </div>
         </>
