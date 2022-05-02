@@ -3,6 +3,7 @@ import CheckoutForm from "../components/CheckoutForm";
 import { useHttpClient } from "../../../shared/hooks/http-hook";
 import { AuthContext } from "../../../shared/context/auth-context";
 import UserCart from "../components/UserCart";
+import "./Checkout.css"
 
 const Checkout = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
@@ -36,7 +37,7 @@ const Checkout = () => {
             <CheckoutForm user={loadedUser}></CheckoutForm>
           </div>
           <div className="checkout--UserCart">
-            <UserCart token={auth.token}  userId={auth.userId} />
+            <UserCart token={auth.token}  userId={auth.userId} buttonText="Finalizar Compra" />
           </div>
         </React.Fragment>
       )}
