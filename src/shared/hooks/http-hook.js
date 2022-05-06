@@ -44,7 +44,6 @@ export const useHttpClient = () => {
     []
   );
 
-  
   const clearError = () => {
     setError(null);
   };
