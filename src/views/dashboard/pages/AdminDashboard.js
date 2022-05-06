@@ -90,6 +90,7 @@ const AdminDashboard = () => {
               sx={{ width: "12vw", height: "12vw" }}
               className="avatarPos"
             />
+            
             <div className="ButtonMenu">
               <Button dClassName="ds-button" onClick={buttonHandler("users")}>
                 <i className="fas fa-users fa-2x">
