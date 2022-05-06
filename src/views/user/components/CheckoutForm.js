@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from "react";
 import {
   VALIDATOR_MINLENGTH,
   VALIDATOR_REQUIRE,
@@ -6,35 +6,81 @@ import {
 import { useForm } from "../../../shared/hooks/form-hook";
 
 const CheckoutForm = () => {
+  const [isPayment, setLoadedPayment] = useState(false);
+  const pruebas = {
+    data: { bankloqueseaId: "potato", campo1: 1, campor2: "asda" },
+  };
+  const pruebas2 = {
+    data: { asdasdadId: "potato2", campo1: 1, campor2: "asda" },
+  };
+  var names = {
+    1: /set/,
+    2: /put/,
+    3: /Remove/,
+  }
+  const filterId = (obj) => {
+    const filtered = Object.keys(obj)
+      .filter((key) => /Id$/.test(key))
+      .reduce((acc, key) => {
+        acc[key] = obj[key];
+        return acc;
+      }, {});
+    return Object.values(filtered).toString()
+  };
+
+  const actionId = (obj, buscar) => {
+    const filtered =  Object.keys(obj).find(key => obj[key].test(buscar));
+    return filtered
+  };
+
+
+
+  console.log( actionId(names, "putBancoProhibido"))
+  function getKeyByValue(object, value) {
+    return Object.keys(object).find(key => object[key] === value);
+  }
+  
+
+
+  // console.log(Object.values(names).filter((name) => name.test("setBancoProhibido")))
+  
+  const prueba = filterId(pruebas.data)
 
 
   const [formState, inputHandler] = useForm(
     {
-      name: {
+      firstName: {
         value: "",
         isValid: false,
       },
-      type: {
+      lastName: {
         value: "",
         isValid: false,
       },
-      description: {
+      address: {
         value: "",
         isValid: false,
       },
-      location: {
+      city: {
         value: "",
         isValid: false,
       },
-      image: { value: null, isValid: false },
+      province: {
+        value: "",
+        isValid: false,
+      },
+      postalCode: {
+        value: "",
+        isValid: false,
+      },
     },
     false
   );
 
+ 
+ 
 
-  return (
-    <div className='checkout--form'>CheckoutForm</div>
-  )
-}
+  return <div className="checkout--form">{data}</div>;
+};
 
-export default CheckoutForm
+export default CheckoutForm;
