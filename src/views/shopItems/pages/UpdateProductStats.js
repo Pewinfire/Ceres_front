@@ -18,9 +18,9 @@ const UpdateProductStats = (props) => {
   const [loadedProduct, setLoadedProduct] = useState();
   const [size, setSize] = useState();
   const [chipFormats, setChipFormats] = useState([]);
-  const [format, setFormat] = useState({ label: "Gramos", value: "gr" });
+  const [format, setFormat] = useState({ label: "Kilo", value: "kg" });
   const formats = [
-    { label: "Gramos", value: "gr" },
+    { label: "Kilo", value: "kg" },
     { label: "Unidad", value: "u" },
     { label: "Docena", value: "doc" },
   ];
@@ -199,7 +199,7 @@ const UpdateProductStats = (props) => {
               className="chipInput"
               inputProps={{ style: { fontSize: 15 } }} // font size of input text
               inputlabelprops={{ style: { fontSize: 15 } }}
-              placeholder="En numero, Ej: 1 (pieza), 100(gramos) "
+              placeholder="En numero, Ej: 1 (pieza), 0,500(kg) "
               onInput={setSiz}
             />
             <Button type="button" onClick={handleAdd}>

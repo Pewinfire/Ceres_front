@@ -45,62 +45,67 @@ const ShopItems = () => {
   }, [sendRequest, status]);
 
   return (
-    <div>
-      <ErrorModal error={error} onClear={clearError} />
-      <React.Fragment>
-        <Modal open={showConfirmModal} onClose={cancelDeleteHandler}>
-          <Authenticate close={cancelDeleteHandler} />
-        </Modal>
+    <>
+      <div className="view">
+        <ErrorModal error={error} onClear={clearError} />
+        <React.Fragment>
+          <Modal open={showConfirmModal} onClose={cancelDeleteHandler}>
+            <Authenticate close={cancelDeleteHandler} />
+          </Modal>
 
-        {!isLoading && loadedShop && (
-          <div>
-            <div className="shopBanner">
-              <div className="banner">
-                <img
-                  src={`${process.env.REACT_APP_BACKEND_IMG}/${loadedShop.image}`}
-                  alt={loadedShop.name}
-                />
-                <div className="banner-text">
-                  <h1>{loadedShop.name}</h1>
-                  <h2 className="score">
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="far fa-star"></i>
-                  </h2>
-                  <h2>{loadedShop.description}</h2>
-                  <h3>{loadedShop.location}</h3>
+          {!isLoading && loadedShop && (
+            <div>
+              <div className="shopBanner">
+                <div className="banner">
+                  <img
+                    src={`${process.env.REACT_APP_BACKEND_IMG}/${loadedShop.image}`}
+                    alt={loadedShop.name}
+                  />
+                  <div className="banner-text">
+                    <h1>{loadedShop.name}</h1>
+                    <h2 className="score">
+                      <i className="fas fa-star"></i>
+                      <i className="fas fa-star"></i>
+                      <i className="fas fa-star"></i>
+                      <i className="fas fa-star"></i>
+                      <i className="far fa-star"></i>
+                    </h2>
+                    <h2>{loadedShop.description}</h2>
+                    <h3>{loadedShop.location}</h3>
+                  </div>
                 </div>
               </div>
+              <div className="shopPlist">
+                {(loadedShop.active && (
+                  <ShopPageProductList
+                    shop={loadedShop.id}
+                    token={auth.token}
+                    update={updateRender}
+                  />
+                )) || <h1>La tienda no esta activa en estos momentos</h1>}
+              </div>
+              <div className="shopCart">
+                {(auth.userId && (
+                  <UserCart token={auth.token} update={update} />
+                )) || (
+                  <div>
+                    <h1>
+                      Necesita loguearse primero para poder realizar una compra
+                    </h1>
+                    <Button onClick={showStatusWarningHandler}>
+                      Iniciar Sesión
+                    </Button>
+                  </div>
+                )}
+              </div>
             </div>
-            <div className="shopPlist">
-              {(loadedShop.active && (
-                <ShopPageProductList
-                  shop={loadedShop.id}
-                  token={auth.token}
-                  update={updateRender}
-                />
-              )) || <h1>La tienda no esta activa en estos momentos</h1>}
-            </div>
-            <div className="shopCart">
-              {(auth.userId && (
-                <UserCart token={auth.token} update={update} />
-              )) || (
-                <div>
-                  <h1>
-                    Necesita loguearse primero para poder realizar una compra
-                  </h1>
-                  <Button onClick={showStatusWarningHandler}>
-                    Iniciar Sesión
-                  </Button>
-                </div>
-              )}
-            </div>
-          </div>
-        )}
-      </React.Fragment>
-    </div>
+          )}
+        </React.Fragment>
+      </div>
+      <div className="endSpace">
+        <h1></h1>
+      </div>
+    </>
   );
 };
 

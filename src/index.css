@@ -1,10 +1,14 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap");
 
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&family=Roboto:wght@100&display=swap');
+
 * {
   box-sizing: border-box;
 }
-
+li{
+  list-style: none;
+}
 html {
   font-family: "Staatliches" !important;
 }
@@ -47,8 +51,16 @@ body {
   justify-content: center;
   align-items: center;
 }
-
-
+.endSpace{
+  height: 30vh;
+  color: transparent;
+}
+.mainApp{
+  min-height: 91vh;
+}
+.view{
+  min-height: 91vh;
+}
 /* entering */
 .page-enter {  
   opacity: 0;
@@ -65,5 +77,5 @@ body {
 /* exit */
 .page-exit-active {
   opacity: 0;
-  transition: opacity 700ms;
+  transition: opacity 600ms;
 }

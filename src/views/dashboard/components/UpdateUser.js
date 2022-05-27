@@ -22,6 +22,9 @@ const UpdateUser = (props) => {
       dni: { value: "", isValid: false },
       phone: { value: "", isValid: false },
       address: { value: "", isValid: false },
+      locality: { value: "", isValid: false },
+      postalCode: { value: "", isValid: false },
+      province: { value: "", isValid: false },
       image: { value: null, isValid: false },
       imageup: { value: false },
     },
@@ -59,7 +62,19 @@ const UpdateUser = (props) => {
               isValid: true,
             },
             address: {
-              value: responseData.user.address,
+              value: responseData.user.address.address,
+              isValid: true,
+            },
+            locality: {
+              value: responseData.user.address.locality,
+              isValid: true,
+            },
+            postalCode: {
+              value: responseData.user.address.postalCode,
+              isValid: true,
+            },
+            province: {
+              value: responseData.user.address.province,
               isValid: true,
             },
             image: { value: responseData.user.image, isValid: true },
@@ -85,7 +100,11 @@ const UpdateUser = (props) => {
       formData.append("lastname", formState.inputs.lastname.value);
       formData.append("dni", formState.inputs.dni.value);
       formData.append("phone", formState.inputs.phone.value);
-      formData.append("address", formState.inputs.phone.value);
+      formData.append("address",formState.inputs.address.value);
+      formData.append("province",formState.inputs.province.value);
+      formData.append("locality",formState.inputs.locality.value);
+      formData.append("postalCode",formState.inputs.postalCode.value);
+      
       if (formState.inputs.image.value !== loadedUser.image) {
         formState.inputs.imageup.value = true;
         formData.append("image", formState.inputs.image.value);
@@ -105,7 +124,7 @@ const UpdateUser = (props) => {
     } catch (err) {
       console.log(err);
     }
-    props.updateFetch()
+    props.updateFetch();
     props.close();
   };
 
@@ -182,10 +201,42 @@ const UpdateUser = (props) => {
               validators={[VALIDATOR_REQUIRE]}
               errorText="Por favor, introduce una dirección"
               onInput={inputHandler}
-              initialValue={loadedUser.address}
+              initialValue={loadedUser.address.address}
               initialValid={true}
             />
-
+            <Input
+              element="input"
+              id="locality"
+              type="text"
+              label="Localidad"
+              validators={[VALIDATOR_REQUIRE]}
+              errorText="Por favor, introduce una localidad"
+              onInput={inputHandler}
+              initialValue={loadedUser.address.lastname}
+              initialValid={true}
+            />
+            <Input
+              element="input"
+              id="province"
+              type="text"
+              label="Provincia"
+              validators={[VALIDATOR_REQUIRE]}
+              errorText="Por favor, introduce una provincia "
+              onInput={inputHandler}
+              initialValue={loadedUser.address.province}
+              initialValid={true}
+            />
+            <Input
+              element="input"
+              id="postalCode"
+              type="text"
+              label="Codigo Postal"
+              validators={[VALIDATOR_REQUIRE]}
+              errorText="Por favor, introduce un codigo postal"
+              onInput={inputHandler}
+              initialValue={loadedUser.address.postalCode}
+              initialValid={true}
+            />
             <ImageUpload
               center
               id="image"

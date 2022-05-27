@@ -131,3 +131,7 @@
   font-size: 1.2vw !important;
   background-color: #f8f8f8 !important;
 }
+
+.checkout--modal .style-form{
+  left: 50%;
+}

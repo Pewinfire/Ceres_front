@@ -14,14 +14,14 @@ const UserCart = (props) => {
   const formatFormat = (quantity, format) => {
     switch (format) {
       case "u":
-        return quantity + "u";
+        return quantity + " u";
       case "gr":
-        return quantity /1000+ "kg";
+        return quantity / 1000 + " kg";
       case "doc":
         if (quantity === 0.5) {
           return "1/2 doc";
         } else {
-          return quantity + "doc";
+          return quantity + " doc";
         }
     }
   };
@@ -43,9 +43,14 @@ const UserCart = (props) => {
             }
           );
           setLoadedCard(responseData.user.cart.cartItem);
+
+          setTotal(
+            responseData.user.cart.cartItem.reduce((sum, cartItem) => {
+              return (sum += cartItem.quantity * cartItem.product.stats.price);
+            }, 0)
+          );
         } catch (err) {}
       };
-
       fetchCart();
     }
   }, [sendRequest, props.token, update, props.update]);
@@ -61,6 +66,7 @@ const UserCart = (props) => {
         }
       );
     } catch (err) {}
+    setTotal(0);
     updateRender();
   };
 
@@ -86,37 +92,43 @@ const UserCart = (props) => {
                       classNames="item"
                     >
                       <li>
-                        <div className="cart-list-row">
-                          <img
-                            src={`${process.env.REACT_APP_BACKEND_IMG}/${cartItem.product.image}`}
-                            alt={cartItem.product.name}
-                          ></img>
-                          <div className="cart-list-data">
-                            <h2>{cartItem.product.name}</h2>
-                            <h3>{cartItem.product.stats.price} €/Kg</h3>
-                            <h3>
-                              {formatFormat(cartItem.quantity, cartItem.product.stats.format)}
-                            </h3>
+                        <div className="Cart-Items">
+                          <div className="image-box">
+                            <img
+                              src={`${process.env.REACT_APP_BACKEND_IMG}/${cartItem.product.image}`}
+                              alt={cartItem.product.name}
+                            ></img>
                           </div>
-                          <div className="cart-list-actions">
-                            <h2>
-                              <Button
-                                onClick={() =>
-                                  deleteCartItem(cartItem.product.id)
-                                }
-                              >
-                                <i className="fa-solid fa-square-minus"></i>
-                              </Button>
-                            </h2>
-
-                            <h3>
-                              {/*  {Math.round(
-                        (cartItem.quantity * cartItem.product.stats.price +
-                          Number.EPSILON) *
-                          100
-                      ) / 100}{" "}
-                      € */}
-                            </h3>
+                          <div className="about">
+                            <h1 className="title">
+                              {cartItem.product.name.length > 19
+                                ? cartItem.product.name.slice(0, 20) + "..."
+                                : cartItem.product.name}
+                            </h1>
+                            <h3 className="subtitle">{cartItem.shop.name}</h3>
+                          </div>
+                          <div className="counter">
+                            <div className="count">
+                              {" "}
+                              {formatFormat(
+                                cartItem.quantity,
+                                cartItem.product.stats.format
+                              )}
+                            </div>
+                            <div className="amount">
+                              {cartItem.product.stats.price} €/
+                              {cartItem.product.stats.format}
+                            </div>
+                          </div>
+                          <div className="btn">
+                            {" "}
+                            <Button
+                              onClick={() =>
+                                deleteCartItem(cartItem.product.id)
+                              }
+                            >
+                              <i className="fa-solid fa-square-minus"></i>
+                            </Button>
                           </div>
                         </div>
                       </li>
@@ -127,9 +139,16 @@ const UserCart = (props) => {
             </ul>
           </div>
           <div className="cart-footer">
-            <h2>Total= </h2>
+            <h2>Total= {total > 0 ? total : " "}</h2>
             <h1>
-            <Button to={`/user/checkout`}>{props.buttonText ? props.buttonText : "Tramitar pedido" }</Button>
+              {props.checkoutMode && (
+                <Button onClick={() => props.makeOrder(true)}>
+                  Finalizar Compra
+                </Button>
+              )}
+              {!props.checkoutMode && (
+                <Button to={`/user/checkout`}>Tramitar pedido</Button>
+              )}
             </h1>
           </div>
         </>

@@ -34,7 +34,7 @@ const ShopsItem = (props) => {
           </div>
                
           <div className="shop-item__actions">
-            <Button to={`/shopPage/${props.id}`}><i class="fa fa-arrow-circle-right fa-2xl" aria-hidden="true"></i></Button>
+            <Button to={`/shopPage/${props.id}`}><i className="fa fa-arrow-circle-right fa-2xl" aria-hidden="true"></i></Button>
           </div>
       </li>
     </React.Fragment>

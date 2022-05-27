@@ -38,11 +38,11 @@ const ShopPageProductList = (props) => {
         );
         setLoadedShopProducts(responseData.products);
         /*         setTotalPages(responseData.totalPages); */
-      } catch (err) { }
+      } catch (err) {}
     };
     fetchShopsProducts();
   }, [
-    sendRequest
+    sendRequest,
     /*   search,
     page,
     size,
@@ -58,6 +58,7 @@ const ShopPageProductList = (props) => {
         "PATCH",
         JSON.stringify({
           productId: cartItem.productId,
+          shopId: props.shop,
           productSize: Number(cartItem.productSize),
         }),
         {
@@ -65,7 +66,7 @@ const ShopPageProductList = (props) => {
           Authorization: "Bearer " + props.token,
         }
       );
-    } catch (err) { }
+    } catch (err) {}
 
     setCartItem({ productId: "", productSize: "" });
     setShowConfirmModal(false);
@@ -122,7 +123,6 @@ const ShopPageProductList = (props) => {
     <div>
       <ErrorModal error={error} onClear={clearError} />
       <React.Fragment>
-
         {loadedShopProducts && (
           <div>
             <Modal open={showConfirmModal} onClose={cancelDeleteHandler}>

@@ -4,83 +4,100 @@ import {
   VALIDATOR_REQUIRE,
 } from "../../../shared/util/validators";
 import { useForm } from "../../../shared/hooks/form-hook";
-
-const CheckoutForm = () => {
+import "./CheckoutForm.css";
+import Button from "../../../shared/components/FormElements/Button";
+import AddNewDirection from "./AddNewDirection";
+import { Checkbox, FormControlLabel, Modal, Radio, RadioGroup } from "@mui/material";
+import "./CheckoutForm.css";
+const CheckoutForm = (props) => {
+  const [newDirection, setNewDirection] = useState();
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [isPayment, setLoadedPayment] = useState(false);
-  const pruebas = {
-    data: { bankloqueseaId: "potato", campo1: 1, campor2: "asda" },
+  const showStatusWarningHandler = () => {
+    setShowConfirmModal(true);
   };
-  const pruebas2 = {
-    data: { asdasdadId: "potato2", campo1: 1, campor2: "asda" },
-  };
-  var names = {
-    1: /set/,
-    2: /put/,
-    3: /Remove/,
-  }
-  const filterId = (obj) => {
-    const filtered = Object.keys(obj)
-      .filter((key) => /Id$/.test(key))
-      .reduce((acc, key) => {
-        acc[key] = obj[key];
-        return acc;
-      }, {});
-    return Object.values(filtered).toString()
+  const cancelDeleteHandler = () => {
+    setShowConfirmModal(false);
   };
 
-  const actionId = (obj, buscar) => {
-    const filtered =  Object.keys(obj).find(key => obj[key].test(buscar));
-    return filtered
-  };
+  return (
+    <>
+      <div className=".checkout--modal">
+        <Modal open={showConfirmModal} onClose={cancelDeleteHandler}>
+          <AddNewDirection
+            token={props.token}
+            userId={props.userId}
+            setNewDirection={setNewDirection}
+            close={setShowConfirmModal}
+            update={props.update}
+          />
+        </Modal>
+      </div>
+      <div className="checkout--form">
+        {newDirection && (
+          <div className="direction">
+            <h2 classname="nombre">{props.user.name}</h2>
+            <h3>{newDirection.address.address}</h3>
+            <h3>
+              {newDirection.address.province} {newDirection.address.locality}
+            </h3>
+            <h3>{newDirection.address.postalCode}</h3>{" "}
+          </div>
+        )}
+        {!newDirection && (
+          <div className="direction">
+            <h2 classname="nombre">{props.user.name}</h2>
+            <h3>{props.user.address.address}</h3>
+            <h3>
+              {props.user.address.province} {props.user.address.locality}
+            </h3>
+            <h3>{props.user.address.locality}</h3>{" "}
+          </div>
+        )}
 
-
-
-  console.log( actionId(names, "putBancoProhibido"))
-  function getKeyByValue(object, value) {
-    return Object.keys(object).find(key => object[key] === value);
-  }
-  
-
-
-  // console.log(Object.values(names).filter((name) => name.test("setBancoProhibido")))
-  
-  const prueba = filterId(pruebas.data)
-
-
-  const [formState, inputHandler] = useForm(
-    {
-      firstName: {
-        value: "",
-        isValid: false,
-      },
-      lastName: {
-        value: "",
-        isValid: false,
-      },
-      address: {
-        value: "",
-        isValid: false,
-      },
-      city: {
-        value: "",
-        isValid: false,
-      },
-      province: {
-        value: "",
-        isValid: false,
-      },
-      postalCode: {
-        value: "",
-        isValid: false,
-      },
-    },
-    false
+        <div className="add-direction">
+          <h3>Añadir nueva dirección de facturación</h3>
+          <Button
+            onClick={() => {
+              showStatusWarningHandler(true);
+            }}
+          >
+            <i class="fas fa-plus"></i>
+          </Button>
+        </div>
+        <div className="pay-method">
+          <h3>Metodo de Pago</h3>
+          <RadioGroup
+            aria-labelledby="demo-controlled-radio-buttons-group"
+            name="controlled-radio-buttons-group"
+          >
+            <FormControlLabel
+              value="paypal"
+              control={<Radio />}
+              label="Paypal"
+            />
+            <FormControlLabel
+              value="card"
+              control={<Radio />}
+              label="Tarjeta de crédito"
+            />
+            <FormControlLabel
+              value="shopR"
+              control={<Radio />}
+              label="Pago en tienda"
+            />
+          </RadioGroup>
+        </div>
+        <div className="terms">
+          <FormControlLabel
+            enabled
+            control={<Checkbox />}
+            label="Acepto los terminos de uso y la política de privacidad"
+          />
+        </div>
+      </div>
+    </>
   );
-
- 
- 
-
-  return <div className="checkout--form">{data}</div>;
 };
 
 export default CheckoutForm;

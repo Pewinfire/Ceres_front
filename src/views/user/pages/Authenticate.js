@@ -48,6 +48,9 @@ const Authenticate = (props) => {
           dni: undefined,
           phone: undefined,
           address: undefined,
+          locality: undefined,
+          postalCode: undefined,
+          province: undefined,
         },
         formState.inputs.email.isValid && formState.inputs.password.isValid
       );
@@ -61,6 +64,9 @@ const Authenticate = (props) => {
           dni: { value: "", isValid: false },
           phone: { value: "", isValid: false },
           address: { value: "", isValid: false },
+          locality: { value: "", isValid: false },
+          postalCode: { value: "", isValid: false },
+          province: { value: "", isValid: false },
         },
         false
       );
@@ -102,7 +108,10 @@ const Authenticate = (props) => {
       formData.append("image", formState.inputs.image.value);
       formData.append("dni", formState.inputs.dni.value);
       formData.append("phone", formState.inputs.phone.value);
-      formData.append("address", formState.inputs.phone.value);
+      formData.append("address", formState.inputs.address.value);
+      formData.append("province", formState.inputs.province.value);
+      formData.append("locality", formState.inputs.locality.value);
+      formData.append("postalCode", formState.inputs.postalCode.value);
 
       try {
         const responseData = await sendRequest(
@@ -170,6 +179,35 @@ const Authenticate = (props) => {
                 errorText="Por favor, introduce una dirección"
                 onInput={inputHandler}
               />
+              <div className="authenticate-sub">
+                <Input
+                element="input"
+                id="province"
+                type="text"
+                label="Provincia"
+                validators={[VALIDATOR_REQUIRE]}
+                errorText="Por favor, introduce una provincia"
+                onInput={inputHandler}
+              />
+                <Input
+                element="input"
+                id="locality"
+                type="text"
+                label="Localidad"
+                validators={[VALIDATOR_REQUIRE]}
+                errorText="Por favor, introduce una localidad"
+                onInput={inputHandler}
+              />
+                <Input
+                element="input"
+                id="postalCode"
+                type="text"
+                label="Codigo postal"
+                validators={[VALIDATOR_REQUIRE]}
+                errorText="Por favor, introduce un codigo postal"
+                onInput={inputHandler}
+              />
+              </div>
             </React.Fragment>
           )}
           {!isLoginMode && (

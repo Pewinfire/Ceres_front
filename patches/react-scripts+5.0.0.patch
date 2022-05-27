@@ -1,0 +1,32 @@
+diff --git a/node_modules/react-scripts/config/webpack.config.js b/node_modules/react-scripts/config/webpack.config.js
+index 2b1b3bb..c679ff1 100644
+--- a/node_modules/react-scripts/config/webpack.config.js
++++ b/node_modules/react-scripts/config/webpack.config.js
+@@ -301,6 +301,15 @@ module.exports = function (webpackEnv) {
+       ],
+     },
+     resolve: {
++      fallback: {
++        process: require.resolve("process/browser"),
++        zlib: require.resolve("browserify-zlib"),
++        stream: require.resolve("stream-browserify"),
++        util: require.resolve("util"),
++        buffer: require.resolve("buffer"),
++        assert: require.resolve("assert"),
++      },
++    
+       // This allows you to set a fallback for where webpack should look for modules.
+       // We placed these paths second because we want `node_modules` to "win"
+       // if there are any conflicts. This matches Node resolution mechanism.
+@@ -342,6 +351,11 @@ module.exports = function (webpackEnv) {
+           babelRuntimeEntryHelpers,
+           babelRuntimeRegenerator,
+         ]),
++          new webpack.ProvidePlugin({
++            Buffer: ["buffer", "Buffer."],
++            process: "process/browser.js",
++          }),
++
+       ],
+     },
+     module: {

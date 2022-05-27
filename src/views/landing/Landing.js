@@ -4,7 +4,7 @@ import InputLanding from "../../shared/components/FormElements/InputLanding";
 
 const Landing = () => {
   const [img, setImg] = useState(Math.floor(Math.random() * (3 - 1 + 1)) + 1);
-
+  
   return (
     <div className="videoWrapper">
       <div className="pattern"> </div>

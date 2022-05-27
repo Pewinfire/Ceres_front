@@ -2,15 +2,16 @@ import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../context/auth-context";
 import AuthButton from "../FormElements/AuthButton";
+import { useTranslation } from 'react-i18next';
 import "./NavLinks.css";
 
 const NavLinks = (props) => {
   const auth = useContext(AuthContext);
-
+  const { t, i18n } = useTranslation();
   return (
     <ul className="nav-links">
         <li>
-          <NavLink to={`/markets`}> Markets</NavLink>
+          <NavLink to={`/markets`}> {t('MARKETS')}</NavLink>
         </li>
       {auth.isLoggedIn && (
         <li>

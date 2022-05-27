@@ -6,8 +6,10 @@
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "@mui/material": "^5.3.1",
+    "i18next": "^21.8.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-i18next": "^11.16.9",
     "react-places-autocomplete": "^7.3.0",
     "react-router-dom": "^5.3.0",
     "react-scripts": "5.0.0",
@@ -37,5 +39,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "dependency-cruiser": "^11.7.1"
   }
 }

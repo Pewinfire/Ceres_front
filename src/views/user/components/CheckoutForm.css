@@ -1,0 +1,98 @@
+.checkout--form {
+  width: 50vw;
+  height: 45vw;
+  position: absolute;
+  left: 10vw;
+  top: 10vw;
+  bottom: 10vw;
+  background-color: #ffffff;
+
+  border-radius: 20px;
+  box-shadow: 0px 25px 40px #0a7a5511;
+}
+
+.checkout--form .direction {
+  border: 0.3vw solid #153b34b2;
+  width: 20vw;
+  height: 10vw;
+  position: relative;
+  top: 3vw;
+  left: 3vw;
+}
+.checkout--form .pay-method {
+  width: 20vw;
+  height: 10vw;
+  position: relative;
+  top: -2vw;
+  left: 3vw;
+  font-size: 1.5vw;
+  margin: 1vw 2vw 0;
+  color: #2c6459;
+}
+.checkout--form .terms{
+  position: relative;
+  left: 4vw;
+  top: 5vw;
+  color: #4b635e;
+}
+.css-ahj2mt-MuiTypography-root {
+  font-family: "Staatliches" !important;
+}
+.css-vqmohf-MuiButtonBase-root-MuiRadio-root.Mui-checked {
+  color: #2c6459 !important; 
+}
+.css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked{
+  color: #2c6459 !important; 
+}
+
+.checkout--form .direction h2 {
+  font-size: 2vw;
+  margin: 1vw 2vw 0;
+  color: #2c6459;
+}
+.checkout--form .direction h3 {
+  font-size: 1vw;
+  margin: 0 2vw;
+  color: #1c423b;
+}
+
+.checkout--form .add-direction {
+  border: 0.3vw solid #153b34b2;
+  width: 20vw;
+  height: 10vw;
+  position: relative;
+  top: -7vw;
+  left: 27vw;
+}
+
+.checkout--form .add-direction h3 {
+  font-size: 1vw;
+  margin: 3vw 0vw 0;
+  color: #2c6459;
+  text-align: center;
+}
+
+.checkout--form .add-direction .button {
+  position: relative;
+  left: 25%;
+  font-size: 2vw;
+  margin: 0 2vw 0;
+  color: #2c6459;
+  background-color: white;
+  border: transparent;
+  text-align: center;
+}
+
+.style-form-addDirection {
+  padding: 3vw;
+  position: absolute;
+  left: 55vw;
+  top: 17vw;
+  list-style: none;
+  height: auto;
+  width: 30vw;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 1vw;
+  background: white;
+  font-size: 1vw;
+}
