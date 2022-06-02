@@ -139,10 +139,17 @@ const UserCart = (props) => {
             </ul>
           </div>
           <div className="cart-footer">
-            <h2>Total= {total > 0 ? total : " "}</h2>
+            <h2 className="totalo">Total= {total > 0 ? total + " €" : " "}</h2>
             <h1>
               {props.checkoutMode && (
-                <Button onClick={() => props.makeOrder(true)}>
+                <Button
+                  title="Debes marcar la forma de pago y aceptar los terminos de uso"
+                  disabled={!props.options.payTipe && !props.options.agreement}
+                  onClick={() => {
+                    props.makeOrder(true);
+                    console.log(props.options);
+                  }}
+                >
                   Finalizar Compra
                 </Button>
               )}

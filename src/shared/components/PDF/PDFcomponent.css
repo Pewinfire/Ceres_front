@@ -1,0 +1,93 @@
+.invoice-container {
+  height: 59.9vw;
+  width: 42vw;
+  background-color: white;
+  background-image: url("https://i.postimg.cc/kJfZ9BkC/factura-Temp.jpg");
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  background-position: 0% 100%;
+  text-shadow: #0b4230 0.01em 0.01em 0.05em;
+}
+
+.invoice-pdf-button button{
+  position: absolute;
+  right: -16vw;
+  top: 2vw;
+  background-color: #F8BB52;
+  border: #F8BB52;
+  font-size: 1.5vw;
+}
+.invoice-header h1 {
+  font-size: 4.8vw;
+  padding: 2.5vw 2.5vw 2vw 2.5vw;
+  color: #327265;
+}
+.invoice-client h2 {
+  font-size: 1.2vw;
+  padding-left: 3vw;
+  margin-bottom: 0;
+  color: #327265;
+}
+.invoice-client-data {
+  margin-top: -0.9vw;
+  font-size: 0.9vw;
+  padding-left: 1vw;
+  color: #3e8e7e;
+}
+.invoice-seller h2 {
+  font-size: 1.2vw;
+  padding-left: 3vw;
+
+  margin-bottom: 0;
+  color: #327265;
+}
+.invoice-seller h2 {
+  padding-right: 7vw;
+}
+.invoice-seller-data {
+  margin-top: -0.9vw;
+  font-size: 0.9vw;
+  padding-right: 2vw;
+  padding-left: 1vw;
+  color: #3e8e7e;
+}
+
+.invoice-trade-data {
+  display: flex;
+  justify-content: space-between;
+}
+.invoice-product-table th {
+  border-bottom: 3px solid #327265;
+  border-collapse: collapse;
+  text-align: left;
+}
+.invoice-product-table table {
+  border-collapse: collapse;
+  color: #449b89;
+  width: 85%;
+  margin-top: 2vw;
+  margin-left: 7.5%;
+}
+
+.invoice-footer-first {
+  text-align: right;
+  font-size: 1vw;
+  border-bottom: 3px solid #327265;
+}
+
+.invoice-footer-sec {
+  text-align: right;
+  font-size: 1vw;
+}
+.invoice-product-amm {
+  text-align: right;
+}
+.invoice-product-table-header .invoice-product-amm {
+  text-align: right !important;
+}
+
+.invoice-footer-IVA{
+  text-align: left;
+  color: #327265;
+}

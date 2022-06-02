@@ -70,7 +70,7 @@ const AddNewDirection = (props) => {
     event.preventDefault();
     try {
       await sendRequest(
-        `${process.env.REACT_APP_BACKEND_URL}/users/address`,
+        `${process.env.REACT_APP_BACKEND_URL}/users/address/${props.userId}`,
         "PATCH",
         JSON.stringify({
           address: formState.inputs.address.value,

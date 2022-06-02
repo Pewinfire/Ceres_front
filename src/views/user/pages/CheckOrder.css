@@ -1,0 +1,141 @@
+.order-container {
+  width: 70vw;
+  height: 75vw;
+  position: absolute;
+  top: 14.2vw;
+  left: 15vw;
+  background-color: white;
+  border-radius: 1.8vw;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.33);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.33);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.33);
+}
+.order-msg h1 {
+  color: white;
+  text-shadow: #0b4230 0.1em 0.1em 0.2em;
+  position: absolute;
+  font-size: 3vw;
+  top: 8vw;
+  left: 13vw;
+}
+.order-details {
+  -webkit-box-shadow: 10px 10px 5px 1px rgba(0.33, 0.33, 0.33, 0.33.33);
+  -moz-box-shadow: 10px 10px 5px 1px rgba(0.33, 0.33, 0.33, 0.33);
+  box-shadow: 10px 10px 5px 1px rgba(0.33, 0.33, 0.33, 0.33);
+  position: absolute;
+  left: 5vw;
+  top: 5vw;
+}
+
+.order-details h2 {
+  margin: 0;
+  color: #327265;
+  text-shadow: #cfd4d4 0.1em 0.1em 0.2em;
+  font-size: 1.5vw;
+}
+
+.order-actions-uno .button {
+  position: absolute;
+  right: 21vw;
+  top: 22vw;
+  background-color: #f8bb52;
+  border: #f8bb52;
+  font-size: 1.5vw;
+}
+
+.order-action-uno .button:hover,
+.button:active {
+  background: #7cd1b8;
+  border-color: #7cd1b8;
+}
+.order-actions-dos .button {
+  position: absolute;
+  right: 22.8vw;
+  top: 30.5vw;
+  background-color: #f8bb52;
+  border: #f8bb52;
+  font-size: 1.5vw;
+}
+
+.order-action-dos .button:hover,
+.button:active {
+  background: #7cd1b8;
+  border-color: #7cd1b8;
+}
+.invoice-pagination{
+  background-color: transparent;
+  color: white;
+  position: absolute;
+  right: 23.8vw;
+  top: 36vw;
+
+}
+.css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+  background-color: #f8bb52 !important;
+  color: white !important;
+  font-family: "Staatliches" !important;
+}
+.css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root {
+  background-color: transparent !important;
+  color: #f8bb52 !important;
+  font-family: "Staatliches" !important;
+}
+.text-blur-out {
+	-webkit-animation: text-blur-out 500ms cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	        animation: text-blur-out 500ms cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+ @-webkit-keyframes text-blur-out {
+  0% {
+    -webkit-filter: blur(0.01);
+            filter: blur(0.01);
+  }
+  100% {
+    -webkit-filter: blur(12px) opacity(0%);
+            filter: blur(12px) opacity(0%);
+  }
+}
+@keyframes text-blur-out {
+  0% {
+    -webkit-filter: blur(0.01);
+            filter: blur(0.01);
+  }
+  100% {
+    -webkit-filter: blur(12px) opacity(0%);
+            filter: blur(12px) opacity(0%);
+  }
+}
+
+.text-focus-in {
+	-webkit-animation: text-focus-in 500ms cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	        animation: text-focus-in 500ms cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+ @-webkit-keyframes text-focus-in {
+  0% {
+    -webkit-filter: blur(12px);
+            filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    opacity: 1;
+  }
+}
+@keyframes text-focus-in {
+  0% {
+    -webkit-filter: blur(12px);
+            filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+.na{
+  color:white;
+}

@@ -5,12 +5,44 @@ import { initReactI18next } from "react-i18next";
 const resources = {
   es: {
     translation: {
-      MARKETS: "Mercados",
+      MERCADOS: "Mercados",
+      CLIENTE: "Cliente",
+      VENDEDOR: "Comerciante",
+      PRODUCTO: "Producto",
+      CANTIDAD: "Cantidad",
+      PRECIO: "Precio",
+      IVA: "IVA",
+      IMPORTE: "Importe",
+      TOTAL: "Total",
+      PDF: "Generar PDF"
+    },
+  },
+  val: {
+    translation: {
+      MERCADOS: "Mercat ",
+      CLIENTE: "Client",
+      VENDEDOR: "Comerciant",
+      PRODUCTO: "Producte",
+      CANTIDAD: "Quantitat",
+      PRECIO: "Price",
+      IVA: "IVA",
+      IMPORTE: "Import",
+      TOTAL: "Total",
+      PDF: "Generar PDF",
     },
   },
   en: {
     translation: {
-      MARKETS: "Markets",
+      MERCADOS: "Markets",
+      CLIENTE: "Customer",
+      VENDEDOR: "Seller",
+      PRODUCTO: "Product",
+      CANTIDAD: "Quantity",
+      PRECIO: "Preu",
+      IVA: "TAX",
+      IMPORTE: "Amount",
+      TOTAL: "Total",
+      PDF: "Generate PDF"
     },
   },
 };

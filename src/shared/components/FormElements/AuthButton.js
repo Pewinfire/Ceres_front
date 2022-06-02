@@ -3,6 +3,7 @@ import { useHttpClient } from "../../hooks/http-hook";
 import { AuthContext } from "../../../shared/context/auth-context";
 import { Link } from "react-router-dom";
 import LoadingSpinner from "../UIElements/LoadingSpinner";
+import Button from "./Button";
 import "./Button.css";
 
 const AuthButton = (props) => {
@@ -48,10 +49,15 @@ const AuthButton = (props) => {
           <LoadingSpinner />
         </div>
       )}
-      {!isLoading && authRol && (
+      {!isLoading && authRol && !props.isButton && (
         <Link to={url} exact="exact" >
           <i className="far fa-user"></i>
         </Link>
+      )}
+         {!isLoading && authRol && props.isButton && (
+        <Button to={url} exact="exact" >
+          Mi cuenta
+        </Button>
       )}
     </div>
   );

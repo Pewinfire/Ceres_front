@@ -1,0 +1,21 @@
+.css-b62m3t-container img {
+    width: 2vw;
+}
+.css-6j8wv5-Input input {
+    background-color: transparent;
+}
+.dropdown-list{
+    font-size: 2vw;
+    background-color:  transparent;
+    color: white;
+    font-family: "Staatliches" !important;
+    border: transparent;
+}
+
+.dropdown-option{
+    background-color:  rgba(0, 0, 0, 0) !important;
+}
+
+.css-6j8wv5-Input{
+    color: "white",
+}

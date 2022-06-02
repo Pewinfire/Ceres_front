@@ -42,6 +42,7 @@ const Button = (props) => {
       onClick={props.onClick}
       disabled={props.disabled}
       value={props.value}
+      title={props.title}
     >
       {props.children}
     </button>

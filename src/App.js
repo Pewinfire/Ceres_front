@@ -17,14 +17,15 @@ import Authenticate from "./views/user/pages/Authenticate";
 import MarketNear from "./views/market/pages/MarketNear";
 import Markets from "./views/market/pages/Markets";
 import Shops from "./views/shop/pages/Shops";
-import Dashboard from "./views/dashboard/pages/Dashboard";
-import AdminDashboard from "./views/dashboard/pages/AdminDashboard";
-import SellerDashboard from "./views/dashboard/pages/SellerDashboard";
 import ShopPage from "./views/shopView/pages/ShopPage";
-import Invoice from "./shared/components/PDF/PDFcomponent";
+
+const Dashboard = React.lazy(() => import('./views/dashboard/pages/Dashboard'));
+const AdminDashboard = React.lazy(() => import('./views/dashboard/pages/AdminDashboard'));
+const SellerDashboard = React.lazy(() => import('./views/dashboard/pages/SellerDashboard'));
+const CheckOrder = React.lazy(() => import('./views/user/pages/CheckOrder'));
 
 const AnimatedSwitch = withRouter(({ location }) => (
-  <TransitionGroup>
+  <TransitionGroup >
     <CSSTransition key={location.key} classNames="page" timeout={800}>
       <Switch location={location}>
         <Route path="/" exact>
@@ -35,9 +36,6 @@ const AnimatedSwitch = withRouter(({ location }) => (
         </Route>
         <Route path="/markets" exact>
           <Markets />
-        </Route>
-        <Route path="/:marketId/shops" exact>
-          <Shops />
         </Route>
         <Route path="/shopPage/:shopId">
           <ShopPage />
@@ -54,11 +52,14 @@ const AnimatedSwitch = withRouter(({ location }) => (
         <Route path="/user/checkout" exact>
           <Checkout />
         </Route>
+        <Route path="/user/checkorder/:orderId" exact>
+          <CheckOrder />
+        </Route>
+        <Route path="/:marketId/shops" exact>
+          <Shops />
+        </Route>
         <Redirect to="/" />
       </Switch>
-      <Route path="/invoice" exact>
-          <Invoice />
-        </Route>
     </CSSTransition>
   </TransitionGroup>
 ));
@@ -85,9 +86,6 @@ const AnimatedSwitchNT = withRouter(({ location }) => (
           <ShopPage />
         </Route>
         <Redirect to="/auth" />
-        <Route path="/invoice" exact>
-          <Invoice />
-        </Route>
       </Switch>
     </CSSTransition>
   </TransitionGroup>
@@ -118,7 +116,6 @@ const App = () => {
             {(!token && <AnimatedSwitchNT />) || <AnimatedSwitch />}
           </Suspense>
         </main>
-       
       </Router>
     </AuthContext.Provider>
   );

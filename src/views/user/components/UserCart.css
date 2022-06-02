@@ -60,11 +60,14 @@
 }
 .cart-footer .button{
   position: relative;
-  bottom:-6vw;
+  bottom:-5.8vw;
   border-radius: 0vw 0vw 2vw 2vw ;
   width: 100%;
 }
-.cart-footer h2{
+.cart-footer .totalo{
+ 
+position: relative;
+left:0;
 font-size: 1.5vw;
 height: 1.5vw;
 color: #3e8e7e;

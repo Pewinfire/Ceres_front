@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import CheckoutForm from "../components/CheckoutForm";
+import { useHistory } from "react-router-dom";
 import { useHttpClient } from "../../../shared/hooks/http-hook";
 import { AuthContext } from "../../../shared/context/auth-context";
 import UserCart from "../components/UserCart";
@@ -14,7 +15,8 @@ const Checkout = () => {
   const auth = useContext(AuthContext);
   const checkoutMode = true;
   const [makeOrder, setMakeOrder] = useState(false);
-
+  const [options, setOptions] = useState({ payType: "", agreement: false });
+  const history = useHistory();
   const cancelOrderHandler = () => {
     setMakeOrder(false);
   };
@@ -24,9 +26,10 @@ const Checkout = () => {
   };
 
   const checkoutOrder = async (event) => {
+    setMakeOrder(false);
     event.preventDefault();
     try {
-      await sendRequest(
+    const responseData =   await sendRequest(
         `${process.env.REACT_APP_BACKEND_URL}/users/makeOrder`,
         "POST",
         "",
@@ -34,9 +37,11 @@ const Checkout = () => {
           Authorization: "Bearer " + auth.token,
         }
       );
+      history.push(`/user/checkorder/${responseData.pedido}`);
     } catch (err) {
       console.log(err);
     }
+  
   };
 
   useEffect(() => {
@@ -84,6 +89,8 @@ const Checkout = () => {
               token={auth.token}
               userId={auth.userId}
               update={update}
+              options={options}
+              setOptions={setOptions}
             ></CheckoutForm>
           </div>
           <div className="checkout--UserCart">
@@ -92,6 +99,7 @@ const Checkout = () => {
               userId={auth.userId}
               checkoutMode={checkoutMode}
               makeOrder={setMakeOrder}
+              options={options}
             />
           </div>
         </React.Fragment>

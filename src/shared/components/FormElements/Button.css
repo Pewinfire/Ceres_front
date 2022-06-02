@@ -42,7 +42,14 @@
   background: #f7b528;
   border-color: #f7b528;
 }
-
+.button:disabled,
+.button:hover:disabled,
+.button:active:disabled {
+  background: rgb(163, 189, 178);
+  color: #8aa796;
+  border-color: rgb(163, 189, 178);
+  cursor: not-allowed;
+}
 
 
 .button--small {
