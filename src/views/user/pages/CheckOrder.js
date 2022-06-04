@@ -43,7 +43,7 @@ const CheckOrder = (props) => {
   }, [sendRequest, orderId]); // allows to run certain code only when certain dependencies change (first argument),  . Second arg = array of dependencies , data that needs to change for this return. recarga cada vez que se hace una request
 
   return (
-    <>
+    <div className="order-container ">
       {!props.consulta && (
         <div className="potato">
           {" "}
@@ -61,7 +61,7 @@ const CheckOrder = (props) => {
               "#FAEDC6",
             ]}
           />
-          <div className="order-msg">
+          <div className="order-msg text-focus-in">
             <h1>Tu pedido se ha completado!</h1>
           </div>
         </div>
@@ -69,7 +69,7 @@ const CheckOrder = (props) => {
   
       {loadedOrders && (
         <>
-          <div className="order-container ">
+          <div >
             <div className="order-details">
               <h2>Aqui puedes ver los detalles</h2>
               <div className={style}>
@@ -95,7 +95,7 @@ const CheckOrder = (props) => {
           />
         </div>
       )}
-    </>
+    </div>
   );
 };
 

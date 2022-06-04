@@ -126,7 +126,7 @@ const Authenticate = (props) => {
   };
 
   return (
-    <React.Fragment>
+    <div>
       <ErrorModal error={error} onClear={clearError} />
       <Card className="authentication">
         {isLoading && <LoadingSpinner asOverlay />}
@@ -253,7 +253,7 @@ const Authenticate = (props) => {
           </Button>
         )}
       </Card>
-    </React.Fragment>
+    </div>
   );
 };
 

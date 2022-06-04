@@ -26,7 +26,7 @@ const CheckoutForm = (props) => {
     props.setOptions({ ...props.options, payType: event.target.value });
   };
   return (
-    <>
+    <div>
       <div className=".checkout--modal">
         <Modal open={showConfirmModal} onClose={cancelDeleteHandler}>
           <AddNewDirection
@@ -111,7 +111,7 @@ const CheckoutForm = (props) => {
           />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

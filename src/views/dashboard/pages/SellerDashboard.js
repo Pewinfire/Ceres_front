@@ -79,7 +79,7 @@ const SellerDashboard = () => {
   }
 
   return (
-    <React.Fragment>
+    <div>
       <ErrorModal error={error} onClear={clearError} />
       {isLoading && (
         <div className="center">
@@ -135,7 +135,7 @@ const SellerDashboard = () => {
           </div>
         </>
       )}
-    </React.Fragment>
+    </div>
   );
 };
 

@@ -74,7 +74,7 @@ const AdminDashboard = () => {
   };
 
   return (
-    <React.Fragment>
+    <div>
       <ErrorModal error={error} onClear={clearError} />
       {isLoading && (
         <div className="center">
@@ -138,7 +138,7 @@ const AdminDashboard = () => {
           </div>
         </>
       )}
-    </React.Fragment>
+    </div>
   );
 };
 

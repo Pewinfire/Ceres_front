@@ -15,8 +15,8 @@
   text-shadow: #0b4230 0.1em 0.1em 0.2em;
   position: absolute;
   font-size: 3vw;
-  top: 8vw;
-  left: 13vw;
+  top: -8vw;
+  left: 19vw;
 }
 .order-details {
   -webkit-box-shadow: 10px 10px 5px 1px rgba(0.33, 0.33, 0.33, 0.33.33);
@@ -36,8 +36,8 @@
 
 .order-actions-uno .button {
   position: absolute;
-  right: 21vw;
-  top: 22vw;
+  right: 5.8vw;
+  top: 7.5vw;
   background-color: #f8bb52;
   border: #f8bb52;
   font-size: 1.5vw;
@@ -50,8 +50,8 @@
 }
 .order-actions-dos .button {
   position: absolute;
-  right: 22.8vw;
-  top: 30.5vw;
+  right: 7.9vw;
+  top: 16.5vw;
   background-color: #f8bb52;
   border: #f8bb52;
   font-size: 1.5vw;
@@ -66,8 +66,8 @@
   background-color: transparent;
   color: white;
   position: absolute;
-  right: 23.8vw;
-  top: 36vw;
+  right: 8.7vw;
+  top: 21vw;
 
 }
 .css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {

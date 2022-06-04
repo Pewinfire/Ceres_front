@@ -64,7 +64,7 @@ const Checkout = () => {
   }, [sendRequest, auth.userId, updateRender]);
 
   return (
-    <>
+    <div>
       <Modal open={makeOrder} onClose={cancelOrderHandler}>
         <div className="modalWindow">
           <div className="modalText">
@@ -104,7 +104,7 @@ const Checkout = () => {
           </div>
         </React.Fragment>
       )}
-    </>
+    </div>
   );
 };
 

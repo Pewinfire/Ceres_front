@@ -104,7 +104,7 @@ const AddNewDirection = (props) => {
   };
 
   return (
-    <React.Fragment>
+    <div>
       <ErrorModal error={error} onClear={clearError} />
       {!isLoading && userAddress && (
         <div className="form-container">
@@ -180,7 +180,7 @@ const AddNewDirection = (props) => {
           </form>
         </div>
       )}
-    </React.Fragment>
+    </div>
   );
 };
 

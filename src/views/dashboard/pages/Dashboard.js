@@ -73,7 +73,7 @@ const Dashboard = () => {
   }
 
   return (
-    <React.Fragment>
+    <div>
       <ErrorModal error={error} onClear={clearError} />
       {isLoading && (
         <div className="center">
@@ -119,7 +119,7 @@ const Dashboard = () => {
           </div>
         </div>
       )}
-    </React.Fragment>
+    </div>
   );
 };
 

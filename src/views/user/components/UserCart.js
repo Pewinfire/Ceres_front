@@ -72,7 +72,7 @@ const UserCart = (props) => {
 
   // total
   return (
-    <>
+    <div>
       <ErrorModal error={error} onClear={clearError} />
       {loadedCart && (
         <>
@@ -160,7 +160,7 @@ const UserCart = (props) => {
           </div>
         </>
       )}
-    </>
+    </div>
   );
 };
 
