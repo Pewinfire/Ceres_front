@@ -102,7 +102,7 @@ const UpdateProduct = (props) => {
           });
           setCats(lista);
       } catch (err) {
-        console.log(err);
+
       }
     };
     fetchProduct();
@@ -134,7 +134,7 @@ const UpdateProduct = (props) => {
     let lista = cats.map((cat) => {
       return cat.id;
     });
-    console.log(lista);
+
     const formData = new FormData();
     formData.append("name", formState.inputs.name.value);
     formData.append("description", formState.inputs.description.value);
@@ -150,7 +150,7 @@ const UpdateProduct = (props) => {
           Authorization: "Bearer " + props.token,
         }
       );
-      console.log("yes");
+
     } catch (err) {}
     props.close()
   };
@@ -159,9 +159,9 @@ const UpdateProduct = (props) => {
     const {
       target: { value },
     } = event;
-    console.log(value);
+
     setCats(typeof value === "string" ? value.split(",") : value);
-    console.log(cats);
+
   };
 
   return (

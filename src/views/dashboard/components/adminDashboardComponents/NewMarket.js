@@ -51,7 +51,7 @@ const NewMarket = (props) => {
         }
       );
     } catch (err) {
-      console.log(err);
+
     }
     props.close();
   };

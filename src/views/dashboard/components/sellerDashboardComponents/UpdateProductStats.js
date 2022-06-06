@@ -76,7 +76,7 @@ const UpdateProductStats = (props) => {
         setChipFormats(responseData.product.stats.size);
         setFormat({ label: " ", value: responseData.product.stats.format });
       } catch (err) {
-        console.log(err);
+  
       }
     };
     fetchProduct();
@@ -103,7 +103,7 @@ const UpdateProductStats = (props) => {
           Authorization: "Bearer " + props.token,
         }
       );
-      console.log(format.value);
+
     } catch (err) {}
     props.close();
   };
@@ -127,7 +127,7 @@ const UpdateProductStats = (props) => {
   const autoComplet = async (event, value) => {
     event.defaultMuiPrevented = true;
     setFormat(value);
-    console.log(format);
+
   };
 
   if (!loadedProduct && !error) {

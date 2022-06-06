@@ -20,7 +20,7 @@ const MarketNear = () => {
   const address = useParams().addr;
 
   useEffect(() => {
-    console.log(address);
+
     const fetchMarkets = async () => {
       try {
         const responseData = await sendRequest(

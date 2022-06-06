@@ -50,7 +50,7 @@ const UsersList = (props) => {
     };
     fetchMarkets();
   }, [sendRequest, search, page, size, totalPages]); // allows to run certain code only when certain dependencies change (first argument),  . Second arg = array of dependencies , data that needs to change for this return. recarga cada vez que se hace una request
-console.log(totalPages)
+
   return (
     <div>
       <React.Fragment>

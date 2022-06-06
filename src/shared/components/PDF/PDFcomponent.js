@@ -33,7 +33,7 @@ const PDFcomponent = (props) => {
     return <Fragment>{rows}</Fragment>;
   };
   const totalSinIva = (prods) => {
-    console.log(prods);
+
     return prods
       .reduce((sum, cartItem) => {
         return (sum +=
@@ -44,7 +44,7 @@ const PDFcomponent = (props) => {
       .toFixed(2);
   };
   const totalConIva = (prods) => {
-    console.log(prods);
+
     return prods
       .reduce((sum, cartItem) => {
         return (sum += cartItem.quantity * cartItem.product.stats.price);

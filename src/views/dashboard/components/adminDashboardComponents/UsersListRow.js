@@ -25,7 +25,7 @@ const UserListRow = (props) => {
     );
   }
   const switchStatusHandler = async () => {
-    console.log(props.token);
+
     setShowConfirmModal(false);
     try {
       await sendRequest(

@@ -151,7 +151,7 @@ const UserCart = (props) => {
                   disabled={!props.options.payTipe && !props.options.agreement}
                   onClick={() => {
                     props.makeOrder(true);
-                    console.log(props.options);
+            
                   }}
                 >
                   {t("FINALIZAR_COMPRA")}

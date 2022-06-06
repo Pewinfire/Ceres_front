@@ -62,7 +62,7 @@ const AddNewDirection = (props) => {
           true
         );
       } catch (err) {
-        console.log(err);
+
       }
     };
     fetchUser();
@@ -86,7 +86,7 @@ const AddNewDirection = (props) => {
         }
       );
     } catch (err) {
-      console.log(err);
+
     }
     props.update();
     props.close(false);

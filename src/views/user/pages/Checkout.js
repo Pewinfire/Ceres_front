@@ -49,7 +49,7 @@ const Checkout = () => {
       );
       history.push(`/user/checkorder/${responseData.pedido}`);
     } catch (err) {
-      console.log(err);
+
     }
   };
 
@@ -66,7 +66,7 @@ const Checkout = () => {
         );
         setLoadedUser(responseData.user);
       } catch (err) {
-        console.log(err);
+
       }
     };
     fetchUser();

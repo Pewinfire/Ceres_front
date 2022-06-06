@@ -86,7 +86,7 @@ const NewProduct = (props) => {
     let lista = cats.map((cat) => {
       return cat.id;
     });
-    console.log(lista);
+
     const formData = new FormData();
     formData.append("name", formState.inputs.name.value);
     formData.append("description", formState.inputs.description.value);
@@ -102,7 +102,7 @@ const NewProduct = (props) => {
           Authorization: "Bearer " + props.token,
         }
       );
-      console.log("yes");
+  
     } catch (err) {}
   };
 
@@ -114,7 +114,7 @@ const NewProduct = (props) => {
       // On autofill we get a stringified value.
       typeof value === "string" ? value.split(",") : value
     );
-    console.log(cats);
+
   };
 
   return (

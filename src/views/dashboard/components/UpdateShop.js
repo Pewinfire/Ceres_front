@@ -66,7 +66,7 @@ const UpdateShop = (props) => {
           true
         );
       } catch (err) {
-        console.log(err);
+
       }
     };
     fetchShop();
@@ -74,8 +74,7 @@ const UpdateShop = (props) => {
 
   const shopUpdateSubmitHandler = async (event) => {
     event.preventDefault();
-    console.log(formState.inputs.image.value);
-    console.log(loadedShop.image);
+
     try {
       const formData = new FormData();
       formData.append("name", formState.inputs.name.value);
@@ -99,7 +98,7 @@ const UpdateShop = (props) => {
       );
       // history.push(`/Shops`);
     } catch (err) {
-      console.log(err);
+
     }
     props.close()
   };

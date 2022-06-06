@@ -80,7 +80,7 @@ const UpdateMarket = () => {
           true
         );
       } catch (err) {
-        console.log(err);
+
       }
     };
     fetchMarket();
@@ -88,8 +88,7 @@ const UpdateMarket = () => {
 
   const marketUpdateSubmitHandler = async (event) => {
     event.preventDefault();
-    console.log(loadedMarket.image)
-    console.log(formState.inputs.imageup.value)
+
     try {
       const formData = new FormData();
       formData.append("name", formState.inputs.name.value);
@@ -112,7 +111,7 @@ const UpdateMarket = () => {
       );
      // history.push(`/markets`);
     } catch (err) {
-      console.log(err);
+
     }
   };
 

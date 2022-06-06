@@ -10,9 +10,9 @@ const ButtonLang = () => {
     { value: "val", label: <img className="img-flag" src={`${process.env.REACT_APP_BACKEND_IMG}/uploads/images/val.png`} /> },
   ];
   const [value, setValue] = useState(options.filter( option => { return option.value == i18next.resolvedLanguage}))
-console.log()
+
   const changeLanguage = () => {
-    console.log(value.value);
+
     i18next.changeLanguage(value.value, (err, t) => {
       if (err) return console.log("something went wrong loading", err);
       t("key");

@@ -88,7 +88,7 @@ const UpdateUser = (props) => {
           true
         );
       } catch (err) {
-        console.log(err);
+
       }
     };
     fetchUser();
@@ -124,7 +124,7 @@ const UpdateUser = (props) => {
         }
       );
     } catch (err) {
-      console.log(err);
+
     }
     props.updateFetch();
     props.close();
