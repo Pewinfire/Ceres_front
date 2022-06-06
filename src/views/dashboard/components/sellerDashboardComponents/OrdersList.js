@@ -32,8 +32,13 @@ const OrdersList = (props) => {
   const acceptOrder = async (order) => {
     try {
       await sendRequest(
-        `${process.env.REACT_APP_BACKEND_URL}/users/accept/order/${order}`
-      ); // solo necesita url, lo demas viene vacio y hace get predeterminado
+        `${process.env.REACT_APP_BACKEND_URL}/users/accept/order/${order}`,
+        "GET",
+        null,
+        {
+          Authorization: "Bearer " + props.token,
+        }
+      );
     } catch (err) {}
     setReload( reload == false ? true : false)
   };
@@ -41,8 +46,13 @@ const OrdersList = (props) => {
   const cancelOrder = async (order) => {
     try {
       await sendRequest(
-        `${process.env.REACT_APP_BACKEND_URL}/users/cancel/order/${order}`
-      ); // solo necesita url, lo demas viene vacio y hace get predeterminado
+        `${process.env.REACT_APP_BACKEND_URL}/users/cancel/order/${order}`,
+        "GET",
+        null,
+        {
+          Authorization: "Bearer " + props.token,
+        }
+      );
     } catch (err) {}
     setReload( reload == false ? true : false )
     
