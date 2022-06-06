@@ -1,29 +1,35 @@
 .orders-contenedor {
-    position: absolute;
-    background-color: white;
-    width: 74vw;
-    top: 12vw;
-    left: 12vw;
-    border: 0vw hidden #1c6ea4;
-    border-radius: 2vw;
-    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.33);
-    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.33);
-    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.33);
-    
-  }
-  
+  position: absolute;
+  background-color: white;
+  width: 74vw;
+  top: 12vw;
+  left: 12vw;
+  border: 0vw hidden #1c6ea4;
+  border-radius: 2vw;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.33);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.33);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.33);
+}
 
-  .orderslist .css-1nylpq2{
-    position: absolute;
-    margin-top: 2.3vw !important;
-  }
-
-  .pagination{
-    background-color: transparent;
-    color: white;
-    position: fixed;
-    right: 0%;
-    bottom: 0%;
-    display: flex;
-  
-  }
+.orderslist .css-1nylpq2 {
+  position: absolute;
+  margin-top: 2.3vw !important;
+}
+.searchBox{
+  position: relative;
+  top: -10.5vw;
+  right: -5vw;
+}
+.searchBoxSeller{
+  position: relative;
+  top: -10.5vw;
+  right: 1vw;
+}
+.pagination {
+  background-color: transparent;
+  color: white;
+  position: fixed;
+  right: 0%;
+  bottom: 0%;
+  display: flex;
+}

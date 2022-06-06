@@ -54,7 +54,7 @@
   padding: 0vw 1.5vw 0.2vw 1.5vw !important;
 }
 
-.paginationx {
+.paginationx .MuiPaginationItem-root{
   background-color: transparent;
   color: white;
   position: relative;

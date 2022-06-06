@@ -56,23 +56,25 @@ const UsersList = (props) => {
       <React.Fragment>
         <React.Fragment>
           <ErrorModal error={error} onClear={clearError} />
-          {!isLoading && loadedMarkets && totalPages &&(
+          {!isLoading && loadedMarkets && totalPages && (
             <div>
-              <Box
-                className="search-box"
-                sx={{ display: "flex", alignItems: "flex-end" }}
-              >
-                <Input
-                  fullWidth
-                  label="Buscar"
-                  id="fullWidth"
-                  className="search"
-                  inputProps={{ style: { fontSize: 30 } }} // font size of input text
-                  inputlabelprops={{ style: { fontSize: 30 } }}
-                  placeholder="  Buscar"
-                  onKeyDown={handleTextFieldKeyDown}
-                />
-              </Box>
+              <div className="searchBox">
+                <Box
+                  className="search-box"
+                  sx={{ display: "flex", alignItems: "flex-end" }}
+                >
+                  <Input
+                    fullWidth
+                    label="Buscar"
+                    id="fullWidth"
+                    className="search"
+                    inputProps={{ style: { fontSize: 30 } }} // font size of input text
+                    inputlabelprops={{ style: { fontSize: 30 } }}
+                    placeholder="  Buscar"
+                    onKeyDown={handleTextFieldKeyDown}
+                  />
+                </Box>
+              </div>
               <MarketsTable items={loadedMarkets} />
               <div className="pagination">
                 <Pagination

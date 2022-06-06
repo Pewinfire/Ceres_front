@@ -55,7 +55,7 @@
   border: 0.1vw hidden #a31e1e;
   border-radius: 0.4vw;
 }
-.MuiChip-root {
+.MuiChip-clickable:hover {
   font-family: "Staatliches" !important;
   font-size: 1.5vw !important;
   background-color: #3e8e7e !important;
@@ -63,7 +63,15 @@
   height: 2.3vw !important;
   width: 7vw;
 }
-.MuiChip-root{
+.MuiChip-clickable:focus {
+  font-family: "Staatliches" !important;
+  font-size: 1.5vw !important;
+  background-color: #3e8e7e !important;
+  color: white !important;
+  height: 2.3vw !important;
+  width: 7vw;
+}
+.MuiChip-root {
   font-family: "Staatliches" !important;
   font-size: 1.5vw !important;
   border-color: #3e8e7e !important;

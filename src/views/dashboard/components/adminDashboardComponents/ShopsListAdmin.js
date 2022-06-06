@@ -54,21 +54,23 @@ const ShopListAdmin = (props) => {
           <ErrorModal error={error} onClear={clearError} />
           {!isLoading && loadedShops && totalPages && (
             <div>
-              <Box
-                className="search-box"
-                sx={{ display: "flex", alignItems: "flex-end" }}
-              >
-                <Input
-                  fullWidth
-                  label="Buscar"
-                  id="fullWidth"
-                  className="search"
-                  inputProps={{ style: { fontSize: 30 } }} // font size of input text
-                  inputlabelprops={{ style: { fontSize: 30 } }}
-                  placeholder="  Buscar"
-                  onKeyDown={handleTextFieldKeyDown}
-                />
-              </Box>
+              <div className="searchBoxSeller">
+                <Box
+                  className="search-box"
+                  sx={{ display: "flex", alignItems: "flex-end" }}
+                >
+                  <Input
+                    fullWidth
+                    label="Buscar"
+                    id="fullWidth"
+                    className="search"
+                    inputProps={{ style: { fontSize: 30 } }} // font size of input text
+                    inputlabelprops={{ style: { fontSize: 30 } }}
+                    placeholder="  Buscar"
+                    onKeyDown={handleTextFieldKeyDown}
+                  />
+                </Box>
+              </div>
               <ShopsTable items={loadedShops} />
               <div className="pagination">
                 <Pagination
