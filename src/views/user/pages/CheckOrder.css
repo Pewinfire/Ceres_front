@@ -77,12 +77,12 @@
   top: 16.5vw;
 
 }
-.css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+.Mui-selected {
   background-color: #f8bb52 !important;
   color: white !important;
   font-family: "Staatliches" !important;
 }
-.css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root {
+.MuiPaginationItem-root {
   background-color: transparent !important;
   color: #f8bb52 !important;
   font-family: "Staatliches" !important;

@@ -35,13 +35,13 @@
   top: 5vw;
   color: #4b635e;
 }
-.css-ahj2mt-MuiTypography-root {
+.MuiTypography-root {
   font-family: "Staatliches" !important;
 }
-.css-vqmohf-MuiButtonBase-root-MuiRadio-root.Mui-checked {
+.Mui-checked {
   color: #2c6459 !important; 
 }
-.css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked{
+.Mui-checked{
   color: #2c6459 !important; 
 }
 
