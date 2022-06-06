@@ -17,12 +17,12 @@ import Authenticate from "./views/user/pages/Authenticate";
 import MarketNear from "./views/market/pages/MarketNear";
 import Markets from "./views/market/pages/Markets";
 import Shops from "./views/shop/pages/Shops";
-import Dashboard from "./views/dashboard/pages/Dashboard";
-import AdminDashboard from "./views/dashboard/pages/AdminDashboard";
-import SellerDashboard from "./views/dashboard/pages/SellerDashboard";
 import ShopPage from "./views/shopView/pages/ShopPage";
-import PDFcomponent from "./shared/components/PDF/PDFcomponent";
 import CheckOrder from "./views/user/pages/CheckOrder";
+
+const Dashboard = React.lazy(()=> import("./views/dashboard/pages/Dashboard"));
+const AdminDashboard = React.lazy(()=> import("./views/dashboard/pages/AdminDashboard"));
+const SellerDashboard = React.lazy(()=> import("./views/dashboard/pages/SellerDashboard"));
 
 const AnimatedSwitch = withRouter(({ location }) => (
   <TransitionGroup>
@@ -88,9 +88,6 @@ const AnimatedSwitchNT = withRouter(({ location }) => (
         <Redirect to="/auth" />
         <Route path="/user/checkorder" exact>
           <CheckOrder />
-        </Route>
-        <Route path="/invoice/pdf" exact>
-          <PDFcomponent />
         </Route>
       </Switch>
     </CSSTransition>
