@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MarketList from "../components/MarketList";
 import ErrorModal from "../../../shared/components/UIElements/ErrorModal";
-import LoadingSpinner from "../../../shared/components/UIElements/LoadingSpinner";
+import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { useHttpClient } from "../../../shared/hooks/http-hook";
 import { Pagination } from "@mui/material";
@@ -16,7 +16,7 @@ const MarketNear = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [size, setSize] = useState(6);
-
+  const { t } = useTranslation();
   const address = useParams().addr;
 
   useEffect(() => {
@@ -77,7 +77,7 @@ const MarketNear = () => {
               className="search"
               inputProps={{ style: { fontSize: 30 } }} // font size of input text
               inputlabelprops={{ style: { fontSize: 30 } }}
-              placeholder="  Buscar"
+              placeholder={t("BUSCAR")}
               onKeyDown={handleTextFieldKeyDown}
             />
           </Box>

@@ -143,7 +143,7 @@ const UserCart = (props) => {
             </ul>
           </div>
           <div className="cart-footer">
-            <h2 className="totalo">Total= {total > 0 ? total.toFixed(2) + " €" : " "}</h2>
+            <h2 className="totalo">{t("TOTAL")}= {total > 0 ? total.toFixed(2) + " €" : " "}</h2>
             <h1>
               {props.checkoutMode && (
                 <Button

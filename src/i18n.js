@@ -5,6 +5,9 @@ import { initReactI18next } from "react-i18next";
 const resources = {
   es: {
     translation: {
+      EN_PROCESO: "En proceso",
+      ESTADO: "Estado",
+      TIENDAS: "Tiendas",
       SEGURO_ESTADO: "Estas seguro de que quieres cambiar el estado de la tienda?",
       METODO_PAGO:"Metodo de pago",
       COMPRA_PROPIA: "No puede realizar compras en su propia tienda",
@@ -28,7 +31,7 @@ const resources = {
       NECESITA_LOGUEAR:
         "Necesita loguearse primero para poder realizar la compra",
       EMAIL: "Email",
-      PASSWORD: "Password",
+      PASSWORD: "Contraseña",
       INICIAR: "Iniciar",
       REGISTRAR_CUENTA: "Registrar cuenta",
       NOMBRE: "Nombre",
@@ -99,6 +102,9 @@ const resources = {
   },
   val: {
     translation: {
+      EN_PROCESO: "En procés",
+      ESTADO: "Estat",
+      TIENDAS: "Botigas",
       SEGURO_ESTADO: "Estàs segur que vols canviar l'estat de la botiga?",
       METODO_PAGO:"Mètode de pagament",
       COMPRA_PROPIA: "No pots fer compres a la seva pròpia botiga",
@@ -193,6 +199,9 @@ const resources = {
   },
   en: {
     translation: {
+      EN_PROCESO: "In procces",
+      ESTADO: "Status",
+      TIENDAS: "Shops",
       SEGURO_ESTADO: "Are you sure you want to change the store's status?",
       METODO_PAGO:"Payment method",
       COMPRA_PROPIA: "You can't buy in your own shop",

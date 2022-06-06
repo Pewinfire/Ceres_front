@@ -1,8 +1,9 @@
 import React from "react";
 import "./sellerDashboardComponents/OrdersTable.css";
 import Button from "../../../shared/components/FormElements/Button";
-
+import { useTranslation } from "react-i18next";
 const UserOrderTable = (props) => {
+  const { t } = useTranslation();
   const dateParser = (string) => {
     const fecha = new Date(string);
     return fecha.toLocaleString();
@@ -11,11 +12,11 @@ const UserOrderTable = (props) => {
     <div className="orders-table">
       <table>
         <tr>
-          <th className="ts-primero"> Order</th>
-          <th> Vendedor </th>
-          <th> Fecha</th>
-          <th>Detalles</th>
-          <th className="ts-final"> Estado</th>
+          <th className="ts-primero"> {t("PEDIDOS")}</th>
+          <th> {t("VENDEDOR")} </th>
+          <th>  {t("FECHA")}</th>
+          <th>{t("DETALLES")}</th>
+          <th className="ts-final"> {t("Estado")}</th>
         </tr>
 
         {props.orders
@@ -37,9 +38,9 @@ const UserOrderTable = (props) => {
                   </Button>
                 </td>
                 <td>
-                  {!elem.aceptado && !elem.cancelado && "En Proceso"}
-                  {elem.aceptado && "Aceptado"}
-                  {elem.cancelado && "Rechazado"}
+                  {!elem.aceptado && !elem.cancelado && t("EN_PROCESO")}
+                  {elem.aceptado && t("ACEPTADO")}
+                  {elem.cancelado && t("RECHAZADO")}
                 </td>
               </tr>
             );

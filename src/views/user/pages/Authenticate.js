@@ -12,6 +12,7 @@ import {
   VALIDATOR_DNI,
   VALIDATOR_PASS,
 } from "../../../shared/util/validators";
+import { useTranslation } from "react-i18next";
 import { useForm } from "../../../shared/hooks/form-hook";
 import { AuthContext } from "../../../shared/context/auth-context";
 import { useHttpClient } from "../../../shared/hooks/http-hook";
@@ -19,6 +20,7 @@ import { useHttpClient } from "../../../shared/hooks/http-hook";
 import "./Authenticate.css";
 
 const Authenticate = (props) => {
+  const { t } = useTranslation();
   const auth = useContext(AuthContext);
   const [isLoginMode, setIsLoginMode] = useState(true);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
@@ -130,7 +132,7 @@ const Authenticate = (props) => {
       <ErrorModal error={error} onClear={clearError} />
       <Card className="authentication">
         {isLoading && <LoadingSpinner asOverlay />}
-        <h2>Iniciar Sesión</h2>
+        <h2>{t("INICIAR_SESS")}</h2>
         <form onSubmit={authSubmitHandler}>
           {!isLoginMode && (
             <React.Fragment>
@@ -138,7 +140,7 @@ const Authenticate = (props) => {
                 element="input"
                 id="name"
                 type="text"
-                label="Nombre"
+                label={t("NOMBRE")}
                 validators={[VALIDATOR_REQUIRE]}
                 errorText="Por favor, introduce un nombre"
                 onInput={inputHandler}
@@ -147,7 +149,7 @@ const Authenticate = (props) => {
                 element="input"
                 id="lastname"
                 type="text"
-                label="Apellido"
+                label={t("APELLIDO")}
                 validators={[VALIDATOR_REQUIRE]}
                 errorText="Por favor, introduce un apellido"
                 onInput={inputHandler}
@@ -156,14 +158,14 @@ const Authenticate = (props) => {
                 element="input"
                 id="dni"
                 type="text"
-                label="NIF"
+                label={t("NIF")}
                 validators={[VALIDATOR_DNI]}
                 errorText="Por favor, introduce un DNI o NIE  valido"
                 onInput={inputHandler}
               />
               <Input
                 element="input"
-                id="phone"
+                id={t("TELEFONO_CONTACTO")}
                 type="text"
                 label="Telefono de contacto"
                 validators={[VALIDATOR_REQUIRE]}
@@ -174,7 +176,7 @@ const Authenticate = (props) => {
                 element="input"
                 id="address"
                 type="text"
-                label="Dirección"
+                label={t("DIRECCION")}
                 validators={[VALIDATOR_REQUIRE]}
                 errorText="Por favor, introduce una dirección"
                 onInput={inputHandler}
@@ -184,7 +186,7 @@ const Authenticate = (props) => {
                 element="input"
                 id="province"
                 type="text"
-                label="Provincia"
+                label={t("PROVINCIA")}
                 validators={[VALIDATOR_REQUIRE]}
                 errorText="Por favor, introduce una provincia"
                 onInput={inputHandler}
@@ -193,14 +195,14 @@ const Authenticate = (props) => {
                 element="input"
                 id="locality"
                 type="text"
-                label="Localidad"
+                label={t("LOCALIDAD")}
                 validators={[VALIDATOR_REQUIRE]}
                 errorText="Por favor, introduce una localidad"
                 onInput={inputHandler}
               />
                 <Input
                 element="input"
-                id="postalCode"
+                id={t("CODIGO_POSTAL")}
                 type="text"
                 label="Codigo postal"
                 validators={[VALIDATOR_REQUIRE]}
@@ -226,7 +228,7 @@ const Authenticate = (props) => {
             id="password"
             element="input"
             type="password"
-            label="Password"
+            label={t("PASSWORD")}
             validators={[VALIDATOR_MINLENGTH(6)]}
             errorText="Please enter a valid password, at least 6 characters ."
             onInput={inputHandler}
@@ -236,7 +238,7 @@ const Authenticate = (props) => {
               id="password2"
               element="input"
               type="password"
-              label="Confirmacion del password"
+              label={t("CONFIRMACION_CONTRAS")}
               validators={[VALIDATOR_PASS(formState.inputs.password.value)]}
               errorText="La contraseña introducida no coincide en los dos campos ."
               onInput={inputHandler}
@@ -244,12 +246,12 @@ const Authenticate = (props) => {
           )}
 
           <Button type="submit" disabled={!formState.isValid}>
-            {isLoginMode ? "Iniciar" : "Registrarse"}
+            {isLoginMode ? t("INICIAR") : t("REGISTRASE") }
           </Button>
         </form>
         {!props.close && (
           <Button inverse onClick={switchModeHandler}>
-            {isLoginMode ? "Registrar cuenta" : "Iniciar Sesión"}
+            {isLoginMode ? t("INICIAR_SESS") : t("REGISTRAR_CUENTA")}
           </Button>
         )}
       </Card>

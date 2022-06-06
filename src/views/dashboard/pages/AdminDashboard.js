@@ -7,9 +7,10 @@ import { useHttpClient } from "../../../shared/hooks/http-hook";
 import ErrorModal from "../../../shared/components/UIElements/ErrorModal";
 import LoadingSpinner from "../../../shared/components/UIElements/LoadingSpinner";
 import UsersList from "../components/adminDashboardComponents/UsersList";
+import { useTranslation } from "react-i18next";
+import AdminShopsMenu from "../components/adminDashboardComponents/AdminShopsMenu";
 import AdminMarketsMenu from "../components/adminDashboardComponents/AdminMarketsMenu";
 import "./SellerDashboard.css";
-import AdminShopsMenu from "../components/adminDashboardComponents/AdminShopsMenu";
 
 // falta autentificacion.
 
@@ -19,6 +20,7 @@ const AdminDashboard = () => {
   const [markets, setMarkets] = useState(false);
   const [shops, setShops] = useState(false);
   const [user, setUser] = useState();
+  const { t } = useTranslation()
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const auth = useContext(AuthContext);
 
@@ -94,17 +96,17 @@ const AdminDashboard = () => {
             <div className="ButtonMenu">
               <Button dClassName="ds-button" onClick={buttonHandler("users")}>
                 <i className="fas fa-users fa-2x">
-                  <p>Usuarios</p>
+                  <p>{t("USUARIO")}s</p>
                 </i>
               </Button>
               <Button dClassName="ds-button" onClick={buttonHandler("markets")}>
                 <i className="fas fa-map-marker-alt fa-2x">
-                  <p>Mercados</p>
+                  <p>{t("MERCADOS")}</p>
                 </i>
               </Button>
               <Button dClassName="ds-button" onClick={buttonHandler("shops")}>
                 <i className="fas fa-store fa-2x">
-                  <p>Tiendas</p>
+                  <p>{t("TIENDAS")}</p>
                 </i>
               </Button>
               <Button dClassName="ds-button" onClick={buttonHandler("general")}>
