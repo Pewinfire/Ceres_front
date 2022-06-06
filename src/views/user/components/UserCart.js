@@ -11,7 +11,7 @@ const UserCart = (props) => {
   const [loadedCart, setLoadedCard] = useState();
   const [update, setUpdateRender] = useState(true);
   const [total, setTotal] = useState(0);
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const formatFormat = (quantity, format) => {
     switch (format) {

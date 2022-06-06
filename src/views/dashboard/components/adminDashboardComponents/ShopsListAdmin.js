@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Button from "../../../../shared/components/FormElements/Button";
 import { Box } from "@mui/system";
 import { Input } from "@mui/material";
 import { Pagination } from "@mui/material";
@@ -13,10 +12,10 @@ const ShopListAdmin = (props) => {
   const [loadedShops, setLoadedShops] = useState();
   const [search, setSearch] = useState("merca");
   const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-  const [size, setSize] = useState(10);
+  const [totalPages] = useState(1);
+  const [size] = useState(10);
 
-  const selectPage = (event, value) => {
+  const selectPage = (value) => {
     setPage(value);
   };
   const handleTextFieldKeyDown = (event) => {

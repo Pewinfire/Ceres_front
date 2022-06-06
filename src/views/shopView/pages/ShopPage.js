@@ -19,7 +19,7 @@ const ShopItems = () => {
   const shopId = useParams().shopId;
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [update, setUpdate] = useState(true);
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const updateRender = () => {
     setUpdate(update == true ? false : true);
   };

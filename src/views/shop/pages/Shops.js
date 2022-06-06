@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ShopList from "../components/ShopList";
 import ErrorModal from "../../../shared/components/UIElements/ErrorModal";
-import LoadingSpinner from "../../../shared/components/UIElements/LoadingSpinner";
 import { useHttpClient } from "../../../shared/hooks/http-hook";
 import { useParams } from "react-router-dom";
 import { Pagination } from "@mui/material";
@@ -14,7 +13,7 @@ const Shops = () => {
   const [search, setSearch] = useState("shop");
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [size, setSize] = useState(6);
+  const [size] = useState(6);
 
   const marketId = useParams().marketId;
 
@@ -31,7 +30,7 @@ const Shops = () => {
       } catch (err) {}
     };
     fetchShops();
-  }, [sendRequest, search, page, size, totalPages]); // allows to run certain code only when certain dependencies change (first argument),  . Second arg = array of dependencies , data that needs to change for this return. recarga cada vez que se hace una request
+  }, [sendRequest, search, page, size, totalPages, marketId]); // allows to run certain code only when certain dependencies change (first argument),  . Second arg = array of dependencies , data that needs to change for this return. recarga cada vez que se hace una request
 
   const handleTextFieldKeyDown = (event) => {
     switch (event.key) {

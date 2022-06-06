@@ -13,7 +13,7 @@ import { Pagination } from "@mui/material";
 
 const CheckOrder = (props) => {
   const orderId = useParams().orderId;
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [loadedOrders, setLoadedOrders] = useState();
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [page, setPage] = useState(1);

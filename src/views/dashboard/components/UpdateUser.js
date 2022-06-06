@@ -15,7 +15,7 @@ import "../pages/Form.css";
 const UpdateUser = (props) => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedUser, setLoadedUser] = useState();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const [formState, inputHandler, setFormData] = useForm(
     {

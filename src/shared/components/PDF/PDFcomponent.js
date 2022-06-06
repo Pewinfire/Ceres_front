@@ -6,7 +6,7 @@ import "./PDFcomponent.css";
 
 const PDFcomponent = (props) => {
   const ref = React.createRef();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const maxRows = 16;
   const iva = {
     1: "SRED",

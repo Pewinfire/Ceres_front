@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "../../../shared/components/FormElements/Button";
 import Card from "../../../shared/components/UIElements/Card";
 import { useHttpClient } from "../../../shared/hooks/http-hook";
@@ -16,7 +16,7 @@ const ShopMenu = (props) => {
   const [updateShop, setUpdateShop] = useState(false);
   const [productList, setProductList] = useState(false);
   const [general, setGeneral] = useState(true);
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const { isLoading, sendRequest } = useHttpClient();
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [loadedShop, setLoadedShop] = useState();
 
@@ -68,7 +68,6 @@ const ShopMenu = (props) => {
   };
 
   const switchStatusHandler = async () => {
-
     setShowConfirmModal(false);
     try {
       await sendRequest(
@@ -96,7 +95,7 @@ const ShopMenu = (props) => {
               footer={
                 <React.Fragment>
                   <Button inverse onClick={cancelDeleteHandler}>
-                  {t("CANCELAR")}
+                    {t("CANCELAR")}
                   </Button>
                   <Button danger onClick={switchStatusHandler}>
                     {(status && "Desactivar") || "Activar"}
@@ -104,7 +103,7 @@ const ShopMenu = (props) => {
                 </React.Fragment>
               }
             >
-              <p>  {t("CANCELAR")}</p>
+              <p> {t("CANCELAR")}</p>
             </Modal>
             {!isLoading && loadedShop && (
               <Card className="ds-tienda">
@@ -120,11 +119,13 @@ const ShopMenu = (props) => {
                 </div>
                 <div className="ds-tienda-status">
                   <h2>{(status && t("ACTIVO")) || t("INACTIVO")}</h2>
-                  <Button dClassname="ds-tienda-status-button" to={`/shopPage/${props.shop}`}>
-                  {t("IR_TIENDA")}
+                  <Button
+                    dClassname="ds-tienda-status-button"
+                    to={`/shopPage/${props.shop}`}
+                  >
+                    {t("IR_TIENDA")}
                   </Button>
                 </div>
-                
               </Card>
             )}
             <ul>
@@ -185,7 +186,10 @@ const ShopMenu = (props) => {
                     dClassName="ds-button"
                     onClick={showStatusWarningHandler}
                   >
-                    <p>{(status && t("DESACTIVAR_TIENDA")) || t("ACTIVAR_TIENDA")}</p>
+                    <p>
+                      {(status && t("DESACTIVAR_TIENDA")) ||
+                        t("ACTIVAR_TIENDA")}
+                    </p>
                   </Button>
                 </Card>
               </li>

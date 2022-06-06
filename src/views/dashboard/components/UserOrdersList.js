@@ -18,7 +18,7 @@ const UserOrderList = (props) => {
   const [order, setOrder] = useState();
   const [showModal, setShowModal] = useState(false);
   const [ reload, setReload] = useState(false);
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const showOrder = (order) => {
     setOrder(order);

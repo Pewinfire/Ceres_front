@@ -9,10 +9,10 @@ import "./Button.css";
 
 const AuthButton = (props) => {
   const auth = useContext(AuthContext);
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const { isLoading, sendRequest } = useHttpClient();
   const [authRol, setAuthRol] = useState();
   const [url, setUrl] = useState("/user/dashboard");
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   useEffect(() => {
     if (auth.token) {
       const fetchUser = async () => {

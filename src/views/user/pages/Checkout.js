@@ -13,7 +13,7 @@ const Checkout = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedUser, setLoadedUser] = useState();
   const [updateRender, setUpdateRender] = useState();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const auth = useContext(AuthContext);
   const checkoutMode = true;
   const [makeOrder, setMakeOrder] = useState(false);

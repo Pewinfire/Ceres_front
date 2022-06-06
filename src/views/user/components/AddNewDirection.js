@@ -10,7 +10,7 @@ import { VALIDATOR_REQUIRE } from "../../../shared/util/validators";
 
 const AddNewDirection = (props) => {
   const [userAddress, setUserAdress] = useState();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [updateAddress, setUpdateAddress] = useState(false);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [formState, inputHandler, setFormData] = useForm(

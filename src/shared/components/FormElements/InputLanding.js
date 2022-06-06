@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 
 function withMyHook(Component) {
   return function WrappedComponent(props) {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     return <InputLanding {...props} t={t} />;
   }
 }
