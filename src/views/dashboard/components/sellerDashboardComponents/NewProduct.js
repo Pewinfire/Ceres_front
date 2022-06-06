@@ -144,7 +144,7 @@ const NewProduct = (props) => {
               type="text"
               label="Descripción"
               validators={[VALIDATOR_MINLENGTH(5)]}
-              errorText="Por favor, introduce un codigo postal valido (at least 5 characters)."
+              errorText="Por favor, introduce una descripción valida (al menos 5 caractéres)."
               onInput={inputHandler}
             />
             <InputLabel id="demo-multiple-chip-label">Categorias</InputLabel>

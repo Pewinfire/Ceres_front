@@ -165,9 +165,9 @@ const Authenticate = (props) => {
               />
               <Input
                 element="input"
-                id={t("TELEFONO_CONTACTO")}
+                id="phone"
                 type="text"
-                label="Telefono de contacto"
+                label={t("TELEFONO_CONTACTO")}
                 validators={[VALIDATOR_REQUIRE]}
                 errorText="Por favor, introduce un telefono valido"
                 onInput={inputHandler}
@@ -202,9 +202,9 @@ const Authenticate = (props) => {
               />
                 <Input
                 element="input"
-                id={t("CODIGO_POSTAL")}
+                id="postalCode"
                 type="text"
-                label="Codigo postal"
+                label={t("CODIGO_POSTAL")}
                 validators={[VALIDATOR_REQUIRE]}
                 errorText="Por favor, introduce un codigo postal"
                 onInput={inputHandler}
@@ -251,7 +251,7 @@ const Authenticate = (props) => {
         </form>
         {!props.close && (
           <Button inverse onClick={switchModeHandler}>
-            {isLoginMode ? t("INICIAR_SESS") : t("REGISTRAR_CUENTA")}
+            {isLoginMode ? t("REGISTRAR_CUENTA") : t("INICIAR_SESS") }
           </Button>
         )}
       </Card>

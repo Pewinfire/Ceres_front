@@ -39,15 +39,15 @@
   flex-wrap: wrap;
   
 }
-.css-1p823my-MuiListItem-root {
-  flex: 1 0 25%;
+.style-formUP .MuiListItem-root {
+  flex: 1 0 25% !important;
 }
 .right {
   display: flex;
   margin-top: 2vw;
   justify-content: space-between;
 }
-.css-1k430x0-MuiButtonBase-root-MuiChip-root {
+.MuiChip-filledDefault{
   font-family: "Staatliches" !important;
   font-size: 1vw !important;
   background-color: #3e8e7e !important;
@@ -118,30 +118,30 @@
   font-size: 3vw !important;
 }
 
-.css-1k430x0-MuiButtonBase-root-MuiChip-root .MuiChip-deleteIcon {
+.MuiChip-deleteIcon {
   color: white !important;
 }
 
-.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
+.MuiInputLabel-root {
   font-family: "Staatliches" !important;
   font-size: 1.1vw !important;
 }
 
-.css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root {
+.MuiOutlinedInput-root {
   width: 27vw !important;
   height: 2.8vw !important;
   margin-bottom: 1vw !important;
 }
-.css-nxo287-MuiInputBase-input-MuiOutlinedInput-input {
+.MuiOutlinedInput-input {
   font-size: 1vw !important;
   background: #f8f8f8 !important;
 }
 
-.css-viou3o-MuiAutocomplete-root .MuiOutlinedInput-root {
+.MuiOutlinedInput-root {
   font-family: "Staatliches" !important;
 }
 
-.css-1x51dt5-MuiInputBase-input-MuiInput-input {
+.MuiInput-input {
   font-family: "Staatliches" !important;
   font-size: 1.2vw !important;
   padding-left: 0.5vw !important;
@@ -154,4 +154,15 @@
 
 .checkout--modal .style-form{
   left: 50%;
+}
+.MuiChip-root{
+  color: white !important;
+  font-size: 1vw !important;
+  font-family: "Staatliches" !important;
+  background-color: #3e8e7e !important;
+}
+.MuiInputLabel-root{
+  font-family: "Staatliches" !important;
+  color: black;
+  font-size: 1vw;
 }

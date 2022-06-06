@@ -81,7 +81,7 @@ const ShopItems = (props) => {
   };
 
   return (
-    <div>
+    <div className={"product-table"}>
       <React.Fragment>
         <ErrorModal error={error} onClear={clearError} />
         <>

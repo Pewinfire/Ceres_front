@@ -45,7 +45,7 @@
   -o-transition: all 0.2s linear;
   transition: all 0.2s linear;
 }
-.css-1p823my-MuiListItem-root {
+.MuiListItem-root {
   padding: 0.1vw !important;
 }
 .chip button {
@@ -55,7 +55,7 @@
   border: 0.1vw hidden #a31e1e;
   border-radius: 0.4vw;
 }
-.css-1haevf0-MuiButtonBase-root-MuiChip-root {
+.MuiChip-root {
   font-family: "Staatliches" !important;
   font-size: 1.5vw !important;
   background-color: #3e8e7e !important;
@@ -63,7 +63,7 @@
   height: 2.3vw !important;
   width: 7vw;
 }
-.css-sr4zzr-MuiButtonBase-root-MuiChip-root{
+.MuiChip-root{
   font-family: "Staatliches" !important;
   font-size: 1.5vw !important;
   border-color: #3e8e7e !important;

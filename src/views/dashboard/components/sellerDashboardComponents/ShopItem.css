@@ -1,5 +1,5 @@
-.ds-table {
-  width: 123.3%;
+.product-table .ds-table {
+  min-width: 74.1vw;
   position: relative;
   top: -1.1vw;
   left: -7vw;
