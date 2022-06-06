@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Button from "../../../../shared/components/FormElements/Button";
 import Card from "../../../../shared/components/UIElements/Card";
 import { useHttpClient } from "../../../../shared/hooks/http-hook";
+import ShopsListAdmin from "./ShopsListAdmin";
 import NewShop from "./NewShop";
 import "./ShopMenu.css";
 
@@ -18,7 +19,7 @@ const AdminShopsMenu = (props) => {
         setShopsList(false);
         setGeneral(false);
         break;
-      case "shopList":
+      case "shopsList":
         setNewShop(false);
         setShopsList(true);
         setGeneral(false);
@@ -71,6 +72,12 @@ const AdminShopsMenu = (props) => {
         )}
         {newShop && (
           <NewShop token={props.token} close={buttonHandler("general")} />
+        )}
+        {shopsList && (
+          <ShopsListAdmin
+            token={props.token}
+            close={buttonHandler("general")}
+          />
         )}
         {/*      {productList && (
           <ShopItems

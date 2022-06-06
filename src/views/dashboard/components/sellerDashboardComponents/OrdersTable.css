@@ -1,0 +1,62 @@
+.orders-table {
+  width: 123.3%;
+  margin: -1vw 0vw 0vw -7vw;
+}
+.admin {
+  max-width: 139%;
+  min-width: 139%;
+
+  margin: -15vw 0vw 0vw -8vw;
+  padding-bottom: 25vw;
+}
+.seller {
+  max-width: 164.5%;
+  min-width: 164.5%;
+  margin: -15vw 0vw 0vw -8vw;
+  padding-bottom: 25vw;
+}
+.orders-table table {
+  border-collapse: collapse;
+  color: #267061;
+  width: 100%;
+}
+.orders-table th {
+  background-color: #39bda7;
+  color: white;
+  height: 15vh;
+  font-size: 1.5vw;
+  padding-top: 6vw;
+  padding-right: 2vw;
+  border-bottom: 3px solid #25584e;
+  border-collapse: collapse;
+  text-align: center;
+}
+.orders-table .ts-primero {
+  border-top-left-radius: 2vw !important;
+  width: 15%;
+}
+.orders-table .ts-final {
+  border-top-right-radius: 2vw !important;
+  width: 15%;
+}
+.orders-table td {
+  height: 5vh;
+  font-size: 1vw;
+  padding-right: 2vw;
+  border-bottom: 3px solid #09a08256;
+  border-collapse: collapse;
+  text-align: center;
+}
+.orders-table button {
+  background-color: #39bda7;
+  border: transparent;
+  font-size: 1.2vw;
+  padding: 0vw 0.5vw;
+  text-align: center;
+}
+
+.orders-table .search {
+  position: absolute;
+  top: -10vw;
+  right: -5vw;
+}

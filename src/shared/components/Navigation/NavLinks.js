@@ -3,12 +3,13 @@ import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../context/auth-context";
 import AuthButton from "../FormElements/AuthButton";
 import { useTranslation } from "react-i18next";
-import "./NavLinks.css";
 import ButtonLang from "./ButtonLang";
+import "./NavLinks.css";
 
-const NavLinks = (props) => {
+
+const NavLinks = () => {
   const auth = useContext(AuthContext);
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <ul className="nav-links">
       <li>
@@ -21,14 +22,13 @@ const NavLinks = (props) => {
       )}
       {!auth.isLoggedIn && (
         <li>
-          <NavLink to="/auth/log"> Authenticate</NavLink>
+          <NavLink to="/auth/log"> {t("INICIAR_SESS")}</NavLink>
         </li>
       )}
       {auth.isLoggedIn && (
         <li>
           <button className="batton" onClick={auth.logout}>
-            {" "}
-            Logout
+          {t("CERRAR_SESS")}
           </button>
         </li>
       )}

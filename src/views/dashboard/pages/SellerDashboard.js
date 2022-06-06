@@ -9,6 +9,7 @@ import LoadingSpinner from "../../../shared/components/UIElements/LoadingSpinner
 import ShopMenu from "../components/ShopMenu";
 import ProfileMenu from "../components/ProfileMenu";
 import "./SellerDashboard.css";
+import OrdersList from "../components/sellerDashboardComponents/OrdersList";
 // falta autentificacion.
 
 const SellerDashboard = () => {
@@ -130,6 +131,11 @@ const SellerDashboard = () => {
             {shop && (
               <div className="options">
                 <ShopMenu shop={user.shop} token={auth.token} />
+              </div>
+            )}
+            {orders && (
+              <div className="orders-orders">
+                <OrdersList shop={user.shop} token={auth.token} />
               </div>
             )}
           </div>

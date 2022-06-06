@@ -8,7 +8,7 @@ import Button from "../../../shared/components/FormElements/Button";
 import { Modal } from "@mui/material";
 import Authenticate from "../../user/pages/Authenticate";
 import UserCart from "../../user/components/UserCart";
-
+import { useTranslation } from "react-i18next";
 import "./ShopPage.css";
 
 const ShopItems = () => {
@@ -19,7 +19,7 @@ const ShopItems = () => {
   const shopId = useParams().shopId;
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [update, setUpdate] = useState(true);
-
+  const { t, i18n } = useTranslation();
   const updateRender = () => {
     setUpdate(update == true ? false : true);
   };
@@ -82,19 +82,28 @@ const ShopItems = () => {
                     token={auth.token}
                     update={updateRender}
                   />
-                )) || <h1>La tienda no esta activa en estos momentos</h1>}
+                )) || <h1>{t("TIENDA_DESACTIVA")}</h1>}
               </div>
               <div className="shopCart">
-                {(auth.userId && (
+                {(auth.userId && loadedShop.owner != auth.userId && (
                   <UserCart token={auth.token} update={update} />
                 )) || (
                   <div>
-                    <h1>
-                      Necesita loguearse primero para poder realizar una compra
-                    </h1>
-                    <Button onClick={showStatusWarningHandler}>
-                      Iniciar Sesión
-                    </Button>
+                    {(loadedShop.owner == auth.userId && (
+                      <>
+                        <h1>{t("COMPRA_PROPIA")}</h1>
+                      </>
+                    )) || (
+                      <>
+                        {" "}
+                        <h1>
+                        {t("NECESITA_LOGUEAR")}
+                        </h1>
+                        <Button onClick={showStatusWarningHandler}>
+                          Iniciar Sesión
+                        </Button>
+                      </>
+                    )}
                   </div>
                 )}
               </div>

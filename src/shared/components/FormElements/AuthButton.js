@@ -3,6 +3,7 @@ import { useHttpClient } from "../../hooks/http-hook";
 import { AuthContext } from "../../../shared/context/auth-context";
 import { Link } from "react-router-dom";
 import LoadingSpinner from "../UIElements/LoadingSpinner";
+import { useTranslation } from "react-i18next";
 import Button from "./Button";
 import "./Button.css";
 
@@ -11,7 +12,7 @@ const AuthButton = (props) => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [authRol, setAuthRol] = useState();
   const [url, setUrl] = useState("/user/dashboard");
-
+  const { t, i18n } = useTranslation();
   useEffect(() => {
     if (auth.token) {
       const fetchUser = async () => {
@@ -56,7 +57,7 @@ const AuthButton = (props) => {
       )}
          {!isLoading && authRol && props.isButton && (
         <Button to={url} exact="exact" >
-          Mi cuenta
+         {t("MI_CUENTA")}
         </Button>
       )}
     </div>

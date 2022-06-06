@@ -1,6 +1,7 @@
 .ds-tabdata-actions {
   display: flex;
   width: 11.9vw;
+
 }
 
 .ds-tabdata-actions .button{
@@ -8,21 +9,25 @@
   justify-content: center;
   align-items: center;
   display: flex;
+  padding-bottom: 1vw;
 }
 
 
 .ds-tabdata td {
-  font-size: 1.2vw;
+  font-size: 1vw !important;
+  color: #267061;
 padding: 1vw;
+border-bottom: solid 3px #0d9b7e59;
 }
 
 .Lista {
   font-family: "Staatliches" !important;
-  font-size: 0.9vw !important;
+  font-size: 1vw !important;
   padding: 0vw 1.5vw 0.2vw 1.5vw !important;
 }
 .ds-img{
-  width:3.2%
+  width:3.2%;
+  padding-bottom: 1.2vw !important;
 }
 .ds-short {
   width: 15%;
@@ -58,3 +63,28 @@ padding: 1vw;
   border-radius: 40px 40px 40px 0px;
 }
 
+.modalProduct{
+  position: absolute;
+  left: 20%;
+}
+
+
+.modalProductDelete{
+  position: absolute;
+  left: 37.5%;
+  top: 35%;
+  width: 25%;
+  height: 20%;
+  background-color: white;
+  border-radius: 5%;
+  padding: 1vw;
+}
+.modalProductDelete button{
+  margin-top: 1vw;
+  float: right;
+}
+
+.warning button{
+  background-color: rgb(189, 52, 52);
+  border-color: transparent;
+}

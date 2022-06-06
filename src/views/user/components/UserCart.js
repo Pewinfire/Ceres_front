@@ -3,6 +3,7 @@ import Button from "../../../shared/components/FormElements/Button";
 import { useHttpClient } from "../../../shared/hooks/http-hook";
 import ErrorModal from "../../../shared/components/UIElements/ErrorModal";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { useTranslation } from "react-i18next";
 import "./UserCart.css";
 
 const UserCart = (props) => {
@@ -10,6 +11,7 @@ const UserCart = (props) => {
   const [loadedCart, setLoadedCard] = useState();
   const [update, setUpdateRender] = useState(true);
   const [total, setTotal] = useState(0);
+  const { t, i18n } = useTranslation();
 
   const formatFormat = (quantity, format) => {
     switch (format) {
@@ -78,68 +80,70 @@ const UserCart = (props) => {
         <>
           <div className="cart-header">
             <h1>
-              Cesta <i className="fas fa-shopping-basket"></i>
+              {t("CESTA")} <i className="fas fa-shopping-basket"></i>
             </h1>
           </div>
           <div className="cart-list">
             <ul>
-              <TransitionGroup className="todo-list">
-                {loadedCart.map((cartItem) => {
-                  return (
-                    <CSSTransition
-                      key={cartItem.product.id}
-                      timeout={500}
-                      classNames="item"
-                    >
-                      <li>
-                        <div className="Cart-Items">
-                          <div className="image-box">
-                            <img
-                              src={`${process.env.REACT_APP_BACKEND_IMG}/${cartItem.product.image}`}
-                              alt={cartItem.product.name}
-                            ></img>
-                          </div>
-                          <div className="about">
-                            <h1 className="title">
-                              {cartItem.product.name.length > 19
-                                ? cartItem.product.name.slice(0, 20) + "..."
-                                : cartItem.product.name}
-                            </h1>
-                            <h3 className="subtitle">{cartItem.shop.name}</h3>
-                          </div>
-                          <div className="counter">
-                            <div className="count">
+              {loadedCart && (
+                <TransitionGroup className="todo-list">
+                  {loadedCart.map((cartItem) => {
+                    return (
+                      <CSSTransition
+                        key={cartItem.product.id}
+                        timeout={500}
+                        classNames="item"
+                      >
+                        <li>
+                          <div className="Cart-Items">
+                            <div className="image-box">
+                              <img
+                                src={`${process.env.REACT_APP_BACKEND_IMG}/${cartItem.product.image}`}
+                                alt={cartItem.product.name}
+                              ></img>
+                            </div>
+                            <div className="about">
+                              <h1 className="title">
+                                {cartItem.product.name.length > 19
+                                  ? cartItem.product.name.slice(0, 20) + "..."
+                                  : cartItem.product.name}
+                              </h1>
+                              <h3 className="subtitle">{cartItem.shop.name}</h3>
+                            </div>
+                            <div className="counter">
+                              <div className="count">
+                                {" "}
+                                {formatFormat(
+                                  cartItem.quantity,
+                                  cartItem.product.stats.format
+                                )}
+                              </div>
+                              <div className="amount">
+                                {cartItem.product.stats.price} €/
+                                {cartItem.product.stats.format}
+                              </div>
+                            </div>
+                            <div className="btn">
                               {" "}
-                              {formatFormat(
-                                cartItem.quantity,
-                                cartItem.product.stats.format
-                              )}
-                            </div>
-                            <div className="amount">
-                              {cartItem.product.stats.price} €/
-                              {cartItem.product.stats.format}
+                              <Button
+                                onClick={() =>
+                                  deleteCartItem(cartItem.product.id)
+                                }
+                              >
+                                <i className="fa-solid fa-square-minus"></i>
+                              </Button>
                             </div>
                           </div>
-                          <div className="btn">
-                            {" "}
-                            <Button
-                              onClick={() =>
-                                deleteCartItem(cartItem.product.id)
-                              }
-                            >
-                              <i className="fa-solid fa-square-minus"></i>
-                            </Button>
-                          </div>
-                        </div>
-                      </li>
-                    </CSSTransition>
-                  );
-                })}
-              </TransitionGroup>
+                        </li>
+                      </CSSTransition>
+                    );
+                  })}
+                </TransitionGroup>
+              )}
             </ul>
           </div>
           <div className="cart-footer">
-            <h2 className="totalo">Total= {total > 0 ? total + " €" : " "}</h2>
+            <h2 className="totalo">Total= {total > 0 ? total.toFixed(2) + " €" : " "}</h2>
             <h1>
               {props.checkoutMode && (
                 <Button
@@ -150,11 +154,11 @@ const UserCart = (props) => {
                     console.log(props.options);
                   }}
                 >
-                  Finalizar Compra
+                  {t("FINALIZAR_COMPRA")}
                 </Button>
               )}
               {!props.checkoutMode && (
-                <Button to={`/user/checkout`}>Tramitar pedido</Button>
+                <Button to={`/user/checkout`}>{t("TRAMITAR_PEDIDO")}</Button>
               )}
             </h1>
           </div>

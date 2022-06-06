@@ -1,12 +1,12 @@
 import React, { useEffect, useState /* useContext */ } from "react";
-import Input from "../../../shared/components/FormElements/Input";
-import Button from "../../../shared/components/FormElements/Button";
-import Card from "../../../shared/components/UIElements/Card";
-import LoadingSpinner from "../../../shared/components/UIElements/LoadingSpinner";
-import ErrorModal from "../../../shared/components/UIElements/ErrorModal";
-import { VALIDATOR_REQUIRE } from "../../../shared/util/validators";
-import { useForm } from "../../../shared/hooks/form-hook";
-import { useHttpClient } from "../../../shared/hooks/http-hook";
+import Input from "../../../../shared/components/FormElements/Input";
+import Button from "../../../../shared/components/FormElements/Button";
+import Card from "../../../../shared/components/UIElements/Card";
+import LoadingSpinner from "../../../../shared/components/UIElements/LoadingSpinner";
+import ErrorModal from "../../../../shared/components/UIElements/ErrorModal";
+import { VALIDATOR_REQUIRE } from "../../../../shared/util/validators";
+import { useForm } from "../../../../shared/hooks/form-hook";
+import { useHttpClient } from "../../../../shared/hooks/http-hook";
 import Chip from "@mui/material/Chip";
 import { Autocomplete, Input as InputM, TextField } from "@mui/material";
 import "./Form.css";
@@ -220,11 +220,13 @@ const UpdateProductStats = (props) => {
               );
             })}
           </div>
+          
           <Input
             id="discount"
             element="input"
             type="number"
-            label="Descuento (porcentaje)"
+            label="IVA:  &nbsp; &nbsp; 1-SRED,  &nbsp; &nbsp;2-RED,  &nbsp; &nbsp;3-GEN"
+            min="1" max="3"
             validators={[VALIDATOR_REQUIRE()]}
             errorText="Por favor, introduce un codigo postal válido."
             onInput={inputHandler}

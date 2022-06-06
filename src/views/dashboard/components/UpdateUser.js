@@ -7,6 +7,7 @@ import ErrorModal from "../../../shared/components/UIElements/ErrorModal";
 import { VALIDATOR_REQUIRE } from "../../../shared/util/validators";
 import { useForm } from "../../../shared/hooks/form-hook";
 import { useHttpClient } from "../../../shared/hooks/http-hook";
+import { useTranslation } from "react-i18next";
 import ImageUpload from "../../../shared/components/FormElements/ImageUpload";
 
 import "../pages/Form.css";
@@ -14,6 +15,7 @@ import "../pages/Form.css";
 const UpdateUser = (props) => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedUser, setLoadedUser] = useState();
+  const { t, i18n } = useTranslation();
 
   const [formState, inputHandler, setFormData] = useForm(
     {
@@ -153,7 +155,7 @@ const UpdateUser = (props) => {
               element="input"
               id="name"
               type="text"
-              label="Nombre"
+              label={t("NOMBRE")}
               validators={[VALIDATOR_REQUIRE]}
               errorText="Por favor, introduce un nombre"
               onInput={inputHandler}
@@ -164,7 +166,7 @@ const UpdateUser = (props) => {
               element="input"
               id="lastname"
               type="text"
-              label="Apellido"
+              label={t("APELLIDO")}
               validators={[VALIDATOR_REQUIRE]}
               errorText="Por favor, introduce un apellido"
               onInput={inputHandler}
@@ -175,7 +177,7 @@ const UpdateUser = (props) => {
               element="input"
               id="dni"
               type="text"
-              label="NIF"
+              label={t("NIF")}
               validators={[VALIDATOR_REQUIRE]}
               errorText="Por favor, introduce un DNI o NIE  valido"
               onInput={inputHandler}
@@ -186,7 +188,7 @@ const UpdateUser = (props) => {
               element="input"
               id="phone"
               type="text"
-              label="Telefono de contacto"
+              label={t("TELEFONO_CONTACTO")}
               validators={[VALIDATOR_REQUIRE]}
               errorText="Por favor, introduce un telefono valido"
               onInput={inputHandler}
@@ -197,7 +199,7 @@ const UpdateUser = (props) => {
               element="input"
               id="address"
               type="text"
-              label="Dirección"
+              label={t("DIRECCION")}
               validators={[VALIDATOR_REQUIRE]}
               errorText="Por favor, introduce una dirección"
               onInput={inputHandler}
@@ -208,7 +210,7 @@ const UpdateUser = (props) => {
               element="input"
               id="locality"
               type="text"
-              label="Localidad"
+              label={t("LOCALIDAD")}
               validators={[VALIDATOR_REQUIRE]}
               errorText="Por favor, introduce una localidad"
               onInput={inputHandler}
@@ -219,7 +221,7 @@ const UpdateUser = (props) => {
               element="input"
               id="province"
               type="text"
-              label="Provincia"
+              label={t("PROVINCIA")}
               validators={[VALIDATOR_REQUIRE]}
               errorText="Por favor, introduce una provincia "
               onInput={inputHandler}
@@ -230,7 +232,7 @@ const UpdateUser = (props) => {
               element="input"
               id="postalCode"
               type="text"
-              label="Codigo Postal"
+              label={t("CODIGO_POSTAL")}
               validators={[VALIDATOR_REQUIRE]}
               errorText="Por favor, introduce un codigo postal"
               onInput={inputHandler}
@@ -244,10 +246,10 @@ const UpdateUser = (props) => {
               preview={`${process.env.REACT_APP_BACKEND_IMG}/${loadedUser.image}`}
             />
             <div className="right">
-              <Button onClick={props.close}>Volver </Button>
+              <Button onClick={props.close}>{t("VOLVER")} </Button>
 
               <Button type="submit" disabled={!formState.isValid}>
-                Actualizar
+              {t("ACTUALIZAR")}
               </Button>
             </div>
           </form>

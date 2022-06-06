@@ -1,10 +1,11 @@
 import React, { useRef, useState, useEffect } from "react";
-
+import { useTranslation } from "react-i18next";
 import Button from "./Button";
 import "./ImageUpload.css";
 
 // useref = store values that survive rerender cycles (image)
 const ImageUpload = (props) => {
+  const { t } = useTranslation();
   const [file, setFile] = useState();
   const [previewUrl, setPreviewUrl] = useState(props.preview);
   const [isValid, setIsValid] = useState(false);
@@ -60,10 +61,10 @@ const ImageUpload = (props) => {
         <div className="image-upload__preview">
         
           {previewUrl && <img src={previewUrl} alt="Preview" />}
-          {!previewUrl  && <p> Please, pick and image</p>}
+          {!previewUrl  && <p> {t("ELIJA_IMAGEN")}</p>}
         </div>
         <Button type="button" onClick={pickImageHandler}>
-          Pick an Image
+        {t("ELIJA_IMAGEN")}
         </Button>
       </div>
       {!isValid && <p>{props.errorText}</p>}

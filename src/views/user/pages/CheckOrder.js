@@ -6,12 +6,14 @@ import PDFcomponent from "../../../shared/components/PDF/PDFcomponent";
 import Confetti from "react-confetti";
 import Button from "../../../shared/components/FormElements/Button";
 import AuthButton from "../../../shared/components/FormElements/AuthButton";
+import { useTranslation } from "react-i18next";
 import { Pagination } from "@mui/material";
 
 
 
 const CheckOrder = (props) => {
   const orderId = useParams().orderId;
+  const { t, i18n } = useTranslation();
   const [loadedOrders, setLoadedOrders] = useState();
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [page, setPage] = useState(1);
@@ -62,7 +64,7 @@ const CheckOrder = (props) => {
             ]}
           />
           <div className="order-msg text-focus-in">
-            <h1>Tu pedido se ha completado!</h1>
+            <h1>{t("PEDIDO_COMPLETO")}</h1>
           </div>
         </div>
       )}
@@ -71,16 +73,15 @@ const CheckOrder = (props) => {
         <>
           <div >
             <div className="order-details">
-              <h2>Aqui puedes ver los detalles</h2>
+              <h2>{t("VER_DETALLES")}</h2>
               <div className={style}>
                 <PDFcomponent order={loadedOrders[page - 1]}></PDFcomponent>
               </div>
             </div>
           </div>
           <div className="order-actions-uno">
-            <Button to={`/`}>Pagina Principal</Button>
-          </div>
-          <div className="order-actions-dos">
+            <Button to={`/`}>{t("PAGINA_PRINCIPAL")}</Button>
+       
             <AuthButton isButton={true}></AuthButton>
           </div>
         </>

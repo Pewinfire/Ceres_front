@@ -3,8 +3,16 @@ import PlacesAutocomplete from "react-places-autocomplete";
 import Button from "./Button";
 import { NavLink } from "react-router-dom";
 import "./InputLanding.css";
+import { useTranslation } from "react-i18next";
 
-export default class InputLanding extends React.Component {
+function withMyHook(Component) {
+  return function WrappedComponent(props) {
+    const { t, i18n } = useTranslation();
+    return <InputLanding {...props} t={t} />;
+  }
+}
+
+class InputLanding extends React.Component {
   constructor(props) {
     super(props);
     this.state = { address: "" };
@@ -39,7 +47,7 @@ export default class InputLanding extends React.Component {
               <div className="envoltorio">
                 <input
                   {...getInputProps({
-                    placeholder: "Introduce una dirección...",
+                    placeholder: this.props.t("INTRODUCIR_DIREC"),
                     className: "location-search-input",
                   })}
                 />
@@ -86,7 +94,7 @@ export default class InputLanding extends React.Component {
                   type="submit"
                   disabled={!this.state.address}
                 >
-                 <p>Buscar</p> 
+                 <p>{this.props.t("BUSCAR")}</p> 
                 </Button>
               </NavLink>
             </div>
@@ -96,3 +104,4 @@ export default class InputLanding extends React.Component {
     );
   }
 }
+export default withMyHook(InputLanding)

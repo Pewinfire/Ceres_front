@@ -5,6 +5,7 @@ import { useHttpClient } from "../../../shared/hooks/http-hook";
 import { AuthContext } from "../../../shared/context/auth-context";
 import UserCart from "../components/UserCart";
 import { Modal } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import "./Checkout.css";
 import Button from "../../../shared/components/FormElements/Button";
 
@@ -12,6 +13,7 @@ const Checkout = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedUser, setLoadedUser] = useState();
   const [updateRender, setUpdateRender] = useState();
+  const { t, i18n } = useTranslation();
   const auth = useContext(AuthContext);
   const checkoutMode = true;
   const [makeOrder, setMakeOrder] = useState(false);
@@ -29,9 +31,17 @@ const Checkout = () => {
     setMakeOrder(false);
     event.preventDefault();
     try {
-    const responseData =   await sendRequest(
+      const responseData = await sendRequest(
         `${process.env.REACT_APP_BACKEND_URL}/users/makeOrder`,
         "POST",
+        "",
+        {
+          Authorization: "Bearer " + auth.token,
+        }
+      );
+      await sendRequest(
+        `${process.env.REACT_APP_BACKEND_URL}/users/emptycart/${auth.userId}`,
+        "PATCH",
         "",
         {
           Authorization: "Bearer " + auth.token,
@@ -41,7 +51,6 @@ const Checkout = () => {
     } catch (err) {
       console.log(err);
     }
-  
   };
 
   useEffect(() => {
@@ -67,16 +76,14 @@ const Checkout = () => {
     <div>
       <Modal open={makeOrder} onClose={cancelOrderHandler}>
         <div className="modalWindow">
-          <div className="modalText">
-            ¿Estas Seguro de que quieres realizar la compra?
-          </div>
+          <div className="modalText">{t("SEGURO_COMPRAR")}</div>
           <div className="modalButtons">
             {" "}
             <Button inverse onClick={cancelOrderHandler}>
-              Cancelar
+              {t("CANCELAR")}
             </Button>
             <Button danger onClick={checkoutOrder}>
-              Realizar compra
+              {t("REALIZAR_COMPRA")}
             </Button>
           </div>
         </div>

@@ -3,14 +3,14 @@ import Button from "../../../shared/components/FormElements/Button";
 import Card from "../../../shared/components/UIElements/Card";
 import { useHttpClient } from "../../../shared/hooks/http-hook";
 import Modal from "../../../shared/components/UIElements/Modal";
-import ShopItems from "../../shopItems/pages/ShopItems";
-import NewProduct from "../../shopItems/pages/NewProduct";
-/* import ErrorModal from "../../shared/components/UIElements/ErrorModal";
-import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner"; */
+import ShopItems from "./sellerDashboardComponents/ShopItems";
+import NewProduct from "./sellerDashboardComponents/NewProduct";
+import { useTranslation } from "react-i18next";
 import UpdateShop from "./UpdateShop";
 import "./ShopMenu.css";
 
 const ShopMenu = (props) => {
+  const { t } = useTranslation();
   const [status, setStatus] = useState();
   const [newProduct, setNewProduct] = useState(false);
   const [updateShop, setUpdateShop] = useState(false);
@@ -91,12 +91,12 @@ const ShopMenu = (props) => {
             <Modal
               show={showConfirmModal}
               onCancel={cancelDeleteHandler}
-              header="Estas seguro de cambiar el estado de la tienda?"
+              header={t("SEGURO_ESTADO")}
               footerClass="place-item_modal-actions"
               footer={
                 <React.Fragment>
                   <Button inverse onClick={cancelDeleteHandler}>
-                    Cancelar
+                  {t("CANCELAR")}
                   </Button>
                   <Button danger onClick={switchStatusHandler}>
                     {(status && "Desactivar") || "Activar"}
@@ -104,7 +104,7 @@ const ShopMenu = (props) => {
                 </React.Fragment>
               }
             >
-              <p>Esta seguro de cambiar el estado de la tienda?</p>
+              <p>  {t("CANCELAR")}</p>
             </Modal>
             {!isLoading && loadedShop && (
               <Card className="ds-tienda">
@@ -119,9 +119,9 @@ const ShopMenu = (props) => {
                   </div>
                 </div>
                 <div className="ds-tienda-status">
-                  <h2>{(status && "Activo") || "Inactivo"}</h2>
+                  <h2>{(status && t("ACTIVO")) || t("INACTIVO")}</h2>
                   <Button dClassname="ds-tienda-status-button" to={`/shopPage/${props.shop}`}>
-                  Ir a tienda
+                  {t("IR_TIENDA")}
                   </Button>
                 </div>
                 
@@ -138,7 +138,7 @@ const ShopMenu = (props) => {
                     dClassName="ds-button"
                     onClick={buttonHandler("newProduct")}
                   >
-                    <p>Nuevo Producto </p>
+                    <p>{t("NUEVO_PRODUCTO")}</p>
                   </Button>
                 </Card>
               </li>
@@ -152,7 +152,7 @@ const ShopMenu = (props) => {
                     dClassName="ds-button"
                     onClick={buttonHandler("adminProduct")}
                   >
-                    <p>Administrar Tienda </p>
+                    <p>{t("ADMINISTRAR_TIENDA")} </p>
                   </Button>
                 </Card>
               </li>
@@ -166,7 +166,7 @@ const ShopMenu = (props) => {
                     dClassName="ds-button"
                     onClick={buttonHandler("updateShop")}
                   >
-                    <p>Modificar datos de la tienda</p>
+                    <p>{t("MODIFICAR_TIENDA")}</p>
                   </Button>
                 </Card>
               </li>
@@ -185,7 +185,7 @@ const ShopMenu = (props) => {
                     dClassName="ds-button"
                     onClick={showStatusWarningHandler}
                   >
-                    <p>{(status && "Desactivar Tienda") || "Activar Tienda"}</p>
+                    <p>{(status && t("DESACTIVAR_TIENDA")) || t("ACTIVAR_TIENDA")}</p>
                   </Button>
                 </Card>
               </li>

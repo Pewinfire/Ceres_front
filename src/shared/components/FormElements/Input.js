@@ -58,6 +58,8 @@ const Input = (props) => {
         onChange={changeHandler}
         onBlur={touchHandler}
         value={inputState.value}
+        min={props.min}
+        max={props.max}
         className={props.className}
       />
     ) : (
@@ -69,16 +71,17 @@ const Input = (props) => {
         value={inputState.value}
       />
     );
-    return (
-      <div className={`${props.dClassName || 'form-control'} ${
+  return (
+    <div
+      className={`${props.dClassName || "form-control"} ${
         !inputState.isValid && inputState.isTouched && "form-control--invalid"
       }`}
-      >
-        <label htmlFor={props.id}>{props.label}</label>
-        {element}
-        {!inputState.isValid && inputState.isTouched && <p>{props.errorText}</p>}
-      </div>
-    );
-  };
+    >
+      <label htmlFor={props.id}>{props.label}</label>
+      {element}
+      {!inputState.isValid && inputState.isTouched && <p>{props.errorText}</p>}
+    </div>
+  );
+};
 
 export default Input;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./CheckoutForm.css";
-import { useParams, useHistory } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import Button from "../../../shared/components/FormElements/Button";
 import AddNewDirection from "./AddNewDirection";
 import {
@@ -15,6 +15,7 @@ import "./CheckoutForm.css";
 const CheckoutForm = (props) => {
   const [newDirection, setNewDirection] = useState();
   const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const { t } = useTranslation();
   const showStatusWarningHandler = () => {
     setShowConfirmModal(true);
   };
@@ -61,7 +62,7 @@ const CheckoutForm = (props) => {
         )}
 
         <div className="add-direction">
-          <h3>Añadir nueva dirección de facturación</h3>
+          <h3>{t("NUEVA_DIRECC_FACTURA")}</h3>
           <Button
             onClick={() => {
               showStatusWarningHandler(true);
@@ -71,7 +72,7 @@ const CheckoutForm = (props) => {
           </Button>
         </div>
         <div className="pay-method">
-          <h3>Metodo de Pago</h3>
+          <h3>{t("METODO_PAGO")}</h3>
           <RadioGroup
             aria-labelledby="demo-controlled-radio-buttons-group"
             name="controlled-radio-buttons-group"
@@ -85,12 +86,12 @@ const CheckoutForm = (props) => {
             <FormControlLabel
               value="card"
               control={<Radio value="card" />}
-              label="Tarjeta de crédito"
+              label={t("TARJETA_CREDITO")}
             />
             <FormControlLabel
               value="shopR"
               control={<Radio value="shopR" />}
-              label="Pago en tienda"
+              label={t("PAGO_TIENDA")}
             />
           </RadioGroup>
         </div>
@@ -107,7 +108,7 @@ const CheckoutForm = (props) => {
                 }
               />
             }
-            label="Acepto los terminos de uso y la política de privacidad"
+            label={t("ACEPTO_TERMINOS")}
           />
         </div>
       </div>

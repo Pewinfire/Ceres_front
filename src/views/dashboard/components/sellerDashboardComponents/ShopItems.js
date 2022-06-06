@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import ErrorModal from "../../../shared/components/UIElements/ErrorModal";
-import LoadingSpinner from "../../../shared/components/UIElements/LoadingSpinner";
-import { useHttpClient } from "../../../shared/hooks/http-hook";
+import ErrorModal from "../../../../shared/components/UIElements/ErrorModal";
+import LoadingSpinner from "../../../../shared/components/UIElements/LoadingSpinner";
+import { useHttpClient } from "../../../../shared/hooks/http-hook";
 import { useParams } from "react-router-dom";
 import { Box } from "@mui/system";
 import Input from "@mui/material/Input";
 import { Pagination } from "@mui/material";
-import ProductList from "../components/ProductList";
-import Button from "../../../shared/components/FormElements/Button";
+import ProductList from "./ProductList";
+import Button from "../../../../shared/components/FormElements/Button";
 import "./ShopItem.css";
 
 const ShopItems = (props) => {
@@ -150,6 +150,7 @@ const ShopItems = (props) => {
             {!isLoading && loadedShopProducts && (
               <ProductList
                 items={loadedShopProducts}
+                shop={props.shop}
                 token={props.token}
                 update={updateList}
                 sort={updateOrder}

@@ -33,20 +33,27 @@
   text-shadow: #cfd4d4 0.1em 0.1em 0.2em;
   font-size: 1.5vw;
 }
+.order-actions-uno  {
+  position: absolute;
+  right: 5vw;
+  top: 3.5vw;
+  min-width: 13vw;
+}
 
 .order-actions-uno .button {
-  position: absolute;
-  right: 5.8vw;
-  top: 7.5vw;
+  margin-top :1vw;
+
   background-color: #f8bb52;
   border: #f8bb52;
   font-size: 1.5vw;
+  display: flex;
 }
 
 .order-action-uno .button:hover,
 .button:active {
   background: #7cd1b8;
   border-color: #7cd1b8;
+
 }
 .order-actions-dos .button {
   position: absolute;
@@ -66,8 +73,8 @@
   background-color: transparent;
   color: white;
   position: absolute;
-  right: 8.7vw;
-  top: 21vw;
+  right: 11vw;
+  top: 16.5vw;
 
 }
 .css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {

@@ -56,6 +56,21 @@
   width: 6vw;
 }
 
+.modal-button-cancel2 {
+  position: absolute;
+  top: 4vw;
+  right: 48.5vw;
+  font: inherit;
+  padding: 0.4vw 1.1vw;
+  border: 0.1vw solid #a31e1e;
+  border-radius: 0.4vw;
+  background: #a31e1e;
+  color: white;
+  cursor: pointer;
+  margin-right: 1rem;
+  text-decoration: none;
+  display: inline-block;
+} 
 .modal-button-cancel {
   position: absolute;
   top: 9vw;
@@ -75,16 +90,21 @@
 .modal-button-ok {
   position: relative;
   top: 1.5vw;
-  left: 18.3vw;
+  left: 21vw;
   font: inherit;
   padding: 0.4vw 1.1vw;
-  border: 0.1vw solid #3e8e7e;
+  border: 0.1vw solid #d69a17;
   border-radius: 0.4vw;
-  background: #3e8e7e;
+  background: #d69a17;
   color: white;
   cursor: pointer;
   text-decoration: none;
   display: inline-block;
+}
+.modal-button-ok:hover{
+  color: white;
+  background: #f7b528;
+  border-color: #f7b528;
 }
 
 .chip {

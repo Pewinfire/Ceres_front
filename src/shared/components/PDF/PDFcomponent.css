@@ -1,3 +1,6 @@
+.isOrder{
+  zoom: 0.8;
+}
 .invoice-container {
   height: 59.9vw;
   width: 42vw;
@@ -9,14 +12,24 @@
   background-position: 0% 100%;
   text-shadow: #0b423017 0.01em 0.01em 0.05em;
 }
-
-.invoice-pdf-button button{
+.invoice-pdf-order-button button{
   position: absolute;
-  right: -16vw;
+  right: -20vw;
+  top: 25vw;
+  background-color: #F8BB52;
+  border: #F8BB52;
+  font-size: 2.5vw;
+  
+}
+.invoice-pdf-button button{
+  text-align: left;
+  position: absolute;
+  right: -18.8vw;
   top: 2vw;
   background-color: #F8BB52;
   border: #F8BB52;
   font-size: 1.5vw;
+  min-width: 13vw;
 }
 .invoice-header h1 {
   font-size: 4.8vw;

@@ -5,10 +5,12 @@ import Input from "../../../shared/components/FormElements/Input";
 import ErrorModal from "../../../shared/components/UIElements/ErrorModal";
 import { useForm } from "../../../shared/hooks/form-hook";
 import { useHttpClient } from "../../../shared/hooks/http-hook";
+import { useTranslation } from "react-i18next";
 import { VALIDATOR_REQUIRE } from "../../../shared/util/validators";
 
 const AddNewDirection = (props) => {
   const [userAddress, setUserAdress] = useState();
+  const { t, i18n } = useTranslation();
   const [updateAddress, setUpdateAddress] = useState(false);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [formState, inputHandler, setFormData] = useForm(
@@ -98,8 +100,7 @@ const AddNewDirection = (props) => {
         locality: formState.inputs.locality.value,
         postalCode: formState.inputs.postalCode.value,
       },
-    },
-    );
+    });
     props.close(false);
   };
 
@@ -112,7 +113,7 @@ const AddNewDirection = (props) => {
             className="style-form-addDirection"
             onSubmit={
               updateAddress
-                ? setDirectionToThisPurchase 
+                ? setDirectionToThisPurchase
                 : userUpdateSubmitHandler
             }
           >
@@ -120,7 +121,7 @@ const AddNewDirection = (props) => {
               element="input"
               id="address"
               type="text"
-              label="Dirección"
+              label={t("DIRECCION")}
               validators={[VALIDATOR_REQUIRE]}
               errorText="Por favor, introduce una dirección"
               onInput={inputHandler}
@@ -131,7 +132,7 @@ const AddNewDirection = (props) => {
               element="input"
               id="locality"
               type="text"
-              label="Localidad"
+              label={t("LOCALIDAD")}
               validators={[VALIDATOR_REQUIRE]}
               errorText="Por favor, introduce una localidad"
               onInput={inputHandler}
@@ -142,7 +143,7 @@ const AddNewDirection = (props) => {
               element="input"
               id="province"
               type="text"
-              label="Provincia"
+              label={t("PROVINCIA")}
               validators={[VALIDATOR_REQUIRE]}
               errorText="Por favor, introduce una provincia "
               onInput={inputHandler}
@@ -153,7 +154,7 @@ const AddNewDirection = (props) => {
               element="input"
               id="postalCode"
               type="text"
-              label="Codigo Postal"
+              label={t("CODIGO_POSTAL")}
               validators={[VALIDATOR_REQUIRE]}
               errorText="Por favor, introduce un codigo postal"
               onInput={inputHandler}
@@ -161,7 +162,7 @@ const AddNewDirection = (props) => {
               initialValid={true}
             />
             <FormControlLabel
-              label="Usar solo en esta compra"
+              label={t("USAR_SOLO_ESTA_COMPRA")}
               control={
                 <Checkbox
                   defaultChecked
@@ -172,9 +173,9 @@ const AddNewDirection = (props) => {
               }
             />
             <div className="right">
-              <Button onClick={() => props.close(false)}>Volver </Button>
+              <Button onClick={() => props.close(false)}> {t("VOLVER")}</Button>
               <Button type="submit" disabled={!formState.isValid}>
-                Actualizar
+                {t("ACTUALIZAR")}
               </Button>
             </div>
           </form>

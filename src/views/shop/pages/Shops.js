@@ -61,7 +61,7 @@ const Shops = () => {
         </div>
       )} */}
       {!isLoading && loadedShops && (
-        <div>
+        <div className="container">
           <Box
             className="search-box"
             sx={{ display: "flex", alignItems: "flex-end" }}

@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import ReactToPdf from "react-to-pdf";
 import { useTranslation } from "react-i18next";
-import Button from "../FormElements/Button"
+import Button from "../FormElements/Button";
 import "./PDFcomponent.css";
 
 const PDFcomponent = (props) => {
@@ -36,7 +36,10 @@ const PDFcomponent = (props) => {
     console.log(prods);
     return prods
       .reduce((sum, cartItem) => {
-        return (sum += cartItem.quantity * cartItem.product.stats.price * ivaT[cartItem.product.iva]);
+        return (sum +=
+          cartItem.quantity *
+          cartItem.product.stats.price *
+          ivaT[cartItem.product.stats.discount]);
       }, 0)
       .toFixed(2);
   };
@@ -49,11 +52,19 @@ const PDFcomponent = (props) => {
       .toFixed(2);
   };
   return (
-    <div className="App">
-      <div className="invoice-pdf-button">
-      <ReactToPdf targetRef={ref} filename="code-example.pdf">
-        {({ toPdf }) => <Button onClick={toPdf}>{t("PDF")}</Button>}
-      </ReactToPdf>
+    <div className={props.isOrder ? "isOrder" : "App"}>
+      <div
+        className={
+          props.isOrder ? "invoice-pdf-order-button" : "invoice-pdf-button"
+        }
+      >
+        <ReactToPdf targetRef={ref}  filename={`Factura ${props.order.id}`}>
+          {({ toPdf }) => (
+            <Button disabled={!props.order.aceptado} title={!props.order.aceptado ? "El vendedor debe aceptar el pedido" : ""} onClick={toPdf}>
+              {t("PDF")}
+            </Button>
+          )}
+        </ReactToPdf>
       </div>
       <div className="invoice-container" ref={ref}>
         <div className="invoice-header">
@@ -70,7 +81,8 @@ const PDFcomponent = (props) => {
                 <li>{props.order.client.dni}</li>
                 <li>{props.order.billingAddress.address}</li>
                 <li>
-                  {props.order.billingAddress.locality} {props.order.billingAddress.province}
+                  {props.order.billingAddress.locality}{" "}
+                  {props.order.billingAddress.province}
                 </li>
                 <li>{props.order.billingAddress.postalCode}</li>
               </ul>
@@ -81,7 +93,8 @@ const PDFcomponent = (props) => {
             <div className="invoice-seller-data">
               <ul>
                 <li>
-                  {props.order.vendor.owner.name} {props.order.vendor.owner.lastname}
+                  {props.order.vendor.owner.name}{" "}
+                  {props.order.vendor.owner.lastname}
                 </li>
                 <li>{props.order.vendor.nif}</li>
                 <li>{props.order.vendor.name}</li>
@@ -105,12 +118,17 @@ const PDFcomponent = (props) => {
               return (
                 <tr>
                   <td>{prod.product.name}</td>
-                  <td>{prod._id.slice(6,12)}</td>
+                  <td>{prod._id.slice(6, 12)}</td>
                   <td>{prod.quantity + " " + prod.product.stats.format}</td>
-                  <td>{prod.product.stats.price + " €/" + prod.product.stats.format}</td>
-                  <td>{iva[prod.product.iva]}</td>
+                  <td>
+                    {prod.product.stats.price +
+                      " €/" +
+                      prod.product.stats.format}
+                  </td>
+                  <td>{iva[prod.product.stats.discount]}</td>
                   <td className="invoice-product-amm">
-                    {(prod.product.stats.price * prod.quantity).toFixed(2) + " €"}
+                    {(prod.product.stats.price * prod.quantity).toFixed(2) +
+                      " €"}
                   </td>
                 </tr>
               );
@@ -126,7 +144,9 @@ const PDFcomponent = (props) => {
               </td>
             </tr>
             <tr className="invoice-footer-sec">
-              <td colspan="2"  className="invoice-footer-IVA">{t("IVA") + ": SRED 4% , RED 10%, GEN 21%"}</td>
+              <td colspan="2" className="invoice-footer-IVA">
+                {t("IVA") + ": SRED 4% , RED 10%, GEN 21%"}
+              </td>
               <td colspan="2">{`${t("TOTAL")} (${t("IVA")})`}</td>
               <td colspan="2">
                 {totalConIva(props.order.soldProducts) + " €"}

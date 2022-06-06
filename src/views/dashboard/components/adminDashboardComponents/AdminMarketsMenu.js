@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Button from "../../../../shared/components/FormElements/Button";
 import Card from "../../../../shared/components/UIElements/Card";
 import { useHttpClient } from "../../../../shared/hooks/http-hook";
+import MarketListAdmin from "./MarketsListAdmin";
 import "./ShopMenu.css";
 import NewMarket from "./NewMarket";
 
@@ -65,15 +66,18 @@ const AdminMarketsMenu = (props) => {
               </Card>
             </li>
             <li className="relleno">
-            <h1>&nbsp;</h1>
-            
+              <h1>&nbsp;</h1>
             </li>
-          
           </ul>
+        )}    {marketList && (
+          <MarketListAdmin
+            token={props.token}
+            close={buttonHandler("general")}
+          />
         )}
         {newMarket && (
           <NewMarket token={props.token} close={buttonHandler("general")} />
-        )}
+        )}{" "}
         {/*      {productList && (
           <ShopItems
             shop={loadedShop.id}

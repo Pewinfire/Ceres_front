@@ -4,6 +4,7 @@ import Card from "../../../shared/components/UIElements/Card";
 import { Modal } from "@mui/material";
 import UpdateUser from "../components/UpdateUser";
 import UpdatePass from "./UpdatePass";
+import { useTranslation } from "react-i18next";
 import "./ProfileMenu.css";
 import CustomerService from "./CustomerService";
 
@@ -12,7 +13,7 @@ const ProfileMenu = (props) => {
   const [asistencia, setAsistencia] = useState(false);
   const [general, setGeneral] = useState(true);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
-
+  const { t } = useTranslation();
   const buttonHandler = (value) => async () => {
     switch (value) {
       case "update":
@@ -65,7 +66,7 @@ const ProfileMenu = (props) => {
                     dClassName="ds-button"
                     onClick={buttonHandler("update")}
                   >
-                    <p>Actualiza tus datos de usuario </p>
+                    <p>{t("ACTUALIZAR_DATOS")} </p>
                   </Button>
                 </Card>
               </li>
@@ -79,7 +80,7 @@ const ProfileMenu = (props) => {
                     dClassName="ds-button"
                     onClick={showStatusWarningHandler}
                   >
-                    <p>Cambiar contraseña </p>
+                    <p>{t("CAMBIAR_CONTRASEÑA")} </p>
                   </Button>
                 </Card>
               </li>
@@ -93,7 +94,7 @@ const ProfileMenu = (props) => {
                     dClassName="ds-button"
                     onClick={buttonHandler("asistencia")}
                   >
-                    <p>Asistencia</p>
+                    <p>{t("ASISTENCIA")}</p>
                   </Button>
                 </Card>
               </li>

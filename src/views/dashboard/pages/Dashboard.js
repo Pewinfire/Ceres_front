@@ -7,7 +7,9 @@ import { useHttpClient } from "../../../shared/hooks/http-hook";
 import ErrorModal from "../../../shared/components/UIElements/ErrorModal";
 import LoadingSpinner from "../../../shared/components/UIElements/LoadingSpinner";
 import ProfileMenu from "../components/ProfileMenu";
+import { useTranslation } from "react-i18next";
 import "./SellerDashboard";
+import UserOrderList from "../components/UserOrdersList";
 
 // falta autentificacion.
 
@@ -15,10 +17,11 @@ const Dashboard = () => {
   const [profile, setProfile] = useState(true);
   const [orders, setOrders] = useState(false);
   const [reviews, setReviews] = useState(false);
-  const [updateRender , setUpdateRender] =useState(false);
+  const [updateRender, setUpdateRender] = useState(false);
   const [user, setUser] = useState();
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const auth = useContext(AuthContext);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -91,17 +94,17 @@ const Dashboard = () => {
           <div className="ButtonMenu">
             <Button dClassName="ds-button" onClick={buttonHandler("profile")}>
               <i className="fas fa-user fa-2x">
-                <p>Mi Perfil</p>
+                <p>{t("MI_PERFIL")}</p>
               </i>
             </Button>
             <Button dClassName="ds-button" onClick={buttonHandler("orders")}>
               <i className="fas fa-file-invoice fa-2x">
-                <p>Pedidos</p>
+                <p>{t("PEDIDOS")}</p>
               </i>
             </Button>
             <Button dClassName="ds-button" onClick={buttonHandler("reviews")}>
               <i className="fas fa-star-half-alt fa-2x">
-                <p>Opiniones</p>
+                <p>Reviews</p>
               </i>
             </Button>
           </div>
@@ -114,6 +117,11 @@ const Dashboard = () => {
                   token={auth.token} /* back={{buttonHandler}} */
                   updateFetch={updateFetch}
                 />
+              </div>
+            )}
+            {orders && (
+              <div className="orders-orders">
+                <UserOrderList user={auth.userId} token={auth.token} />
               </div>
             )}
           </div>
